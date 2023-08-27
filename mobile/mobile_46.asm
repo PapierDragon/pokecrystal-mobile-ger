@@ -5673,13 +5673,13 @@ String_11a6db:
 
 String_11a6f1:
 	db   "Zusatzgebühr";"この　サービスには"
-	next "@";"つうわりょう<NO>ほかに@"
+	next "wird berechnet.@";"つうわりょう<NO>ほかに@"
 
 String_11a706:
-	db   "Gebühr:@";"おかね<GA>@"
+	db   "Gebühr: @";"おかね<GA>@"
 
 String_11a70b:
-	db   "Yen";"えん"
+	db   " Cent";"えん"
 	next "In Ordnung?@";"かかります　よろしい　ですか？@"
 
 String_11a71e:

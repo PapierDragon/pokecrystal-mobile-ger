@@ -827,10 +827,9 @@ GoldenrodPokecomCenterNoEggTicketServiceText:
 	done
 
 GoldenrodPokecomCenterNewsMachineText:
-	text "Hier ist eine"
-	line "#MON-"
-	cont "NACHRICHTEN-"
-	cont "MASCHINE."
+	text "Das ist eine #-"
+	line "MON-NACHRICHTEN-"
+	cont "MASCHINE!"
 	done
 
 GoldenrodPokecomCenterWhatToDoText:
@@ -926,7 +925,7 @@ GoldenrodPokecenter1FMobileOnSuperNerdText:
 	text "Ich habe mir etwas"
 	line "Lustiges für die"
 	cont "TAUSCHECKE aus-"
-	cont "gedacht."
+	cont "gedacht!"
 
 	para "Ich gebe TAUBSI"
 	line "einen BRIEF und"
