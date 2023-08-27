@@ -36,7 +36,7 @@ https://github.com/gb-mobile/pokecrystal-mobile-en/wiki/Pok%C3%A9mon-Crystal-Mob
 
 - Pret           : Initial disassembly
 - Pfero          : Old German disassembly for Pokecrystal
-- LesserKuma     : German translations for mobile content.
+- Lesserkuma     : German translations for mobile content.
 - Matze          : Mobile Restoration & Japanese Code Disassembly
 - Damien         : Code
 - DS             : GFX & Code
