@@ -416,7 +416,7 @@ SetDayOfWeek:
 	call .PlaceWeekdayString
 	call ApplyTilemap
 	ld c, 10
-	call DelayFrames	
+	call DelayFrames
 .loop2
 	call JoyTextDelay
 	call .GetJoypadAction
@@ -480,11 +480,11 @@ SetDayOfWeek:
 .finish_dpad
 	xor a
 	ldh [hBGMapMode], a
-	hlcoord 10, 4
+	hlcoord 9, 4
 	ld b, 2
-	ld c, 9
+	ld c, 10
 	call ClearBox
-	hlcoord 10, 5
+	hlcoord 9, 5
 	call .PlaceWeekdayString
 	call WaitBGMap
 	and a

@@ -1814,7 +1814,7 @@ InitNameCardLayout:
 	hlcoord 2, 5
 	ld a, $d
 	call .Load6Row
-	hlcoord 8, 5
+	hlcoord 5, 5
 	ld [hl], $c
 	hlcoord 18, 5
 	ld [hl], $a
