@@ -484,7 +484,7 @@ ExpShareDesc:
 
 OldRodDesc:
 	db   "Damit kannst du"
-	next "#MON angeln."
+	next "#MON angeln.@"
 
 GoodRodDesc:
 	db   "Eine gute ANGEL"
