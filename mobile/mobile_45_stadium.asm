@@ -147,7 +147,7 @@ endr
 
 .Odd:
 ; localization: mind above remark
-	db "KURIOS@@"
+	db "Kurios@@"
 
 
 Function11765d:
