@@ -105,7 +105,7 @@ MobileString1:
 	db   "KARTENORDNER"
 	next "GRUSSWORTE"
 	next "MOBILPROFIL"
-	next "EINSTELLUNGEN"
+	next "OPTION"
 	next "ZURÜCK"
 	db   "@"
 
