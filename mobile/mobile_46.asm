@@ -6326,7 +6326,7 @@ Function11ad95:
 	ld de, String_11ae40
 	call PlaceString
 	hlcoord 8, 10, wAttrmap ;10, 10, wAttrmap
-	lb bc, 8, 7 ;8
+	lb bc, 8, 10 ;8
 	call Function11afd6
 	farcall ReloadMapPart
 	call MobileIncJumptableIndex
@@ -6412,14 +6412,14 @@ Function11adc4:
 
 MenuHeader_11ae38:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords  8, 10, 14, SCREEN_HEIGHT - 1
+	menu_coords  8, 10, 17, SCREEN_HEIGHT - 1
 	dw NULL
 	db 0 ; default option
 
 String_11ae40:
 	db   "EGAL"
-	next "♂" ; male
-	next "♀" ; female
+	next "♂MÄNNL." ; male
+	next "♀WEIBL." ; female
 	db   "@"
 
 Function11ae4e:
@@ -6713,7 +6713,7 @@ Function11b03d:
 .done
 	dec hl
 	push hl
-	ld e, 2
+	ld e, 7
 	ld d, 0
 	add hl, de
 	ld e, l
@@ -6736,12 +6736,14 @@ Function11b03d:
 	ld hl, .FemaleString
 
 .got_string
-	ld bc, 2 ; string length
+	ld bc, 6 ; string length
 	call CopyBytes
+	ld a, " "
+	ld [de], a
 	ret
 
-.MaleString: db "♂　"
-.FemaleString: db "♀　"
+.MaleString: db "MÄNNL."
+.FemaleString: db "WEIBL."
 
 Function11b082:
 	call Function11b242
