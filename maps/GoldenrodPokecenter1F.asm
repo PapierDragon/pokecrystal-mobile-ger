@@ -510,8 +510,7 @@ GoldenrodPokeCenter1FLassWalkRightAroundPlayerMovement:
 GoldenrodPokecomCenterWelcomeToTradeCornerText:
 	text "Hallo! Willkommen"
 	line "in der #KOM-"
-	cont "CENTER-HANDELS-"
-	cont "ECKE."
+	cont "CENTER-TAUSCHECKE."
 
 	para "Du kannst hier"
 	line "mit wildfremden"
@@ -521,7 +520,7 @@ GoldenrodPokecomCenterWelcomeToTradeCornerText:
 	done
 
 GoldenrodPokecomCenterWeMustHoldYourMonText:
-	text "Zum Tauschen"
+	text "Zum tauschen"
 	line "bewahren wir dein"
 	para "#MON bei uns"
 	line "auf."
