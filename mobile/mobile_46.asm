@@ -5629,6 +5629,7 @@ Function11a5f5: ;Check here
 	ld a, $ed
 	ld [hl], a
 	farcall ReloadMapPart
+	call UpdateSprites
 	ret
 
 Function11a63c:
