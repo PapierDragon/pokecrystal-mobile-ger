@@ -2,9 +2,6 @@
 
 A German translation of https://github.com/gb-mobile/pokecrystal-mobile-eng
 This translation was performed via text dumps and a (somewhat) sophisticated find/replace script, with the remaining mobile feature text translated by LesserKuma.
-The German translation (aside from English) is by far the most complete translation of them all, with only a few minor issues.
-It is possible that some menus were missed by the find/replace script, and need translating manually.
-No known critical bugs exist, but please report any bugs you do find and help fix those listed under Issues where applicable.
 
 ## Setup [![Build Status][ci-badge]][ci]
 
