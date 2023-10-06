@@ -540,14 +540,10 @@ GoldenrodPokecomCenterWeWillTradeYourMonForMonText:
 
 	para "@"
 	text_ram wStringBuffer3
-	text ""
-
-	line "gegen ein"
-
-	cont "@"
+	text " gegen"
+	line "@"
 	text_ram wStringBuffer4
 	text ""
-
 	cont "zu tauschen."
 
 	para "Wir nehmen dein"
