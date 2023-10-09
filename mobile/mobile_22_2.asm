@@ -687,7 +687,7 @@ Function8b703:
 	ld [hli], a
 	ld a, $7f
 	call Mobile22_Fill_HL_with_A_C_Times
-	ld a, $11
+	ld a, $17
 	ld [hl], a
 	pop hl
 	ld de, SCREEN_WIDTH
