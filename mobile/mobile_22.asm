@@ -2748,9 +2748,9 @@ MenuHeader_0x8a19a:
 MenuData_0x8a1a2:
 	db STATICMENU_CURSOR | STATICMENU_NO_TOP_SPACING | STATICMENU_WRAP ; flags
 	db 3 ; items
-	db "ÖFFNEN@" ; "ひらく@"	
-	db "LÖSCHEN@" ; "すてる@"	
-	db "ZURÜCK@" ; "もどる@"
+	db "Öffnen@" ; "ひらく@"	
+	db "Löschen@" ; "すてる@"	
+	db "Zurück@" ; "もどる@"
 
 Function8a1b0:
 	hlcoord 0, 12
@@ -3050,10 +3050,10 @@ MenuHeader_CardFolderLayout:
 MenuData_0x8a417:
 	db STATICMENU_CURSOR | STATICMENU_WRAP ; flags
 	db 4 ; items
-	db "FREUNDE@" ;"めいしりスト@"	
-	db "EIGENE@" ;"じぶんの　めいし@"	
-	db "TAUSCH@" ;"めいしこうかん@"	
-	db "ZURÜCK@" ;"やめる@"
+	db "Freunde@" ;"めいしりスト@"	
+	db "Eigene@" ;"じぶんの　めいし@"	
+	db "Tausch@" ;"めいしこうかん@"	
+	db "Zurück@" ;"やめる@"
 
 MenuHeader_0x8a435:
 	db MENU_BACKUP_TILES ; flags
@@ -3064,9 +3064,9 @@ MenuHeader_0x8a435:
 MenuData_0x8a43d:
 	db STATICMENU_CURSOR | STATICMENU_WRAP ; flags
 	db 3 ; items
-	db "FREUNDE@" ;"めいしりスト@"	
-	db "EIGENE@" ;"じぶんの　めいし@"	
-	db "ZURÜCK@" ;"やめる@"
+	db "Freunde@" ;"めいしりスト@"	
+	db "Eigene@" ;"じぶんの　めいし@"	
+	db "Zurück@" ;"やめる@"
 
 Function8a453:
 	hlcoord 0, 12
@@ -3811,9 +3811,9 @@ MenuHeader_0x8a9f2:
 MenuData_0x8a9fa:
 	db STATICMENU_CURSOR | STATICMENU_WRAP ; flags
 	db 3 ; items
-	db "ÄNDERN@"	
-	db "ANZEIGEN@"	
-	db "ZURÜCK@"
+	db "Ändern@"
+	db "Anzeigen@"	
+	db "Zurück@"
 
 Function8aa09:
 	ret
