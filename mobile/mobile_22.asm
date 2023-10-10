@@ -1085,6 +1085,76 @@ FunctionLine:
 	ld a, $e
 	ld [hl], a
 	ret	
+	
+FunctionMessageExtra:
+	ld a, $2b
+	ld [hl], a
+	ret		
+
+FunctionChecker1:
+	ld a, $17
+	ld [hl], a
+	ret				
+
+FunctionChecker2:
+	ld a, $17
+	ld [hl], a
+	ret			
+
+FunctionChecker3:
+	ld a, $17
+	ld [hl], a
+	ret	
+	
+FunctionChecker4:
+	ld a, $17
+	ld [hl], a
+	ret	
+
+FunctionChecker5:
+	ld a, $17
+	ld [hl], a
+	ret	
+
+FunctionChecker6:
+	ld a, $17
+	ld [hl], a
+	ret	
+
+FunctionChecker7:
+	ld a, $17
+	ld [hl], a
+	ret	
+
+FunctionChecker8:
+	ld a, $17
+	ld [hl], a
+	ret	
+
+FunctionChecker9:
+	ld a, $17
+	ld [hl], a
+	ret	
+
+FunctionChecker10:
+	ld a, $17
+	ld [hl], a
+	ret	
+
+FunctionChecker11:
+	ld a, $17
+	ld [hl], a
+	ret	
+
+FunctionChecker12:
+	ld a, $17
+	ld [hl], a
+	ret	
+
+FunctionChecker13:
+	ld a, $17
+	ld [hl], a
+	ret			
 
 Function8975b:
 	ld a, $1d
@@ -1511,12 +1581,40 @@ Function899d3:
 	call Function89771 ; phone icon
 	hlcoord 1, 11
 	call Function8977a ; "message" text and gfx
+	hlcoord 5, 11
+	call FunctionMessageExtra ; "additional" text	
 	hlcoord 1, 6
 	call Function89797 ; arrow gfx
 	hlcoord 2, 4
 	call Function89962 ; "name/" text
 	hlcoord 2, 9 
 	call Function89915 ; "phone number" text
+	hlcoord 6, 11
+	call FunctionChecker1 ; Force loads checkerboard
+	hlcoord 7, 11
+	call FunctionChecker2 ; Force loads checkerboard
+	hlcoord 8, 11
+	call FunctionChecker3 ; Force loads checkerboard
+	hlcoord 9, 11
+	call FunctionChecker4 ; Force loads checkerboard
+	hlcoord 10, 11
+	call FunctionChecker5 ; Force loads checkerboard
+	hlcoord 11, 11
+	call FunctionChecker6 ; Force loads checkerboard
+	hlcoord 12, 11
+	call FunctionChecker7 ; Force loads checkerboard
+	hlcoord 13, 11
+	call FunctionChecker8 ; Force loads checkerboard
+	hlcoord 14, 11
+	call FunctionChecker9 ; Force loads checkerboard
+	hlcoord 15, 11
+	call FunctionChecker10 ; Force loads checkerboard
+	hlcoord 16, 11
+	call FunctionChecker11 ; Force loads checkerboard
+	hlcoord 17, 11
+	call FunctionChecker12 ; Force loads checkerboard
+	hlcoord 18, 11
+	call FunctionChecker13 ; Force loads checkerboard		
 	ret
 
 Function899fe:
