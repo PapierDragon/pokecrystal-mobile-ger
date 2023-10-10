@@ -1433,7 +1433,7 @@ Function89915:
 	push bc
 	push hl
 	ld de, Unknown_89942
-	ld c, $8
+	ld c, $7
 .asm_8991c
 	ld a, [de]
 	ld [hl], a
