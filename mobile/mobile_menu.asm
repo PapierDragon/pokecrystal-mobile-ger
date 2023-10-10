@@ -117,8 +117,8 @@ String_0x49fe9:
 	db   "@"
 
 String_0x4a004:
-	db   "GRUSSWORTE"
-	next "festlegen."
+	db   "Autor gruss für"
+	next "KARTE und kampf."
 	db   "@"
 
 String_0x4a026:
