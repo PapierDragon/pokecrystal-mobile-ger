@@ -1182,7 +1182,7 @@ Function89771:
 	ret
 
 Function8977a:
-	ld e, $3
+	ld e, $5
 	ld d, $13
 .asm_8977e
 	ld a, d
@@ -1193,7 +1193,7 @@ Function8977a:
 	inc d
 	dec e
 	jr nz, .asm_8977e
-	ld e, $f
+	ld e, $d
 .asm_8978c
 	ld a, d
 	ld [hl], a
