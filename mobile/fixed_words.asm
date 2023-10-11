@@ -952,8 +952,8 @@ EZChatDrawBKG_ChatWords:
 
 EZChatString_ChatExplanation: ; Explanation string
 	db   "Wähle über Gruppen";"６つのことば¯くみあわせます"
-	next "4 Wörter aus, um";"かえたいところ¯えらぶと　でてくる"
-	next "deine Nachricht";"ことばのグループから　いれかえたい"
+	next "Foue Wörter aus,";"かえたいところ¯えらぶと　でてくる"
+	next "um deine Nachricht";"ことばのグループから　いれかえたい"
 	next "zusammenzustellen.";"たんご¯えらんでください"
 	db   "@"
 
