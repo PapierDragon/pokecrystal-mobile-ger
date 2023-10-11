@@ -2349,19 +2349,19 @@ EZChatString_MessageSet: ; message accept strings, one for each type of message.
 	dw EZChatString_MessageBattleLoseSet
 
 EZChatString_MessageIntroSet:
-	db   "Nachricht wurde";"じこしょうかい　の"
+	db   "Grusswort wurde";"じこしょうかい　の"
 	next "festgelegt!@" ;"あいさつ¯とうろくした！@"
 
 EZChatString_MessageBattleStartSet:
-	db   "Nachricht wurde";"たいせん　<GA>はじまるとき　の"
+	db   "Grusswort wurde";"たいせん　<GA>はじまるとき　の"
 	next "festgelegt!@" ;"あいさつ¯とうろくした！@"
 
 EZChatString_MessageBattleWinSet:
-	db   "Nachricht wurde";"たいせん　<NI>かったとき　の"
+	db   "Grusswort wurde";"たいせん　<NI>かったとき　の"
 	next "festgelegt!@" ;"あいさつ¯とうろくした！@"
 
 EZChatString_MessageBattleLoseSet:
-	db   "Nachricht wurde";"たいせん　<NI>まけたとき　の"
+	db   "Grusswort wurde";"たいせん　<NI>まけたとき　の"
 	next "festgelegt!@" ;"あいさつ¯とうろくした！@"
 
 EZChatMenu_WarnEmptyMessage:
