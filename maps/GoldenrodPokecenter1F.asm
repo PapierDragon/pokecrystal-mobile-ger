@@ -771,7 +771,7 @@ GoldenrodPokecomCenterOddEggBriefingText:
 	line "kurze Einweisung"
 	cont "geben!"
 
-	para "In der HANDELSECKE"
+	para "In der TAUSCHECKE"
 	line "kannst du über"
 	para "größere Entfer-"
 	line "nungen tauschen,"
@@ -782,19 +782,19 @@ GoldenrodPokecomCenterOddEggBriefingText:
 
 	para "Das KURIOS-EI"
 	line "hingegen wurde"
-	para "extra nur für dich"
+	para "nur für dich"
 	line "hinterlegt!"
 
 	para "Daher können wir"
-	line "es dir sofort in"
-	para "einen von dir"
-	line "gewählten CENTER-"
-	para "Raum übersenden."
+	line "es dir sofort von"
+	para "einem von dir"
+	line "gewählten Raum im"
+	para "CENTER übersenden."
 	done
 
 GoldenrodPokecomCenterPleaseWaitAMomentText:
-	text "Vorbereitungen"
-	line "werden getroffen…"
+	text "Einen Moment,"
+	line "bitte…"
 	done
 
 GoldenrodPokecomCenterHereIsYourOddEggText:
@@ -833,7 +833,7 @@ GoldenrodPokecomCenterWhatToDoText:
 	done
 
 GoldenrodPokecomCenterNewsMachineExplanationText:
-	text "#MON-DATEN"
+	text "#MON-NACHRICHTEN"
 	line "werden aus den"
 	para "SPIELSTÄNDEN"
 	line "verschiedener"
@@ -841,51 +841,57 @@ GoldenrodPokecomCenterNewsMachineExplanationText:
 	line "gestellt."
 
 	para "Dein SPIELSTAND"
-	line "wird übertragen,"
-	para "wenn du neue DATEN"
-	line "abrufst."
+	line "kann übertragen"
+	para "werden, wenn du"
+	line "neue NACHRICHTEN"
+	cont "abrufst."
 
 	para "Der SPIELSTAND"
-	line "enthält dein"
-	para "Abenteuer-Logbuch"
-	line "und Mobilprofil."
+	line "enthält Aufzeich-"
+	para "nungen deines"
+	line "Abenteuers und"
+	cont "dein Mobilprofil."
 	
 	para "Deine Rufnummer"
 	line "wird dabei nicht"
 	cont "übertragen."
 
-	para "Der Inhalt der DA-"
-	line "TEN hängt von den"
-	para "SPIELSTÄNDEN aller"
-	line "Teilnehmer ab."
+	para "Der Inhalt der"
+	line "NACHRICHTEN hängt"
+	para "von den SPIELSTÄN-"
+	line "DEN aller Teil-"
+	cont "nehmer ab."
 
 	para "Vielleicht taucht"
 	line "auch dein Name"
 	para "eines Tages in"
-	line "den DATEN auf!"
+	line "den NACHRICHTEN"
+	cont "auf!"
 	done
 
 GoldenrodPokecomCenterWouldYouLikeTheNewsText:
-	text "Möchtest du neue"
-	line "DATEN abrufen?"
+	text "Möchtest du die"
+	line "NACHRICHTEN ab-"
+	cont "rufen?"
 	done
 
 GoldenrodPokecomCenterReadingTheLatestNewsText:
-	text "Aktuelle DATEN"
-	line "werden empfangen…"
+	text "Aktuelle NACHRICH-"
+	line "TEN werden em-"
+	cont "pfangen…"
 	done
 
 GoldenrodPokecomCenterNoOldNewsText:
-	text "Noch wurden keine"
-	line "DATEN empfangen."
+	text "Es gibt keine"
+	line "alten NACHRICHTEN."
 	done
 
 GoldenrodPokecomCenterCorruptedNewsDataText:
-	text "Die DATEN sind"
-	line "beschädigt."
+	text "Die NACHRICHTEN"
+	line "sind beschädigt."
 
 	para "Bitte lade die"
-	line "DATEN erneut"
+	line "NACHRICHTEN erneut"
 	cont "herunter."
 	done
 
@@ -1131,10 +1137,10 @@ GoldenrodPokecomCenterSignText:
 
 	para "Links: VERWALTUNG"
 
-	para "Mitte: HANDELSECKE"
+	para "Mitte: TAUSCHECKE"
 
 	para "Rechts: #MON-"
-	line "DATEN"
+	line "NACHRICHTEN"
 	done
 
 GoldenrodPokecomCenterNewsMachineNotYetText:
