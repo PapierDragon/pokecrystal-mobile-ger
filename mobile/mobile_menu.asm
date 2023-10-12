@@ -103,7 +103,7 @@ Function49f16:
 
 MobileString1:
 	db   "Kartenordner"
-	next "Grussworte"
+	next "Grußworte"
 	next "Mobilprofil"
 	next "Option"
 	next "Zurück"
@@ -117,8 +117,8 @@ String_0x49fe9:
 	db   "@"
 
 String_0x4a004:
-	db   "Autor gruss für"
-	next "KARTE und kampf."
+	db   "Gruß für KARTE und"
+	next "Kampf verfassen."
 	db   "@"
 
 String_0x4a026:
@@ -338,7 +338,7 @@ asm_4a19d:
 
 String_4a1ef:
 	db   "Mobile-center";"モバイルセンター¯えらぶ"
-	next "Log-in-passwort";"ログインパスワード¯いれる"
+	next "Log-in-Passwort";"ログインパスワード¯いれる"
 	next "Zurück@";"もどる@"
 
 Function4a20e:
@@ -779,8 +779,8 @@ String_4a5f2:
 	db "Zurück@";"もどる@"
 
 Strings_4a5f6:
-	db "Auf der KARTE@";"めいし　や　ニュース　<NI>のせる@"
-	db "und in den DATEN.@";"あなた<NO>あいさつです@"
+	db "Auf KARTE und in@";"めいし　や　ニュース　<NI>のせる@"
+	db "den NACHRICHTEN.@";"あなた<NO>あいさつです@"
 	db "Bei Beginn eines@";"モバイル　たいせん<GA>はじまるとき@"
 	db "Mobil-Kampfes.@";"あいて<NI>みえる　あいさつです@"
 	db "Bei einem Mobil-@";"モバイル　たいせんで　かったとき@"
