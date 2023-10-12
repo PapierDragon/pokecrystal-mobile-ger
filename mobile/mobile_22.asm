@@ -13,7 +13,7 @@ String_89135:
 	next "verwerfen?@";"かきかえないで　やめますか？@" ; Quit anyway?
 
 String_89153:
-	db   "Keine Nachricht.";"メッセージは　ありません@"    ; No message
+	db   "Keine Nachricht.@";"メッセージは　ありません@"    ; No message
 
 OpenSRAMBank4:
 	push af
