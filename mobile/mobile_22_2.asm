@@ -1048,9 +1048,9 @@ Mobile22_CardListEntryMenu:
 	ld hl, MenuHeader_CardListEmptyEntry
 	jr .menu_selected
 .existing_entry
-	hlcoord 10, 0
+	hlcoord 9, 0
 	ld b, $a
-	ld c, $8
+	ld c, $9
 	call Function8b703
 	ld hl, MenuHeader_CardListExistingEntry
 .menu_selected
@@ -1100,7 +1100,7 @@ MenuData_CardListEmptyEntry:
 
 MenuHeader_CardListExistingEntry:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 10, 0, SCREEN_WIDTH - 1, TEXTBOX_Y - 1
+	menu_coords 9, 0, SCREEN_WIDTH - 1, TEXTBOX_Y - 1
 	dw MenuData_CardListExistingEntry
 	db 1 ; default option
 
