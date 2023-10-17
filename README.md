@@ -15,6 +15,18 @@ To build a specific version, run this command inside the repository directory in
 
 Other languages are being worked on, but are not complete and still require a lot of polish.
 
+## Screenshots
+
+![image](https://github.com/gb-mobile/pokecrystal-mobile-ger/assets/110418063/ba663136-d7fa-423e-974d-7cf0f05362fd)
+![image](https://github.com/gb-mobile/pokecrystal-mobile-ger/assets/110418063/d4e3acd9-4a2f-425a-a747-8f61fa5f5f55)
+![image](https://github.com/gb-mobile/pokecrystal-mobile-ger/assets/110418063/d3ff672c-54b5-4b28-8cc1-e327d2bd0744)
+![image](https://github.com/gb-mobile/pokecrystal-mobile-ger/assets/110418063/530794b4-83ea-4097-aef4-ec43b6e4907a)
+![image](https://github.com/gb-mobile/pokecrystal-mobile-ger/assets/110418063/e28e5656-ea85-452d-872d-d1d2b6b8a360)
+![image](https://github.com/gb-mobile/pokecrystal-mobile-ger/assets/110418063/dc35bc4e-8086-4c8d-a79d-b3d2c1e41108)
+![image](https://github.com/gb-mobile/pokecrystal-mobile-ger/assets/110418063/88ae5a4b-a52f-432a-8142-ef03920594c5)
+![image](https://github.com/gb-mobile/pokecrystal-mobile-ger/assets/110418063/d8c279cf-1c1e-45b4-a823-39b15d0aceb2)
+![image](https://github.com/gb-mobile/pokecrystal-mobile-ger/assets/110418063/739c6d36-51bf-43ef-8677-2ce1f7fd49c6)
+
 ## Using Mobile Adapter Features
 
 To take advantage of the Mobile Adapter features, we currently recommend the GameBoy Emulator BGB:
@@ -36,8 +48,8 @@ https://github.com/gb-mobile/pokecrystal-mobile-en/wiki/Pok%C3%A9mon-Crystal-Mob
 
 - Pret           : Initial disassembly
 - Pfero          : Old German disassembly for Pokecrystal
-- Lesserkuma     : German translations for mobile content.
-- Matze          : Mobile Restoration & Japanese Code Disassembly
+- Lesserkuma     : German Translations for mobile content.
+- Matze          : Mobile Restoration & Japanese Code Disassembly & Translation
 - Damien         : Code
 - DS             : GFX & Code
 - Ryuzac         : Code & Japanese Translation
