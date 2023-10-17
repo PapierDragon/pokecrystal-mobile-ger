@@ -21,7 +21,7 @@ Other languages are being worked on, but are not complete and still require a lo
 ![image](https://github.com/gb-mobile/pokecrystal-mobile-ger/assets/110418063/d4e3acd9-4a2f-425a-a747-8f61fa5f5f55)
 ![image](https://github.com/gb-mobile/pokecrystal-mobile-ger/assets/110418063/d3ff672c-54b5-4b28-8cc1-e327d2bd0744)
 ![image](https://github.com/gb-mobile/pokecrystal-mobile-ger/assets/110418063/530794b4-83ea-4097-aef4-ec43b6e4907a)
-![image](https://github.com/gb-mobile/pokecrystal-mobile-ger/assets/110418063/f32b96a4-8f7b-4961-a858-de0f4502543c)
+![image](https://github.com/gb-mobile/pokecrystal-mobile-ger/assets/110418063/e28e5656-ea85-452d-872d-d1d2b6b8a360)
 ![image](https://github.com/gb-mobile/pokecrystal-mobile-ger/assets/110418063/dc35bc4e-8086-4c8d-a79d-b3d2c1e41108)
 ![image](https://github.com/gb-mobile/pokecrystal-mobile-ger/assets/110418063/88ae5a4b-a52f-432a-8142-ef03920594c5)
 ![image](https://github.com/gb-mobile/pokecrystal-mobile-ger/assets/110418063/d8c279cf-1c1e-45b4-a823-39b15d0aceb2)
