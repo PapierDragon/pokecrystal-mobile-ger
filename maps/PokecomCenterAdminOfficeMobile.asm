@@ -137,7 +137,7 @@ PokecomCenterAdminOfficeMobileScientist2Text:
 PokecomCenterAdminOfficeMobileScientist3Text:
 	text "Dank Fortschritten"
 	line "auf dem Gebiet der"
-	para "Funktechnologie"
+	para "Funktechnologie,"
 	line "konnten sie diese"
 	cont "Stätte bauen."
 	done
