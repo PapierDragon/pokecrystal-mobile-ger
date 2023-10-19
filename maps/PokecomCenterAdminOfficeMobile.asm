@@ -90,15 +90,15 @@ PokecomCenterAdminOfficeMobileComputer2:
 
 .Computer2MenuHeader:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 0, 0, 13, 8
+	menu_coords 0, 0, 18, 8
 	dw .MenuData
 	db 1 ; default option
 
 .MenuData:
 	db STATICMENU_CURSOR ; flags
 	db 3 ; items
-	db "VERBINDUNG@" ; Use phone
-	db "BEI FEHLERN@" ; Don't use phone
+	db "HANDY-NUTZUNG@" ; Use phone
+	db "NICHT ERREICHBAR@" ; Don't use phone
 	db "ZURÜCK@" ; QUIT
 
 PokecomCenterAdminOfficeMobileComputer3:
@@ -137,7 +137,7 @@ PokecomCenterAdminOfficeMobileScientist2Text:
 PokecomCenterAdminOfficeMobileScientist3Text:
 	text "Dank Fortschritten"
 	line "auf dem Gebiet der"
-	para "Funktechnologie,"
+	para "Funktechnologie"
 	line "konnten sie diese"
 	cont "Stätte bauen."
 	done
@@ -170,16 +170,16 @@ PokecomCenterAdminOfficeMobileComputer1Text_PokeComClub:
 	done
 
 PokecomCenterAdminOfficeMobileComputer1Text_MobileCenter:
-	text "HANDELSECKE und"
-	line "#MON-DATEN"
-	para "werden über eine"
-	line "Verbindung zum"
-	para "MOBILE-CENTER"
+	text "TAUSCHECKE und"
+	line "#MON-NACHRICH-"
+	para "TEN werden über"
+	line "eine Verbindung"
+	para "zum MOBILE-CENTER"
 	line "bereitgestellt."
 	para "Hierfür musst du"
-	line "dich zunächst bei"
-	para "einem MOBILE-CEN-"
-	line "TER registrieren."
+	line "dich zunächst beim"
+	para "MOBILE-CENTER"
+	line "registrieren."
 	done
 
 PokecomCenterAdminOfficeMobileComputer2Text:
@@ -202,7 +202,7 @@ PokecomCenterAdminOfficeMobileComputer2Text_UsePhone:
 	done
 
 PokecomCenterAdminOfficeMobileComputer2Text_DontUsePhone:
-	text "Wenn das Netz"
+	text "Wenn der Server"
 	line "überlastet ist,"
 	para "könnte ein Ver-"
 	line "bindungsversuch"
