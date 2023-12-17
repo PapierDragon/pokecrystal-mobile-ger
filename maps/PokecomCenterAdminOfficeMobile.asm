@@ -98,7 +98,7 @@ PokecomCenterAdminOfficeMobileComputer2:
 	db STATICMENU_CURSOR ; flags
 	db 3 ; items
 	db "HANDY-NUTZUNG@" ; Use phone
-	db "NICHT ERREICHBAR@" ; Don't use phone
+	db "KEIN NETZEMPFANG@" ; Don't use phone
 	db "ZURÜCK@" ; QUIT
 
 PokecomCenterAdminOfficeMobileComputer3:

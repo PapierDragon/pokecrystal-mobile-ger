@@ -520,7 +520,7 @@ GoldenrodPokecomCenterWelcomeToTradeCornerText:
 	done
 
 GoldenrodPokecomCenterWeMustHoldYourMonText:
-	text "Zum tauschen"
+	text "Zum Tauschen"
 	line "bewahren wir dein"
 	para "#MON bei uns"
 	line "auf."
@@ -782,14 +782,17 @@ GoldenrodPokecomCenterOddEggBriefingText:
 
 	para "Das KURIOS-EI"
 	line "hingegen wurde"
-	para "nur für dich"
-	line "hinterlegt!"
+	para "extra nur für dich"
+	line "hinterlegt und"
+	para "kann dir sofort"
+	line "übersendet werden."
 
-	para "Daher können wir"
-	line "es dir sofort von"
-	para "einem von dir"
-	line "gewählten Raum im"
-	para "CENTER übersenden."
+	para "Einer der vielen"
+	line "Räume im CENTER"
+	para "wird ausgewählt,"
+	line "um dir von dort"
+	para "das KURIOS-EI"
+	line "zu übersenden."
 	done
 
 GoldenrodPokecomCenterPleaseWaitAMomentText:
@@ -833,9 +836,9 @@ GoldenrodPokecomCenterWhatToDoText:
 	done
 
 GoldenrodPokecomCenterNewsMachineExplanationText:
-	text "#MON-NACHRICHTEN"
-	line "werden aus den"
-	para "SPIELSTÄNDEN"
+	text "#MON-NACHRICH-"
+	line "TEN werden aus"
+	para "den SPIELSTÄNDEN"
 	line "verschiedener"
 	para "Trainer zusammen-"
 	line "gestellt."
@@ -877,13 +880,14 @@ GoldenrodPokecomCenterWouldYouLikeTheNewsText:
 
 GoldenrodPokecomCenterReadingTheLatestNewsText:
 	text "Aktuelle NACHRICH-"
-	line "TEN werden em-"
-	cont "pfangen…"
+	line "TEN werden"
+	cont "empfangen…"
 	done
 
 GoldenrodPokecomCenterNoOldNewsText:
-	text "Es gibt keine"
-	line "alten NACHRICHTEN."
+	text "Noch wurden keine"
+	line "NACHRICHTEN"
+	cont "empfangen."
 	done
 
 GoldenrodPokecomCenterCorruptedNewsDataText:
@@ -906,9 +910,9 @@ GoldenrodPokecomCenterMakingPreparationsText:
 GoldenrodPokecomCenterSaveBeforeNewsMachineText:
 	text "Ehe du die"
 	line "NACHRICHTEN-"
-	cont "MASCHINE bedienst,"
-	para "wird dein Spiel-"
-	line "stand gesichert."
+	para "MASCHINE bedienst,"
+	line "wird dein Spiel-"
+	cont "stand gesichert."
 	done
 
 GoldenrodPokecenter1FMobileOffSuperNerdText:
