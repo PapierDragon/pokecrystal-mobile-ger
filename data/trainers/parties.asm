@@ -297,7 +297,7 @@ LtSurgeGroup:
 
 ScientistGroup:
 	; SCIENTIST (1)
-		db "ANTON@", TRAINERTYPE_NORMAL
+	db "MARTIN@", TRAINERTYPE_NORMAL
 	db 22, KOFFING
 	db 22, KOFFING
 	db -1 ; end
@@ -1120,7 +1120,7 @@ BeautyGroup:
 	db -1 ; end
 
 	; BEAUTY (11)
-		db "MAGDA@", TRAINERTYPE_NORMAL
+	db "DENISE@", TRAINERTYPE_NORMAL
 	db 15, SENTRET
 	db -1 ; end
 
@@ -1164,14 +1164,14 @@ PokemaniacGroup:
 	db -1 ; end
 
 	; POKEMANIAC (2)
-		db "UDO@", TRAINERTYPE_NORMAL
+	db "KENJI@", TRAINERTYPE_NORMAL
 	db 24, MAROWAK
 	db 24, MAROWAK
 	db -1 ; end
 
 	; POKEMANIAC (3)
 	db "KENGO@", TRAINERTYPE_NORMAL
-	db 26,KANGASKHAN
+	db 26, KANGASKHAN
 	db -1 ; end
 
 	; POKEMANIAC (4)
@@ -1203,7 +1203,7 @@ PokemaniacGroup:
 
 	; POKEMANIAC (9)
 	db "TARO@", TRAINERTYPE_NORMAL
-	db 25,KANGASKHAN
+	db 25, KANGASKHAN
 	db -1 ; end
 
 	; POKEMANIAC (10)
@@ -1664,7 +1664,7 @@ FisherGroup:
 	db -1 ; end
 
 	; FISHER (9)
-		db "NIELS@", TRAINERTYPE_NORMAL
+	db "ALBERT@", TRAINERTYPE_NORMAL
 	db 22, MAGIKARP
 	db 22, MAGIKARP
 	db 22, MAGIKARP
@@ -1878,7 +1878,7 @@ SwimmerMGroup:
 	db -1 ; end
 
 	; SWIMMERM (16)
-		db "FRANK@", TRAINERTYPE_NORMAL
+	db "BORIS@", TRAINERTYPE_NORMAL
 	db 13, STARYU
 	db 18, STARMIE
 	db 16, HORSEA
@@ -2503,7 +2503,7 @@ BurglarGroup:
 
 FirebreatherGroup:
 	; FIREBREATHER (1)
-		db "VEIT@", TRAINERTYPE_NORMAL
+	db "BILL@", TRAINERTYPE_NORMAL
 	db 29, MAGMAR
 	db 32, WEEZING
 	db 29, MAGMAR
@@ -2622,12 +2622,12 @@ BlackbeltGroup:
 	db -1 ; end
 
 	; BLACKBELT_T (4)
-		db "OLE@", TRAINERTYPE_MOVES
+	db "JEFF@", TRAINERTYPE_MOVES
 	db 27, HITMONCHAN, COMET_PUNCH, THUNDERPUNCH, ICE_PUNCH, FIRE_PUNCH
 	db -1 ; end
 
 	; BLACKBELT_T (5)
-		db "RICO@", TRAINERTYPE_MOVES
+	db "PETER@", TRAINERTYPE_MOVES
 	db 25, MACHOP,     LEER, FOCUS_ENERGY, KARATE_CHOP, SEISMIC_TOSS
 	db 25, MACHOKE,    LEER, KARATE_CHOP, SEISMIC_TOSS, ROCK_SLIDE
 	db -1 ; end
@@ -2865,7 +2865,7 @@ PicnickerGroup:
 	db -1 ; end
 
 	; PICNICKER (19)
-		db "ELKE@", TRAINERTYPE_NORMAL
+	db "NICOLE@", TRAINERTYPE_NORMAL
 	db 37, EXEGGUTOR
 	db -1 ; end
 
@@ -3023,7 +3023,7 @@ CamperGroup:
 	db -1 ; end
 
 	; CAMPER (18)
-		db "YURI@", TRAINERTYPE_NORMAL
+	db "WALTER@", TRAINERTYPE_NORMAL
 	db 37, SANDSLASH
 	db -1 ; end
 
@@ -3295,7 +3295,7 @@ PokefanMGroup:
 
 KimonoGirlGroup:
 	; KIMONO_GIRL (1)
-	db "EDITH@", TRAINERTYPE_NORMAL
+	db "NAOKO@", TRAINERTYPE_NORMAL
 	db 20, SKIPLOOM
 	db 20, VULPIX
 	db 18, SKIPLOOM
@@ -3364,13 +3364,13 @@ TwinsGroup:
 	db -1 ; end
 
 	; TWINS (7)
-		db "ZOE & PIA@", TRAINERTYPE_NORMAL
+	db "ZOE & PIA@", TRAINERTYPE_NORMAL
 	db 31, TEDDIURSA
 	db 31, PHANPY
 	db -1 ; end
 
 	; TWINS (8)
-		db "ZOE & PIA@", TRAINERTYPE_NORMAL
+	db "ZOE & PIA@", TRAINERTYPE_NORMAL
 	db 31, PHANPY
 	db 31, TEDDIURSA
 	db -1 ; end
