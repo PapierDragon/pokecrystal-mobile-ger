@@ -1,5 +1,6 @@
 	db "VOGEL@" ; species name
-	dw 11, 300 ; height, weight
+		db 11
+	dw 300 ; height, weight
 
 	db   "Während es lang-"
 	next "sam Kreise fliegt,"

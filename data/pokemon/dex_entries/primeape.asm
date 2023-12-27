@@ -1,5 +1,6 @@
 	db "SCHW./ AFFE@" ; species name
-	dw 10, 320 ; height, weight
+		db 10
+	dw 320 ; height, weight
 
 	db   "Es verprügelt"
 	next "jeden, der es"

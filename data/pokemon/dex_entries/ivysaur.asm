@@ -1,5 +1,6 @@
 	db "SAMEN@" ; species name
-	dw 10, 130 ; height, weight
+		db 10
+	dw 130 ; height, weight
 
 	db   "Nimmt es Nährstof-"
 	next "fe zu sich, wächst"

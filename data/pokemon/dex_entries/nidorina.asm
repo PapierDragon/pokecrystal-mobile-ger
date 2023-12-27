@@ -1,5 +1,6 @@
 	db "GIFTDORN@" ; species name
-	dw 8, 200 ; height, weight
+		db 8
+	dw 200 ; height, weight
 
 	db   "Es hat ein ruhiges"
 	next "Wesen. Wird es an-"

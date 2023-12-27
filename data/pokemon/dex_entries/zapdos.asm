@@ -1,5 +1,6 @@
 	db "ELEKTRO@" ; species name
-	dw 16, 526 ; height, weight
+		db 16
+	dw 526 ; height, weight
 
 	db   "Ein legendäres"
 	next "Vogel-#MON,"

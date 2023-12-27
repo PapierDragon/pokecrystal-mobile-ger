@@ -1,5 +1,6 @@
 	db "WOLLE@" ; species name
-	dw 6, 78 ; height, weight
+		db 6
+	dw 78 ; height, weight
 
 	db   "Es speichert viel"
 	next "Luft in seinem"

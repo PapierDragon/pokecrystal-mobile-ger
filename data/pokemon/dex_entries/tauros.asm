@@ -1,5 +1,6 @@
 	db "WILDBULLE@" ; species name
-	dw 14, 884 ; height, weight
+		db 14
+	dw 884 ; height, weight
 
 	db   "Diese aggressiven"
 	next "#MON kämpfen"

@@ -1,5 +1,6 @@
 	db "AQUAMAUS@" ; species name
-	dw 4, 85 ; height, weight
+		db 4
+	dw 85 ; height, weight
 
 	db   "Sein Fell ist"
 	next "von Natur aus"

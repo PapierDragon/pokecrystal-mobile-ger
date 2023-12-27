@@ -1,5 +1,6 @@
 	db "DUOVOGEL@" ; species name
-	dw 14, 392 ; height, weight
+		db 14
+	dw 392 ; height, weight
 
 	db   "Sein Habitat sind"
 	next "grasige, offene"

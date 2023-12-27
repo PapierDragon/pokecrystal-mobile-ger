@@ -1,5 +1,6 @@
 	db "SYMBOL@" ; species name
-	dw 5, 50 ; height, weight
+		db 5
+	dw 50 ; height, weight
 
 	db   "Da es so viele"
 	next "unterschiedliche"

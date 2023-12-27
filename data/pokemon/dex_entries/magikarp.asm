@@ -1,5 +1,6 @@
 	db "FISCH@" ; species name
-	dw 9, 100 ; height, weight
+		db 9
+	dw 100 ; height, weight
 
 	db   "Dieses schwache"
 	next "und lethargische"

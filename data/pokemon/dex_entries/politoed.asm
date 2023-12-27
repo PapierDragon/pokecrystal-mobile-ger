@@ -1,5 +1,6 @@
 	db "FROSCH@" ; species name
-	dw 11, 339 ; height, weight
+		db 11
+	dw 339 ; height, weight
 
 	db   "Bläht es seinen"
 	next "Hals auf, um zu"

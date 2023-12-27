@@ -1,5 +1,6 @@
 	db "LEUCHTE@" ; species name
-	dw 14, 615 ; height, weight
+		db 14
+	dw 615 ; height, weight
 
 	db   "Bei Dunkelheit"
 	next "sieht man das hel-"

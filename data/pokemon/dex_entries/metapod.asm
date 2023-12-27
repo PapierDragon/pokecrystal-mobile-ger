@@ -1,5 +1,6 @@
 	db "KOKON@" ; species name
-	dw 7, 99 ; height, weight
+		db 7
+	dw 99 ; height, weight
 
 	db   "In diesem Ent-"
 	next "wicklungsstadium"

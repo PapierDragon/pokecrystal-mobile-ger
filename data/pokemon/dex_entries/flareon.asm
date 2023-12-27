@@ -1,5 +1,6 @@
 	db "FEUER@" ; species name
-	dw 9, 250 ; height, weight
+		db 9
+	dw 250 ; height, weight
 
 	db   "Hat dieses #MON"
 	next "genügend Wärme im"

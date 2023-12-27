@@ -1,5 +1,6 @@
 	db "FISCH@" ; species name
-	dw 14, 750 ; height, weight
+		db 14
+	dw 750 ; height, weight
 
 	db   "Sein Körper ist"
 	next "stets schleimig."

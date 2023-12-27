@@ -1,5 +1,6 @@
 	db "DRACHE@" ; species name
-	dw 12, 250 ; height, weight
+		db 12
+	dw 250 ; height, weight
 
 	db   "Der Vater zieht"
 	next "das Junge auf."

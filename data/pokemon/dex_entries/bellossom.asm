@@ -1,5 +1,6 @@
 	db "BLUME@" ; species name
-	dw 4, 58 ; height, weight
+		db 4
+	dw 58 ; height, weight
 
 	db   "Tanzen sie zusam-"
 	next "men, reiben ihre"

@@ -1,5 +1,6 @@
 	db "MYSTIK@" ; species name
-	dw 15, 150 ; height, weight
+		db 15
+	dw 150 ; height, weight
 
 	db   "Wenn es bei Son-"
 	next "nenaufgang anfängt"

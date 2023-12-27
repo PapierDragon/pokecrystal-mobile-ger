@@ -1,5 +1,6 @@
 	db "KOBRA@" ; species name
-	dw 35, 650 ; height, weight
+		db 35
+	dw 650 ; height, weight
 
 	db   "Um Feinde einzu-"
 	next "schüchtern, bläht"

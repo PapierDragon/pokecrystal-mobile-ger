@@ -1,5 +1,6 @@
 	db "LANGLEIB@" ; species name
-	dw 18, 325 ; height, weight
+		db 18
+	dw 325 ; height, weight
 
 	db   "Sein Bau ist sei-"
 	next "nem schlanken Kör-"

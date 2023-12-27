@@ -1,5 +1,6 @@
 	db "KRAFTPROTZ@" ; species name
-	dw 8, 195 ; height, weight
+		db 8
+	dw 195 ; height, weight
 
 	db   "Es trainiert,"
 	next "indem es in den"

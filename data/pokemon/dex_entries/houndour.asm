@@ -1,5 +1,6 @@
 	db "HADES@" ; species name
-	dw 6, 108 ; height, weight
+		db 6
+	dw 108 ; height, weight
 
 	db   "Im Morgengrauen"
 	next "schallt sein omi-"

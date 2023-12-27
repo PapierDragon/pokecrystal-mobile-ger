@@ -1,5 +1,6 @@
 	db "SEEHUND@" ; species name
-	dw 11, 900 ; height, weight
+		db 11
+	dw 900 ; height, weight
 
 	db   "Sein hellblaues"
 	next "Fell schützt es"

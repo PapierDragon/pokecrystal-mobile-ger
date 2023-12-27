@@ -1,5 +1,6 @@
 	db "URGESTEIN@" ; species name
-	dw 14, 3000 ; height, weight
+		db 14
+	dw 3000 ; height, weight
 
 	db   "Sein felsartiger"
 	next "Körper ist so"

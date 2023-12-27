@@ -1,5 +1,6 @@
 	db "SONNE@" ; species name
-	dw 9, 265 ; height, weight
+		db 9
+	dw 265 ; height, weight
 
 	db   "Die Spitze seines"
 	next "geteilten Schweifs"

@@ -1,5 +1,6 @@
 	db "PILZ@" ; species name
-	dw 10, 295 ; height, weight
+		db 10
+	dw 295 ; height, weight
 
 	db   "Kann der Pilz auf"
 	next "seinem Rücken dem"

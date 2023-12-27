@@ -1,5 +1,6 @@
 	db "FLIEGENTOT@" ; species name
-	dw 10, 64 ; height, weight
+		db 10
+	dw 64 ; height, weight
 
 	db   "Ist es hungrig,"
 	next "wirft es seine"

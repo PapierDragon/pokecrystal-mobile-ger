@@ -1,5 +1,6 @@
 	db "FINSTERNIS@" ; species name
-	dw 5, 21 ; height, weight
+		db 5
+	dw 21 ; height, weight
 
 	db   "Es versteckt jeden"
 	next "schimmernden"

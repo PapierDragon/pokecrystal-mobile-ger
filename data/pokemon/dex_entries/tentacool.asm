@@ -1,5 +1,6 @@
 	db "QUALLE@" ; species name
-	dw 9, 455 ; height, weight
+		db 9
+	dw 455 ; height, weight
 
 	db   "Wenn es auf den"
 	next "Wellen treibt,"

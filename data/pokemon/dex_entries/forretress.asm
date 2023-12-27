@@ -1,5 +1,6 @@
 	db "BEUTELWURM@" ; species name
-	dw 12, 1258 ; height, weight
+		db 12
+	dw 1258 ; height, weight
 
 	db   "Man findet es auf"
 	next "Baumstämmen. Re-"

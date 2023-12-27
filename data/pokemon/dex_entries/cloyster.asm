@@ -1,5 +1,6 @@
 	db "MUSCHEL@" ; species name
-	dw 15, 1325 ; height, weight
+		db 15
+	dw 1325 ; height, weight
 
 	db   "Nicht einmal eine"
 	next "Rakete kann seine"

@@ -1,5 +1,6 @@
 	db "KOPFSTAND@" ; species name
-	dw 14, 480 ; height, weight
+		db 14
+	dw 480 ; height, weight
 
 	db   "Nach einem Hand-"
 	next "stand, der das"

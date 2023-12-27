@@ -1,5 +1,6 @@
 	db "FEUERPFERD@" ; species name
-	dw 10, 300 ; height, weight
+		db 10
+	dw 300 ; height, weight
 
 	db   "Das Springen über"
 	next "Gras, das täglich"

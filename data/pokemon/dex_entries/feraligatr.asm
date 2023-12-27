@@ -1,5 +1,6 @@
 	db "GROSSMAUL@" ; species name
-	dw 23, 888 ; height, weight
+		db 23
+	dw 888 ; height, weight
 
 	db   "Obwohl es statt-"
 	next "lich ist, kann"

@@ -1,5 +1,6 @@
 	db "BOHRER@" ; species name
-	dw 13, 600 ; height, weight
+		db 13
+	dw 600 ; height, weight
 
 	db   "Die harten Schup-"
 	next "pen, die seinen"

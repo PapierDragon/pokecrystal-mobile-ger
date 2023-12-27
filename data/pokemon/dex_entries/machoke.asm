@@ -1,5 +1,6 @@
 	db "KRAFTPROTZ@" ; species name
-	dw 15, 705 ; height, weight
+		db 15
+	dw 705 ; height, weight
 
 	db   "Dieses starke"
 	next "#MON wird nie "

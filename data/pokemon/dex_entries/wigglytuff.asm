@@ -1,5 +1,6 @@
 	db "BALLON@" ; species name
-	dw 10, 120 ; height, weight
+		db 10
+	dw 120 ; height, weight
 
 	db   "Sein dichtes,"
 	next "flauschiges Fell "

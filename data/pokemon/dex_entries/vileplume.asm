@@ -1,5 +1,6 @@
 	db "BLUME@" ; species name
-	dw 12, 186 ; height, weight
+		db 12
+	dw 186 ; height, weight
 
 	db   "Schüttelt es seine"
 	next "großen Blätter,"

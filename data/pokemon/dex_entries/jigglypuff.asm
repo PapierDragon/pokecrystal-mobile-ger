@@ -1,5 +1,6 @@
 	db "BALLON@" ; species name
-	dw 5, 55 ; height, weight
+		db 5
+	dw 55 ; height, weight
 
 	db   "Während es ein"
 	next "Schlaflied singt,"

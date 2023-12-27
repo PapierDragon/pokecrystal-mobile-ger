@@ -1,5 +1,6 @@
 	db "SCHLANGE@" ; species name
-	dw 20, 69 ; height, weight
+		db 20
+	dw 69 ; height, weight
 
 	db   "Es nimmt die Ge-"
 	next "genwart von Beute"

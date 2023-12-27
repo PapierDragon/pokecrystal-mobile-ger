@@ -1,5 +1,6 @@
 	db "SCHATTEN@" ; species name
-	dw 15, 405 ; height, weight
+		db 15
+	dw 405 ; height, weight
 
 	db   "Es versteckt sich"
 	next "im Schatten der"

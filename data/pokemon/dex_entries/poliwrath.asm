@@ -1,5 +1,6 @@
 	db "KAULQUAPPE@" ; species name
-	dw 13, 540 ; height, weight
+		db 13
+	dw 540 ; height, weight
 
 	db   "Mittels seiner"
 	next "starken Arme und"

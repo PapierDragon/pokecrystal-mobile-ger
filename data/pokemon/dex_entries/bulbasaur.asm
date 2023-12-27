@@ -1,5 +1,6 @@
 	db "SAMEN@" ; species name
-	dw 7, 69 ; height, weight
+		db 7
+	dw 69 ; height, weight
 
 	db   "Da es noch klein"
 	next "ist, frisst es die"

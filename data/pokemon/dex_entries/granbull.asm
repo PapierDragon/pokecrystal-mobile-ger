@@ -1,5 +1,6 @@
 	db "FEE@" ; species name
-	dw 14, 487 ; height, weight
+		db 14
+	dw 487 ; height, weight
 
 	db   "Es kann fast jedes"
 	next "#MON vertrei-"

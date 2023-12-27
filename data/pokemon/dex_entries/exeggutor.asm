@@ -1,5 +1,6 @@
 	db "PALMFRUCHT@" ; species name
-	dw 20, 1200 ; height, weight
+		db 20
+	dw 1200 ; height, weight
 
 	db   "Fühlt es sich"
 	next "wohl, wachsen ihm"

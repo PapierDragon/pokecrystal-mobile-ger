@@ -1,5 +1,6 @@
 	db "MAGNET@" ; species name
-	dw 10, 600 ; height, weight
+		db 10
+	dw 600 ; height, weight
 
 	db   "Versammeln sich"
 	next "viele MAGNETON,"

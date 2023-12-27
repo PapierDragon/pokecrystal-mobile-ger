@@ -1,5 +1,6 @@
 	db "LÖWENZAHN@" ; species name
-	dw 4, 5 ; height, weight
+		db 4
+	dw 5 ; height, weight
 
 	db   "Eine kleine Brise"
 	next "reicht aus, um es"

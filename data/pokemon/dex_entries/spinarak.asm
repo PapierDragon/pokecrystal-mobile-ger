@@ -1,5 +1,6 @@
 	db "FADENWURF@" ; species name
-	dw 5, 85 ; height, weight
+		db 5
+	dw 85 ; height, weight
 
 	db   "Falls sich Beute"
 	next "in seinem Netz"

@@ -1,5 +1,6 @@
 	db "SCHLANGE@" ; species name
-	dw 15, 140 ; height, weight
+		db 15
+	dw 140 ; height, weight
 
 	db   "Es versteckt sich"
 	next "in finsteren"

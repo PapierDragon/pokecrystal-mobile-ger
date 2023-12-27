@@ -1,5 +1,6 @@
 	db "SCHW./ AFFE@" ; species name
-	dw 5, 280 ; height, weight
+		db 5
+	dw 280 ; height, weight
 
 	db   "Es lebt mit Artge-"
 	next "nossen in Baumkro-"

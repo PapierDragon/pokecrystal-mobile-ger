@@ -1,5 +1,6 @@
 	db "KRAFTPROTZ@" ; species name
-	dw 16, 1300 ; height, weight
+		db 16
+	dw 1300 ; height, weight
 
 	db   "Da seine vier Arme"
 	next "schneller sind"

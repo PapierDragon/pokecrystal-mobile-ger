@@ -1,5 +1,6 @@
 	db "SCHERE@" ; species name
-	dw 18, 1180 ; height, weight
+		db 18
+	dw 1180 ; height, weight
 
 	db   "Dieses #MON"
 	next "kann mit seinen"

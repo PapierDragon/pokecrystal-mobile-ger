@@ -1,5 +1,6 @@
 	db "PANZER@" ; species name
-	dw 20, 2020 ; height, weight
+		db 20
+	dw 2020 ; height, weight
 
 	db   "Es besitzt so viel"
 	next "Kraft, dass es mit"

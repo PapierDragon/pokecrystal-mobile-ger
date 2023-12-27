@@ -1,5 +1,6 @@
 	db "EI@" ; species name
-	dw 11, 346 ; height, weight
+		db 11
+	dw 346 ; height, weight
 
 	db   "Die Menschen ver-"
 	next "suchen es wegen"

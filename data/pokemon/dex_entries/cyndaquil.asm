@@ -1,5 +1,6 @@
 	db "FEUERMAUS@" ; species name
-	dw 5, 79 ; height, weight
+		db 5
+	dw 79 ; height, weight
 
 	db   "Sein Feuer hat die"
 	next "höchste Tempera-"

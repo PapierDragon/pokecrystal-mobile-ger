@@ -1,5 +1,6 @@
 	db "HADES@" ; species name
-	dw 14, 350 ; height, weight
+		db 14
+	dw 350 ; height, weight
 
 	db   "Der stechende"
 	next "Gestank seiner"

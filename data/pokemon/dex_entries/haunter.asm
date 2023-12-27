@@ -1,5 +1,6 @@
 	db "GAS@" ; species name
-	dw 16, 1 ; height, weight
+		db 16
+	dw 1 ; height, weight
 
 	db   "Es versteckt sich"
 	next "im Dunkeln und"

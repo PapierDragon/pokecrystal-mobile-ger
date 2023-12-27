@@ -1,5 +1,6 @@
 	db "KLEINVOGEL@" ; species name
-	dw 2, 20 ; height, weight
+		db 2
+	dw 20 ; height, weight
 
 	db   "Es kann hervor-"
 	next "ragend klettern."

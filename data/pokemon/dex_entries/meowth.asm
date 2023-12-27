@@ -1,5 +1,6 @@
 	db "KATZE@" ; species name
-	dw 4, 42 ; height, weight
+		db 4
+	dw 42 ; height, weight
 
 	db   "Schimmernde Dinge"
 	next "faszinieren es."

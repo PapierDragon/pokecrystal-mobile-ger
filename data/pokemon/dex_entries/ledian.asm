@@ -1,5 +1,6 @@
 	db "FÜNF-PUNKT@" ; species name
-	dw 14, 356 ; height, weight
+		db 14
+	dw 356 ; height, weight
 
 	db   "Wenn es tagsüber"
 	next "warm wird, rollt"

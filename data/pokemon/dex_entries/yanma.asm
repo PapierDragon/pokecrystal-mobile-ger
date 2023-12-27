@@ -1,5 +1,6 @@
 	db "LIBELLE@" ; species name
-	dw 12, 380 ; height, weight
+		db 12
+	dw 380 ; height, weight
 
 	db   "Es kann in alle"
 	next "Richtungen sehen,"

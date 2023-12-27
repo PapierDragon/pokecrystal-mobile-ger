@@ -1,5 +1,6 @@
 	db "GENMUTANT@" ; species name
-	dw 20, 1220 ; height, weight
+		db 20
+	dw 1220 ; height, weight
 
 	db   "Man sagt, es lebe"
 	next "allein in einer"

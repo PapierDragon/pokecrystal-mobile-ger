@@ -1,5 +1,6 @@
 	db "TRANSFORM@" ; species name
-	dw 3, 40 ; height, weight
+		db 3
+	dw 40 ; height, weight
 
 	db   "Trifft es auf ein"
 	next "anderes DITTO, be-"

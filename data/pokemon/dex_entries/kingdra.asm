@@ -1,5 +1,6 @@
 	db "DRACHEN@" ; species name
-	dw 18, 1520 ; height, weight
+		db 18
+	dw 1520 ; height, weight
 
 	db   "Kein anderes Lebe-"
 	next "wesen kann in den"

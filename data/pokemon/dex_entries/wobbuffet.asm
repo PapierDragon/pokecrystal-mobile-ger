@@ -1,5 +1,6 @@
 	db "GEDULD@" ; species name
-	dw 13, 285 ; height, weight
+		db 13
+	dw 285 ; height, weight
 
 	db   "Um seinen schwar-"
 	next "zen Schwanz zu"

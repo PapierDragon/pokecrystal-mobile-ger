@@ -1,5 +1,6 @@
 	db "VIRTUELL@" ; species name
-	dw 6, 325 ; height, weight
+		db 6
+	dw 325 ; height, weight
 
 	db   "Dieses #MON"
 	next "ist das Ergebnis"

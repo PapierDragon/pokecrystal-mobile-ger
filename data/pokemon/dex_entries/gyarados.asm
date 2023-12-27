@@ -1,5 +1,6 @@
 	db "GRAUSAM@" ; species name
-	dw 65, 2350 ; height, weight
+		db 65
+	dw 2350 ; height, weight
 
 	db   "Es taucht auf,"
 	next "wenn es eine welt-"

@@ -1,5 +1,6 @@
 	db "STICHKLAUE@" ; species name
-	dw 9, 280 ; height, weight
+		db 9
+	dw 280 ; height, weight
 
 	db   "Dieses hinterlis-"
 	next "tige #MON"

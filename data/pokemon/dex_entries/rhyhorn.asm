@@ -1,5 +1,6 @@
 	db "STACHLER@" ; species name
-	dw 10, 1150 ; height, weight
+		db 10
+	dw 1150 ; height, weight
 
 	db   "Es kann sich immer"
 	next "nur eine Sache"

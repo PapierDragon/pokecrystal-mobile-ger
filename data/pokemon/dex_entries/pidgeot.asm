@@ -1,5 +1,6 @@
 	db "VOGEL@" ; species name
-	dw 15, 395 ; height, weight
+		db 15
+	dw 395 ; height, weight
 
 	db   "Aufgrund seiner"
 	next "überragenden Seh-"

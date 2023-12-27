@@ -1,5 +1,6 @@
 	db "KLEINBÄR@" ; species name
-	dw 6, 88 ; height, weight
+		db 6
+	dw 88 ; height, weight
 
 	db   "Es frisst ständig"
 	next "Honig. Seine"

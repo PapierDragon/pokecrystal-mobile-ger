@@ -1,5 +1,6 @@
 	db "LANGHALS@" ; species name
-	dw 15, 415 ; height, weight
+		db 15
+	dw 415 ; height, weight
 
 	db   "Ist es in Gefahr,"
 	next "setzt sein Schwanz"

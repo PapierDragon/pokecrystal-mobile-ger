@@ -1,5 +1,6 @@
 	db "ENTE@" ; species name
-	dw 17, 766 ; height, weight
+		db 17
+	dw 766 ; height, weight
 
 	db   "Es schwimmt ele-"
 	next "gant durch stille,"

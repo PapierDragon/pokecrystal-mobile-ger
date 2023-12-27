@@ -1,5 +1,6 @@
 	db "REGENBOGEN@" ; species name
-	dw 38, 1990 ; height, weight
+		db 38
+	dw 1990 ; height, weight
 
 	db   "Es wird sich dem"
 	next "Trainer offenba-"

@@ -1,5 +1,6 @@
 	db "KRÄUTER@" ; species name
-	dw 18, 1005 ; height, weight
+		db 18
+	dw 1005 ; height, weight
 
 	db   "Jeder, der neben"
 	next "ihm steht, fühlt"

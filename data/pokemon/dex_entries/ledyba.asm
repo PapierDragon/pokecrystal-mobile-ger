@@ -1,5 +1,6 @@
 	db "FÜNF-PUNKT@" ; species name
-	dw 10, 108 ; height, weight
+		db 10
+	dw 108 ; height, weight
 
 	db   "Es ist scheu und"
 	next "stets mit Artge-"

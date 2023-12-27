@@ -1,5 +1,6 @@
 	db "SCHIMMEL@" ; species name
-	dw 6, 205 ; height, weight
+		db 6
+	dw 205 ; height, weight
 
 	db   "Sein Zehensekret"
 	next "ätzt Löcher für"

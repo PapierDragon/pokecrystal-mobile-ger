@@ -1,5 +1,6 @@
 	db "QUALLE@" ; species name
-	dw 16, 550 ; height, weight
+		db 16
+	dw 550 ; height, weight
 
 	db   "Wenn seine 80 Ten-"
 	next "takel Wasser auf-"

@@ -1,5 +1,6 @@
 	db "SPERRE@" ; species name
-	dw 13, 545 ; height, weight
+		db 13
+	dw 545 ; height, weight
 
 	db   "Es setzt die mys-"
 	next "tische Kraft sei-"

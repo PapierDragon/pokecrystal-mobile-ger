@@ -1,5 +1,6 @@
 	db "KICKER@" ; species name
-	dw 15, 498 ; height, weight
+		db 15
+	dw 498 ; height, weight
 
 	db   "Man nennt es auch"
 	next "den Kick Master."

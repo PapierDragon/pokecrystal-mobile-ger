@@ -1,5 +1,6 @@
 	db "EULE@" ; species name
-	dw 16, 408 ; height, weight
+		db 16
+	dw 408 ; height, weight
 
 	db   "Aufgrund seiner"
 	next "weichen Federn"
