@@ -505,15 +505,15 @@ Function17d246:
 
 MenuHeader_17d26a:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 0, 0, 17, 9
+	menu_coords 0, 0, 18, 9
 	dw MenuData_17d272
 	db 1 ; default option
 
 MenuData_17d272:
 	db STATICMENU_CURSOR | STATICMENU_WRAP ; flags
 	db 4
-	db "Daten Empfangen@" 	; "ニュース¯よみこむ@"
-	db "Daten Anzeigen@" 	; "ニュース¯みる@"
+	db "Nachr. empfangen@" 	; "ニュース¯よみこむ@"
+	db "Nachr. anzeigen@" 	; "ニュース¯みる@"
 	db "Info@" 	; "せつめい@"
 	db "Zurück@" 		; "やめる@"
 
