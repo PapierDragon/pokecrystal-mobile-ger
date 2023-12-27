@@ -1479,8 +1479,8 @@ _BallBoxFullText::
 	prompt
 
 _ItemUsedText::
-	text "<PLAYER> setzt@"
-	text_low
+	text "<PLAYER> setzt"
+	line "@"
 	text_ram wStringBuffer2
 	text " ein."
 	done

@@ -178,7 +178,7 @@ _OakTimeWhatTimeIsItText::
 	done
 
 _OakTimeWhatHoursText::
-	text "What?@"
+	text "Was?@"
 	text_end
 
 _OakTimeHoursQuestionMarkText::
@@ -190,7 +190,7 @@ _OakTimeHowManyMinutesText::
 	done
 
 _OakTimeWhoaMinutesText::
-	text "Whoa!@"
+	text "Wow!@"
 	text_end
 
 _OakTimeMinutesQuestionMarkText::
@@ -1872,8 +1872,8 @@ _BackAlreadyText::
 	done
 
 _HaveNoRoomText::
-	text "Du hast dafür"
-	line "keinen Platz."
+	text "Du hast keinen"
+	line "Platz mehr."
 	prompt
 
 _NotEnoughMoneyText::

@@ -1050,6 +1050,7 @@ _ContestJudging_SecondPlaceText::
 	text ","
 
 	para "mit einem"
+	line ""
 	line "@"
 	text_ram wStringBuffer1
 	text "!@"
