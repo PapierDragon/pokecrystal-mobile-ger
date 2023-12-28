@@ -104,7 +104,7 @@ Function49f16:
 MobileString1:
 	db   "Kartenordner"
 	next "Grußworte"
-	next "Mobilprofil"
+	next "Profil"
 	next "Option"
 	next "Zurück"
 	db   "@"
