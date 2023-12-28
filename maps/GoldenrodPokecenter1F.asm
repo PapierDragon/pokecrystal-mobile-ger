@@ -879,9 +879,9 @@ GoldenrodPokecomCenterWouldYouLikeTheNewsText:
 	done
 
 GoldenrodPokecomCenterReadingTheLatestNewsText:
-	text "Aktuelle NACHRICH-"
-	line "TEN werden"
-	cont "empfangen…"
+	text "Aktuelle"
+	line "NACHRICHTEN"
+	cont "werden empfangen…"
 	done
 
 GoldenrodPokecomCenterNoOldNewsText:
