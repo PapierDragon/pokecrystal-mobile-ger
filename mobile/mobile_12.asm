@@ -461,7 +461,7 @@ DisplayRegionCodesList:
 	ld c, $8
 	hlcoord 11, 8 ; ??? Clears the surrounding tiles when prefecture is selected, needs to be moved with preferectures
 	call ClearBox
-	hlcoord 19 - REGION_CODE_STRING_LENGTH, 9 ; Prefectures position when selected
+	hlcoord 18 - REGION_CODE_STRING_LENGTH, 9 ; Prefectures position when selected
 	call PlaceString
 	ret
 
