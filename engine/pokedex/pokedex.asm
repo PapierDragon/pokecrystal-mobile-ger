@@ -1281,8 +1281,8 @@ Pokedex_DrawSearchResultsScreenBG:
 
 .BottomWindowText:
 	db   "Ergebnisse"
-	next "  Element"	
-	next "    gefunden"
+	next "Element"
+	next "    gefunden@"
 	db   "@"
 
 Pokedex_PlaceSearchResultsTypeStrings:
