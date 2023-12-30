@@ -880,7 +880,7 @@ GoldenrodPokecomCenterWouldYouLikeTheNewsText:
 
 GoldenrodPokecomCenterReadingTheLatestNewsText:
 	text "Aktuelle"
-	line "NACHRICHTEN""
+	line "NACHRICHTEN"
 	cont "werden empfangen…"
 	done
 
