@@ -929,18 +929,17 @@ MenuData_100604:
 	db "WARTEN@"		; "まつ@"
 
 Mobile_CommunicationStandby:
-	hlcoord 3, 10
+	hlcoord 2, 10
 	ld b, 1
-	ld c, 12
+	ld c, 14
 	call Function3eea
 	ld de, .String
-	hlcoord 4, 11
+	hlcoord 3, 11
 	call PlaceString
 	ret
 
 .String:
-	db   "BITTE WARTEN…!"
-	db   "@"
+	db   "BITTE WARTEN…!@"
 
 AdvanceMobileInactivityTimerAndCheckExpired:
 	push bc
@@ -6545,16 +6544,16 @@ Function102e07:
 
 .link_battle
 ; the next three operations are pointless
-	hlcoord 3, 10
+	hlcoord 2, 10
 	ld b,  1
-	ld c, 11
+	ld c, 14
 	ld d, h
 	ld e, l
 	farcall _LinkTextbox
 
 .okay
 	ld de, .waiting
-	hlcoord 4, 11
+	hlcoord 3, 11
 	call PlaceString
 	ret
 
