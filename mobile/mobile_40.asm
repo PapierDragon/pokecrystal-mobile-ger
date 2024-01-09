@@ -6559,7 +6559,7 @@ Function102e07:
 	ret
 
 .waiting
-	db "Waiting...!@"
+	db "BITTE WARTEN…!@"
 
 Function102e3e:
 	ld de, .CancelString
