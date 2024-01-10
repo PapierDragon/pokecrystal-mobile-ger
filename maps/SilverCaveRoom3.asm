@@ -44,8 +44,8 @@ RedWinLossText:
 	done
 
 RedLeavesText:
-	text "…"
-	line "…"
+	text "<……>"
+	line "<……>"
 	done
 
 SilverCaveRoom3_MapEvents:
