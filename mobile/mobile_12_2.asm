@@ -725,7 +725,7 @@ Function4ac58:
 
 MenuHeader_0x4aca2:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 9, 9, SCREEN_WIDTH, SCREEN_HEIGHT - 1;11, 9, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1
+	menu_coords 9, 9, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1;11, 9, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1
 	dw NULL
 	db 1 ; default option
 
