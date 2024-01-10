@@ -709,9 +709,9 @@ Function4ac58:
 	jr .asm_4ac96
 
 .asm_4ac89
-	hlcoord 9, 9;11, 9
+	hlcoord 7, 9;11, 9
 	ld b, $7
-	ld c, $9;$7
+	ld c, $b;$7
 	call Textbox
 	call Function4ad68
 
@@ -725,7 +725,7 @@ Function4ac58:
 
 MenuHeader_0x4aca2:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 9, 9, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1;11, 9, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1
+	menu_coords 9, 9, SCREEN_WIDTH, SCREEN_HEIGHT - 1;11, 9, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1
 	dw NULL
 	db 1 ; default option
 
@@ -749,7 +749,7 @@ Function4acaa:
 	ld [wMenuDataItems], a
 	ld a, $8
 	ld [wMenuBorderTopCoord], a
-	ld a, $9;$b
+	ld a, $7;$b
 	ld [wMenuBorderLeftCoord], a
 
 .asm_4accc
@@ -844,17 +844,17 @@ Function4ad67: ; unreferenced
 	ret
 
 Function4ad68:
-	hlcoord 11, 12;13, 12
+	hlcoord 9, 12;13, 12
 	ld de, String_4ad88
 	call PlaceString
 	call Function4adb2
 	jr c, .asm_4ad7e
-	hlcoord 11, 10;13, 10
+	hlcoord 9, 10;13, 10
 	ld de, String_4ada0
 	jr .asm_4ad84
 
 .asm_4ad7e
-	hlcoord 11, 10;13, 10
+	hlcoord 9, 10;13, 10
 	ld de, String_4ad9a
 
 .asm_4ad84
