@@ -7310,7 +7310,7 @@ Unknown_103522:
 String_103545: db "@"
 String_103546: db " Animation@"			; "せんとう　アニメ@"
 String_10354f: db " Rufnummer@"			; "でんわばんごう@"
-String_103557: db " K.-Tausch@"			; "めいしこうかん@"
+String_103557: db " Kartentausch@"			; "めいしこうかん@"
 String_10355f: db " Anrufer bestimmt@"	; "でんわを　かけるひとが　きめられる@"
 String_103571: db "Rufnr.-Eingabe-Art@"	; "でんわばんごうの　にゅうりょくのしかた@" ; Entering a phone number
 String_103585: db "Ersetzt alte KARTE@"	; "あたらしいめいしが　あれば　こうかん@" ; Replace if there is a new card

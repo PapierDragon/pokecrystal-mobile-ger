@@ -6055,8 +6055,9 @@ Text_CancelBattleRoomChallenge:
 	done
 
 Text_ExitGymLeaderHonorRoll:
-	text "EHRENLISTE ver-"
-	line "lassen?"
+	text "Die EHRENLISTE der"
+	line "RAUM-BESTEN ver-"
+	cont "lassen?"
 	done
 
 Text_LinkingWithCenter: ; unreferenced
