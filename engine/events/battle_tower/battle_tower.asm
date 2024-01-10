@@ -881,10 +881,10 @@ Function1704e1: ; honor roll
 	ret
 
 .String_Mail:
-	db "ROOM:@";"ルーム@"
+	db "RAUM:@";"ルーム@"
 
 .String_PastReaders:
-	db "HONOR ROLL@";"れきだいりーダーいちらん@"
+	db "EHRENLISTE@";"れきだいりーダーいちらん@"
 
 BattleTowerAction:
 	jumptable .dw, wScriptVar
