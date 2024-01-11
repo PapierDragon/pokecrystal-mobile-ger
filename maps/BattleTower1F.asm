@@ -655,8 +655,8 @@ Text_CantBeRegistered_PreviousRecordDeleted:
 	done
 
 Text_CheckTheLeaderHonorRoll: ; unreferenced
-	text "Die EHRENLISTE der"
-	line "BESTEN überprüfen?"
+	text "EHRENLISTE"
+	line "überprüfen?"
 	done
 
 Text_ReadBattleTowerRules:
