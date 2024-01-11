@@ -6056,7 +6056,7 @@ Text_CancelBattleRoomChallenge:
 
 Text_ExitGymLeaderHonorRoll:
 	text "Die EHRENLISTE der"
-	line "RAUM-BESTEN ver-"
+	line "RAUMPRIMUS ver-"
 	cont "lassen?"
 	done
 
