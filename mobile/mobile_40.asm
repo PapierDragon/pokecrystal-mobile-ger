@@ -6051,7 +6051,7 @@ Function1029fe:
 
 String_102a26:
 	db   "TAUSCH"
-	next "ZURÜCK"
+	next "ABBRECHEN"
 	db   "@"
 
 MenuData3_102a33:
@@ -6679,8 +6679,7 @@ Function102f32:
 	ret
 
 .TradeCompleted:
-	db "Tausch abge-"
-	next "schlossen!@"
+	db "TAUSCH VOLLZOGEN!@"
 
 Function102f50:
 	call Function102dc3
