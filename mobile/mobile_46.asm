@@ -5151,10 +5151,10 @@ BattleTowerRoomMenu2_UpdateYesNoMenu:
 	jr nz, .asm_11a24c
 	inc a
 	ld [wMobileInactivityTimerMinutes], a
-	hlcoord 15, 8
+	hlcoord 14, 8
 	ld a, $7f
 	ld [hl], a
-	hlcoord 15, 10
+	hlcoord 14, 10
 	ld a, $ed
 	ld [hl], a
 	jr .asm_11a24c

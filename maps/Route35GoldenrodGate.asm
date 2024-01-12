@@ -64,16 +64,16 @@ RandyScript:
 
 GiftSpearowMail:
 	db FLOWER_MAIL
-	db   "DARK CAVE leads"
-	next "to another road@"
+	db   "DUNKELHÖHLE    "
+	next "ist ein Pfad   @"
 
 GiftSpearowName:
-	db "KENYA@"
+	db "HABSI@"
 
 GiftSpearowOTName:
-	db "RANDY@"
+	db "HARALD@"
 
-	db 0 ; unused
+	db 0, "EG@", 0 ; filler
 
 Route35GoldenrodGatePokefanFScript:
 	faceplayer
