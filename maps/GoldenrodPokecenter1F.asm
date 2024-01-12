@@ -928,7 +928,7 @@ GoldenrodPokecenter1FMobileOffSuperNerdText:
 
 GoldenrodPokecenter1FMobileOnSuperNerdText:
 	text "Ich habe mir etwas"
-	line "Lustiges für die"
+	line "lustiges für die"
 	cont "TAUSCHECKE aus-"
 	cont "gedacht!"
 
