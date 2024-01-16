@@ -2499,8 +2499,8 @@ EZChatString_SortByAlphabetical:
 	next "Alphabet ordnen.@";"じゅんばんで　ひょうじ　します@"
 
 EZChatString_SortByMenu:
-	db   "GRUPPEN-MODUS";"しゅるいべつ　モード"  ; Category mode
-	next "A-Z-MODUS@";"アイウエオ　　モード@" ; ABC mode
+	db   "GRUPPE";"しゅるいべつ　モード"  ; Category mode
+	next "A bis Z@";"アイウエオ　　モード@" ; ABC mode
 
 EZChatDraw_SortByCharacter: ; Sort by Character Menu
 	call EZChat_ClearBottom12Rows
