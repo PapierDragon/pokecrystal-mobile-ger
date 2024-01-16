@@ -2491,7 +2491,7 @@ Function11cdaa:
 EZChatString_SortByCategory:
 ; Words will be displayed by category
 	db   "Wörter nach";"ことば¯しゅるいべつに"
-	next "gruppen ordnen.@";"えらべます@"
+	next "Gruppen ordnen.@";"えらべます@"
 
 EZChatString_SortByAlphabetical:
 ; Words will be displayed in alphabetical order
