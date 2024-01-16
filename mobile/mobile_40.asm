@@ -6667,8 +6667,8 @@ Function102f15:
 	ret
 
 .TooBadTheTradeWasCanceled:
-	db   "Tausch abge-"        ; "こうかんを　キャンセルしました@"
-	next "brochen."
+	db   "Der Tausch wurde"
+	next "abgebrochen!"
 	db   "@"
 
 Function102f32:
