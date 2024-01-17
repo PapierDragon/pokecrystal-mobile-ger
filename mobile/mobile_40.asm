@@ -7307,18 +7307,18 @@ Unknown_103522:
 	dw String_103545
 
 String_103545: db "@"
-String_103546: db " Animation@"			; "せんとう　アニメ@"
-String_10354f: db " Rufnummer@"			; "でんわばんごう@"
-String_103557: db " Kartentausch@"			; "めいしこうかん@"
+String_103546: db " KAMPFANIMATION@"			; "せんとう　アニメ@"
+String_10354f: db " RUFNUMMER@"			; "でんわばんごう@"
+String_103557: db " KARTENTAUSCH@"			; "めいしこうかん@"
 String_10355f: db " Anrufer bestimmt@"	; "でんわを　かけるひとが　きめられる@"
 String_103571: db "Rufnr.-Eingabe-Art@"	; "でんわばんごうの　にゅうりょくのしかた@" ; Entering a phone number
 String_103585: db "Ersetzt alte KARTE@"	; "あたらしいめいしが　あれば　こうかん@" ; Replace if there is a new card
-String_103598: db "<LF>:NEIN@"				; "とばして　みる@"; Skip to see
-String_1035a0: db "<LF>:JA  @"				; "じっくり　みる@" ; Watch carefully
+String_103598: db "<LF>:AUF @"				; "とばして　みる@"; Skip to see
+String_1035a0: db "<LF>:AN  @"				; "じっくり　みる@" ; Watch carefully
 String_1035a8: db "<LF>:KARTE @"				; "めいしからえらぶ@" ; Choose from cards
 String_1035b1: db "<LF>:TASTEN@"				; "すうじで　いれる@"
-String_1035ba: db "<LF>:JA   @"				; "する@"
-String_1035bd: db "<LF>:NEIN @"					; "しない@"
+String_1035ba: db "<LF>:AN   @"				; "する@"
+String_1035bd: db "<LF>:AUF  @"					; "しない@"
 String_1035c1: db " O.K.@"					; "けってい@"
 
 Function1035c6:
