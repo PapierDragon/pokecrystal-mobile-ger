@@ -3828,7 +3828,7 @@ ENDM
         ezchat_word "SORRY!@@", $47c
         ezchat_word "HEY!@@@@", $23e
         ezchat_word "HI!@@@@@", $242
-        ezchat_word "HELLO@@@", $236
+        ezchat_word "HALLO@@@", $21c
         ezchat_word "TSCHÜSS@", $4e6
         ezchat_word "HURRA@@@", $270
         ezchat_word "BIN DA@@", $092
@@ -3842,7 +3842,7 @@ ENDM
         ezchat_word "JAHAA@@@", $2a2
         ezchat_word "YEAHYEAH", $5b4
         ezchat_word "TSCHAU@@", $4e4
-        ezchat_word "HEH@@@@@", $224
+        ezchat_word "HEH@@@@@", $226
         ezchat_word "GERUCH@@", $1c8
         ezchat_word "HÖR ZU@@", $260
         ezchat_word "HUH HAH@", $26a
@@ -3921,10 +3921,10 @@ ENDM
         ezchat_word "FÜR ALLE", $192
         ezchat_word "EURE@@@@", $144
         ezchat_word "SIE IST@", $454
-        ezchat_word "HATTE@@@", $222
+        ezchat_word "HATTE@@@", $224
 
 .Battle:
-        ezchat_word "HARMONIE", $21c
+        ezchat_word "HARMONIE", $21e
         ezchat_word "LOS!@@@@", $322
         ezchat_word "NR. 1@@@", $398
         ezchat_word "WÄHLE@@@", $546
@@ -3955,7 +3955,7 @@ ENDM
         ezchat_word "GEGEN@@@", $1a6
         ezchat_word "STREITEN", $49e
         ezchat_word "KRAFT@@@", $2e4
-        ezchat_word "HERAUSF.", $238
+        ezchat_word "HERAUSF.", $23a
         ezchat_word "STARKEN@", $492
         ezchat_word "ZU STARK", $5c8
         ezchat_word "SCHWER@@", $436
@@ -4044,8 +4044,8 @@ ENDM
         ezchat_word "LOL@@@@@", $31e
         ezchat_word "PRUST@@@", $3e6
         ezchat_word "HMPF@@@@", $254
-        ezchat_word "HEHEHE@@", $228
-        ezchat_word "HEHE@@@@", $226
+        ezchat_word "HEHEHE@@", $230
+        ezchat_word "HEHE@@@@", $228
         ezchat_word "HOHOHO@@", $25e
         ezchat_word "UI UI@@@", $4f8
         ezchat_word "OJEMINE@", $3ba
@@ -4141,7 +4141,7 @@ ENDM
         ezchat_word "WICHTIG@", $58c
         ezchat_word "LUSTIG@@", $326
         ezchat_word "HABEN@@@", $212
-        ezchat_word "HEIMKEHR", $22c
+        ezchat_word "HEIMKEHR", $22e
         ezchat_word "BETRÜBT@", $08e
         ezchat_word "TRAURIG@", $4d6
         ezchat_word "VERSUCHT", $52a
@@ -4150,7 +4150,7 @@ ENDM
         ezchat_word "HÖREN@@@", $262
         ezchat_word "WILL@@@@", $594
         ezchat_word "VERHÖRT@", $514
-        ezchat_word "HASS@@@@", $21e
+        ezchat_word "HASS@@@@", $220
         ezchat_word "WÜTEND@@", $5b0
         ezchat_word "WUT@@@@@", $5ae
         ezchat_word "EINSAM@@", $10a
@@ -4202,10 +4202,10 @@ ENDM
         ezchat_word "SPANNUNG", $47e
 
 .Conditions:
-        ezchat_word "HEISS@@@", $22e
+        ezchat_word "HEISS@@@", $232
         ezchat_word "EXISTENT", $14a
         ezchat_word "GENEHMGT", $1c0
-        ezchat_word "HAT@@@@@", $220
+        ezchat_word "HAT@@@@@", $222
         ezchat_word "EILIG@@@", $0fc
         ezchat_word "FEIN@@@@", $160
         ezchat_word "WENIGER@", $57c
@@ -4225,7 +4225,7 @@ ENDM
         ezchat_word "SPÄT@@@@", $480
         ezchat_word "NAHE BEI", $36e
         ezchat_word "AMÜSANT@", $036
-        ezchat_word "HEITER@@", $230
+        ezchat_word "HEITER@@", $234
         ezchat_word "COOL@@@@", $0b6
         ezchat_word "ANMUTIG@", $04a
         ezchat_word "PERFEKT@", $3d8
@@ -4271,7 +4271,7 @@ ENDM
 
 .Life:
         ezchat_word "PFLICHT@", $3dc
-        ezchat_word "HEIM@@@@", $22a
+        ezchat_word "HEIM@@@@", $22c
         ezchat_word "GELD@@@@", $1b8
         ezchat_word "GESPART@", $1d0
         ezchat_word "BAD@@@@@", $06a
@@ -4339,9 +4339,9 @@ ENDM
         ezchat_word "PLÜSCHI@", $3e0
         ezchat_word "PC@@@@@@", $3d6
         ezchat_word "BLUMEN@@", $0a2
-        ezchat_word "HELD@@@@", $232
+        ezchat_word "HELD@@@@", $236
         ezchat_word "DÖSEN@@@", $0ec
-        ezchat_word "HELDIN@@", $234
+        ezchat_word "HELDIN@@", $238
         ezchat_word "AUSFLUG@", $060
         ezchat_word "BRETT@@@", $0a8
         ezchat_word "BALL@@@@", $06e
@@ -4423,7 +4423,7 @@ ENDM
         ezchat_word "K.UNFÄHG", $2b8
 
 .Time:
-        ezchat_word "HERBST@@", $23a
+        ezchat_word "HERBST@@", $22a
         ezchat_word "FRÜH@@@@", $186
         ezchat_word "MORGEN@@", $356
         ezchat_word "TAG@@@@@", $4a8
