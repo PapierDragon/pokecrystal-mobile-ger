@@ -3863,7 +3863,7 @@ MobileEZChatCategoryNames:
 	db "KAMPF@" 	; 04 ; Battle		; "バトル@@@"
 	db "AUSRUFE@" 	; 05 ; Voices		; "こえ@@@@"
 	db "STILMITT.@" 	; 06 ; Speech		; "かいわ@@@"
-	db "GEFÜHLE" 	; 07 ; Feelings		; "きもち@@@"
+	db "GEFÜHLE@" 	; 07 ; Feelings		; "きもち@@@"
 	db "KONDITION@" 	; 08 ; Conditions	; "じょうたい@"
 	db "LIFESTYLE@" 	; 09 ; Lifestyle	; "せいかつ@@"
 	db "HOBBIES@" 	; 0a ; Hobbies		; "しゅみ@@@"
@@ -3938,7 +3938,7 @@ ENDM
         ezchat_word "TAGCHEN@", $4b0
         ezchat_word "BIS DANN", $094
         ezchat_word "YO!@@@@@", $5b6
-        ezchat_word "NA DANN…..", $35c
+        ezchat_word "NA DANN…", $35c
         ezchat_word "SCHÄTZEN", $408
         ezchat_word "WAS GEHT", $562
         ezchat_word "JAHAA@@@", $29e
@@ -4101,9 +4101,9 @@ ENDM
         ezchat_word "!!!@@@@@", $002
         ezchat_word "!?@@@@@@", $004
         ezchat_word "?@@@@@@@", $010
-        ezchat_word "…@@@@@@@@@", $00a
-        ezchat_word "…!@@@@@@@@", $00c
-        ezchat_word "………@@@@@.@@@@@", $00e
+        ezchat_word "…@@@@@@@", $00a
+        ezchat_word "…!@@@@@@", $00c
+        ezchat_word "………@@@@@", $00e
         ezchat_word "-@@@@@@@", $006
         ezchat_word "---@@@@@", $008
         ezchat_word "OH OH@@@", $3a8
@@ -4123,9 +4123,9 @@ ENDM
         ezchat_word "RICHTIG!", $3fa
         ezchat_word "HÄH?@@@@", $210
         ezchat_word "SCHREI@@", $432
-        ezchat_word "HÄHÄHÄ@@@", $216
+        ezchat_word "HÄHÄHÄ@@", $216
         ezchat_word "OJE OJE@", $3b2
-        ezchat_word "OH, YEAH, $3aa
+        ezchat_word "OH, YEAH", $3aa
         ezchat_word "HUPS@@@@", $26a
         ezchat_word "SCHOCKT@", $42c
         ezchat_word "IGITT@@@", $27c
@@ -4134,7 +4134,7 @@ ENDM
         ezchat_word "IEK!@@@@", $27a
         ezchat_word "SCHNÜFF@", $428
         ezchat_word "TSE@@@@@", $4ee
-        ezchat_word "HÄHÄ@@@@@", $212
+        ezchat_word "HÄHÄ@@@@", $212
         ezchat_word "NEIN@@@@", $376
         ezchat_word "WIE?@@@@", $590
         ezchat_word "JAJAJA@@", $2a0
