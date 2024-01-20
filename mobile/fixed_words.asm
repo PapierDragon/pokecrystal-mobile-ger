@@ -3862,14 +3862,14 @@ MobileEZChatCategoryNames:
 	db "PERSONEN@" 	; 03 ; People		; "ひと@@@@"
 	db "KAMPF@" 	; 04 ; Battle		; "バトル@@@"
 	db "AUSRUFE@" 	; 05 ; Voices		; "こえ@@@@"
-	db "STILMITT.@" 	; 06 ; Speech		; "かいわ@@@"
+	db "STIL@" 	; 06 ; Speech		; "かいわ@@@"
 	db "GEFÜHLE@" 	; 07 ; Feelings		; "きもち@@@"
 	db "KONDITION@" 	; 08 ; Conditions	; "じょうたい@"
 	db "LIFESTYLE@" 	; 09 ; Lifestyle	; "せいかつ@@"
 	db "HOBBIES@" 	; 0a ; Hobbies		; "しゅみ@@@"
 	db "AKTIONEN@" 	; 0b ; Actions		; "こうどう@@"
 	db "ZEIT@" 	; 0c ; Time			; "じかん@@@"
-	db "VERKNÜPF.@" 	; 0d ; Endings		; "むすび@@@"
+	db "VERKNÜPFG@" 	; 0d ; Endings		; "むすび@@@"
 	db "POSITIONEN@" 	; 0e ; Misc			; "あれこれ@@"
 	db " @@@@@"	    ; 0f ; EMPTY
 
