@@ -120,7 +120,7 @@ CianwoodPokecenter1FPreMobileText: ; unreferenced
 CianwoodPokecenter1FMobileText: ; unreferenced
 	text "In letzter Zeit"
 	line "kämpfe ich oft"
-	cont "mittels MOBILE"
+	cont "mittels MOBIL-"
 	cont "ADAPTER gegen"
 	cont "meinen Freund aus"
 	cont "VIOLA."

@@ -194,7 +194,7 @@ VioletPokecenterGameboyKidMobileText:
 	cont "ANEMONIA CITY"
 	cont "gekämpft."
 	
-	para "Mit dem MOBILE"
+	para "Mit dem MOBIL-"
 	line "ADAPTER kannst du"
 	cont "dich mit weit"
 	cont "entfernten"

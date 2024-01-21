@@ -4541,7 +4541,7 @@ String_101f13:
 
 String_101f14:
 	db   "Verbinde per"
-	next "MOBILE ADAPTER…"
+	next "MOBIL-ADAPTER…"
 	db   "@"
 
 String_101f32:
@@ -4550,7 +4550,7 @@ String_101f32:
 	db   "@"
 
 String_101f4f:
-	db   "Ist dein MOBILE"
+	db   "Ist dein MOBIL-"
 	next "ADAPTER bereit?"
 	db   "@"
 

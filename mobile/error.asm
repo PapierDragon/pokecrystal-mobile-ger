@@ -411,7 +411,7 @@ Unknown_17f844: db 19
 	dbbw $ff, $ff, String_17fa49
 
 String_17f891: ; 18 max!
-	db   "Der MOBILE ADAPTER"	; "モバイルアダプタが　ただしく"
+	db   "Der MOBIL-ADAPTER"	; "モバイルアダプタが　ただしく"
 	next "ist nicht korrekt" 	; "さしこまれていません"
 	next "verbunden." 			; "とりあつかいせつめいしょを"
 	next "Weitere Hinweise" 	; "ごらんのうえ　しっかりと"
@@ -439,7 +439,7 @@ String_17f913:
 
 String_17f946:
 	db   "Fehler mit dem" 		; "モバイルアダプタの　エラーです"
-	next "MOBILE ADAPTER." 		; "しばらく　まって"
+	next "MOBIL-ADAPTER." 		; "しばらく　まって"
 	next "Bitte versuche es" 	; "かけなおして　ください"
 	next "später erneut oder" 	; "なおらない　ときは"
 	next "wende dich an den" 	; "モバイルサポートセンターへ"
@@ -475,23 +475,23 @@ String_17fa14:
 
 String_17fa49:
 	db   "Verbindungsfehler" 	; "モバイルセンターの"
-	next "mit dem MOBILE-" 		; "つうしんエラーです"
+	next "mit dem MOBIL-" 		; "つうしんエラーです"
 	next "CENTER." 				; "しばらくまって"
 	next "Bitte versuche"		; "かけなおして　ください"
 	next "es später erneut."
 	db   "@"
 
 String_17fa71:
-	db   "Der MOBILE ADAPTER" 	; "モバイルアダプタに"
+	db   "Der MOBIL-ADAPTER" 	; "モバイルアダプタに"
 	next "ist nicht korrekt" 	; "とうろくされた　じょうほうが"
 	next "konfiguriert. Be-" 	; "ただしく　ありません"
 	next "nutze hierfür das" 	; "モバイルトレーナーで"
-	next "MOBILE-TRAINER-" 		; "しょきとうろくを　してください"
+	next "MOBILE TRAINER-" 		; "しょきとうろくを　してください"
 	next "Spielmodul."
 	db   "@"
 
 String_17fab0:
-	db   "Das MOBILE-CENTER" 	; "モバイルセンターが"
+	db   "Das MOBIL-CENTER" 	; "モバイルセンターが"
 	next "ist überlastet." 		; "こんでいて　つながりません"
 	next "Versuche es später" 	; "しばらくまって"
 	next "erneut. Weitere"		; "かけなおして　ください"
@@ -502,16 +502,16 @@ String_17fab0:
 String_17faf9:
 	db   "Die E-Mail-Adresse" 	; "あてさき　メールアドレスに" ; ???
 	next "ist ungültig und" 	; "まちがいがあります"
-	next "muss geändert" 		; "ただしい　メールアドレスを"
+	next "muss korrigiert" 		; "ただしい　メールアドレスを"
 	next "werden." 				; "いれなおしてください"
 	;next ""
 	db   "@"
 
 String_17fb2a:
 	db   "Es gibt ein Pro-" 	; "メールアドレスに"
-	next "blem mit deiner E-" 	; "まちがいが　あります"
-	next "Mail-Adresse. Be-"	; "とりあつかいせつめいしょを"
-	next "nutze das MOBILE-" 	; "ごらんのうえ"
+	next "blem mit deiner"	 	; "まちがいが　あります"
+	next "E-Mail-Adresse."		; "とりあつかいせつめいしょを"
+	next "Benutze das MOBILE" 	; "ごらんのうえ"
 	next "TRAINER-Spielmodul"	; "モバイルトレーナーで"
 	next "zum Überprüfen." 		; "しょきとうろくを　してください"
 	db   "@"
@@ -520,7 +520,7 @@ String_17fb6e:
 	db   "Ungültiges LOG-IN-" 	; "ログインパスワードに"
 	next "PASSWORT oder"	 	; "まちがいが　あるか"
 	next "Fehler beim" 			; "モバイルセンターの　エラーです"
-	next "MOBILE-CENTER." 		; "パスワードを　かくにんして"
+	next "MOBIL-CENTER." 		; "パスワードを　かくにんして"
 	next "Bitte versuche es" 	; "しばらく　まって"
 	next "später erneut."		; "かけなおして　ください"
 	db   "@"
@@ -564,7 +564,7 @@ String_17fc88:
 String_17fcbf:
 	db   "Fehler mit dem" 		; "でんわかいせんが　こんでいるか"
 	next "Handy oder dem" 		; "モバイルセンターの　エラーで"
-	next "MOBILE-CENTER." 		; "つうしんが　できません"
+	next "MOBIL-CENTER." 		; "つうしんが　できません"
 	next "Bitte versuche es" 	; "しばらく　まって"
 	next "später erneut." 		; "かけなおして　ください"
 	db   "@"
@@ -581,7 +581,7 @@ String_17fcff:
 String_17fd47:
 	db   "Es finden derzeit" 	; "げんざい　モバイルセンターの" ; ???
 	next "Wartungsarbeiten"		; "てんけんを　しているので"
-	next "im MOBILE-CENTER"		; "つうしんが　できません"
+	next "im MOBIL-CENTER"		; "つうしんが　できません"
 	next "statt."			 	; "しばらく　まって"
 	next "Bitte versuche es" 	; "かけなおして　ください"
 	next "später erneut."
@@ -631,7 +631,7 @@ String_17fe63:
 	db   "Dein Freund" 			; "あいての　モバイルアダプタと"
 	next "benutzt eine" 		; "タイプが　ちがいます"
 	next "andere Art von" 		; "くわしくは　とりあつかい"
-	next "MOBILE ADAPTER." 		; "せつめいしょを　ごらんください"
+	next "MOBIL-ADAPTER." 		; "せつめいしょを　ごらんください"
 	next "Weitere Hinweise"
 	next "in der Anleitung."
 	db   "@"

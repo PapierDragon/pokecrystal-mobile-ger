@@ -736,7 +736,7 @@ GoldenrodPokecomCenterSaveBeforeTradeCornerText:
 	text "Das Spiel wird"
 	line "gesichert, ehe"
 	para "die Verbindung"
-	line "zum MOBILE-CENTER"
+	line "zum MOBIL-CENTER"
 	cont "aufgebaut wird."
 	done
 

@@ -400,7 +400,7 @@ Function171a95:
 
 String_171aa7:
 	db   "Verbinde mit";"モバイルアダプタに"
-	next "MOBILE ADAPTER…";"せつぞく　しています"
+	next "MOBIL-ADAPTER…";"せつぞく　しています"
 	;next "しばらく　おまちください"
 	db   "@"
 
@@ -645,7 +645,7 @@ MenuHeader_171c6b:
 	db 0 ; default option
 
 String_171c73:
-	db   "MOBILE CENTER";"モバイルセンターを　けってい"
+	db   "MOBIL-CENTER";"モバイルセンターを　けってい"
 	next "ausgewählt.@";"しました@"
 
 Function171c87:
@@ -782,7 +782,7 @@ String_172e4e:
 String_172e58:
 	db "O.K.@";"けってい@"
 String_172e5d:
-	db   "Wähle MOBILE-";"せつぞくする　モバイルセンターを"
+	db   "Wähle MOBIL-";"せつぞくする　モバイルセンターを"
 	next "CENTER aus.@";"えらんで　ください@"
 
 

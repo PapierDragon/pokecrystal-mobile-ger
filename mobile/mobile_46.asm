@@ -5652,7 +5652,7 @@ String_11a661:
 	next "aufbau…@"
 
 String_11a679:
-	db   "MOBILE ADAPTER"
+	db   "MOBIL-ADAPTER"
 	next "bereit?@"
 
 String_11a692:
