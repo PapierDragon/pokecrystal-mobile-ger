@@ -735,8 +735,8 @@ GoldenrodPokecomCenterRecentlyLeftYourMonText:
 GoldenrodPokecomCenterSaveBeforeTradeCornerText:
 	text "Das Spiel wird"
 	line "gesichert, ehe"
-	para "die Verbindung"
-	line "zum MOBIL-CENTER"
+	para "die Verbindung zum"
+	line "MOBILEN CENTER"
 	cont "aufgebaut wird."
 	done
 
@@ -874,12 +874,12 @@ GoldenrodPokecomCenterNewsMachineExplanationText:
 
 GoldenrodPokecomCenterWouldYouLikeTheNewsText:
 	text "Möchtest du die"
-	line "NACHRICHTEN ab-"
-	cont "rufen?"
+	line "neusten NACH-"
+	cont "RICHTEN abrufen?"
 	done
 
 GoldenrodPokecomCenterReadingTheLatestNewsText:
-	text "Aktuelle"
+	text "Die neusten"
 	line "NACHRICHTEN"
 	cont "werden empfangen…"
 	done
