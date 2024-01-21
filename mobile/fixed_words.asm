@@ -815,23 +815,36 @@ EZChatMenu_ChatWords: ; EZChat Word Menu
 ; if at QUIT
 	cp EZCHAT_MAIN_QUIT
 	jr z, .up_on_quit
+	ld de, wEZChatWord3 + 1
+	cp EZCHAT_MAIN_OK
+	jr z, .up_to_pokemon
 ; if in 2nd row and 2nd column
+	ld de, wEZChatWord1 + 1
 	cp EZCHAT_MAIN_WORD4
 	jr nz, .up_normal
+.up_to_pokemon
 ; to first row
-	ld a, [wEZChatWord1 + 1]
+	ld a, [de]
 	and a
 	jr nz, .up_normal
 ; 1st word not empty
-	ld a, [wEZChatWord1]
+	dec de
+	ld a, [de]
 	and a
 	jr z, .up_normal
-; pokemon is 1st word
+; pokemon is the word
+	ld a, [hl]
+	cp EZCHAT_MAIN_OK
+	ld a, EZCHAT_MAIN_WORD3
+	jr z, .finish_dpad
 	ld a, EZCHAT_MAIN_WORD1
 	jr .finish_dpad
 .up_normal
 	ld a, [hl]
 	sub 2
+	cp EZCHAT_MAIN_RESET
+	jr nz, .finish_dpad
+	dec a
 	jr .finish_dpad
 .up_on_quit
 	ld a, EZCHAT_MAIN_WORD3
@@ -960,6 +973,19 @@ EZChatString_ChatExplanation: ; Explanation string
 EZChatString_ChatExplanationBottom: ; Explanation commands string
 	db "LÖSCH　ABBR.　　O.K.@";"ぜんぶけす　やめる　　　けってい@"
 
+; ezchat categories defines
+def EZCHAT_CATEGORIES_ROWS EQU 5
+def EZCHAT_CATEGORIES_COLUMNS EQU 2
+def EZCHAT_DISPLAYED_CATEGORIES EQU (EZCHAT_CATEGORIES_ROWS * EZCHAT_CATEGORIES_COLUMNS)
+def EZCHAT_NUM_CATEGORIES EQU 15
+def EZCHAT_NUM_EXTRA_ROWS EQU ((EZCHAT_NUM_CATEGORIES + 1 - EZCHAT_DISPLAYED_CATEGORIES) / 2)
+def EZCHAT_EMPTY_VALUE EQU ((EZCHAT_NUM_EXTRA_ROWS << 5) | (EZCHAT_DISPLAYED_CATEGORIES - 1))
+
+	const_def EZCHAT_DISPLAYED_CATEGORIES
+	const EZCHAT_CATEGORY_CANC
+	const EZCHAT_CATEGORY_MODE
+	const EZCHAT_CATEGORY_OK
+
 EZChatDraw_CategoryMenu: ; Open category menu
 ; might need no change here
 	call EZChat_ClearBottom12Rows
@@ -993,27 +1019,39 @@ EZChatMenu_CategoryMenu: ; Category Menu Controls
 
 	ld a, [de]
 	and D_UP
-	jr nz, .up
+	jp nz, .up
 
 	ld a, [de]
 	and D_DOWN
-	jr nz, .down
+	jp nz, .down
 
 	ld a, [de]
 	and D_LEFT
-	jr nz, .left
+	jp nz, .left
 
 	ld a, [de]
 	and D_RIGHT
-	jr nz, .right
+	jp nz, .right
 
+; manage blinkies
+	ld a, [hl]
+	and $0f
+	cp EZCHAT_CATEGORY_CANC
+	ld hl, wEZChatBlinkingMask
+	jr nc, .blink
+; no blink
+	res 1, [hl]
+	ret
+.blink
+	set 1, [hl]
 	ret
 
 .a
 	ld a, [wEZChatCategorySelection]
-	cp 15
+	and $0f
+	cp EZCHAT_CATEGORY_CANC
 	jr c, .got_category
-	sub 15
+	sub EZCHAT_CATEGORY_CANC
 	jr z, .done
 	dec a
 	jr z, .mode
@@ -1059,82 +1097,158 @@ EZChatMenu_CategoryMenu: ; Category Menu Controls
 
 .up
 	ld a, [hl]
-	cp $3
+	cp EZCHAT_CATEGORIES_COLUMNS
 	ret c
-	sub $3
+	ld e, a
+	and $f0
+	ld d, a
+	ld a, e
+	and $0f
+	cp EZCHAT_CATEGORIES_COLUMNS
+	jr nc, .normal_up
+	ld a, e
+	sub EZCHAT_CATEGORIES_COLUMNS << 4
+	ld [hl], a
+	ld a, EZCHAT_DRAW_CATEGORY_MENU
+	jr .go_to_function
+
+.normal_up
+	ld a, e
+	and $0f
+	cp EZCHAT_CATEGORY_MODE
+	jr c, .continue_normal_up
+	ld a, EZCHAT_CATEGORY_CANC
+.continue_normal_up
+	sub EZCHAT_CATEGORIES_COLUMNS
+.up_end
+	or d
 	jr .finish_dpad
 
 .down
 	ld a, [hl]
-	cp $f
+	cp EZCHAT_EMPTY_VALUE - EZCHAT_CATEGORIES_COLUMNS
+	jr nz, .continue_down
+	dec a
+.continue_down
+	ld e, a
+	and $f0
+	ld d, a
+	ld a, e
+	and $0f
+	cp EZCHAT_CATEGORY_CANC
 	ret nc
-	add $3
+	cp EZCHAT_DISPLAYED_CATEGORIES - EZCHAT_CATEGORIES_COLUMNS
+	jr c, .normal_down
+	ld a, d
+	cp EZCHAT_NUM_EXTRA_ROWS << 5
+	jr nz, .print_down
+	ld a, EZCHAT_CATEGORY_CANC
+	jr .down_end
+.print_down
+	ld a, e
+	add EZCHAT_CATEGORIES_COLUMNS << 4
+	cp EZCHAT_EMPTY_VALUE
+	jr nz, .continue_print_down
+	dec a
+.continue_print_down
+	ld [hl], a
+	ld a, EZCHAT_DRAW_CATEGORY_MENU
+	jr .go_to_function
+
+.normal_down
+	add EZCHAT_CATEGORIES_COLUMNS
+.down_end
+	or d
 	jr .finish_dpad
 
 .left
 	ld a, [hl]
-	and a
+	and $0f
+	cp EZCHAT_CATEGORY_OK
+	jr z, .left_okay
+	bit 0, a
 	ret z
-	cp $3
-	ret z
-	cp $6
-	ret z
-	cp $9
-	ret z
-	cp $c
-	ret z
-	cp $f
-	ret z
+.left_okay
+	ld a, [hl]
 	dec a
 	jr .finish_dpad
 
 .right
 	ld a, [hl]
-	cp $2
+	cp EZCHAT_EMPTY_VALUE - 1
 	ret z
-	cp $5
+	and $0f
+	cp EZCHAT_CATEGORY_MODE
+	jr z, .right_okay
+	bit 0, a
+	ret nz
+	cp EZCHAT_CATEGORY_OK
 	ret z
-	cp $8
-	ret z
-	cp $b
-	ret z
-	cp $e
-	ret z
-	cp $11
-	ret z
+.right_okay
+	ld a, [hl]
 	inc a
 
 .finish_dpad
 	ld [hl], a
 	ret
 
-EZChat_PlaceCategoryNames:
-	ld de, MobileEZChatCategoryNames
-	ld bc, EZChatCoord_Categories
-	ld a, 15 ; Number of EZ Chat categories displayed
-.loop
-	push af
-	ld a, [bc]
-	inc bc
-	ld l, a
-	ld a, [bc]
-	inc bc
-	ld h, a
-	push bc
-	call PlaceString
+EZChat_FindNextCategoryName:
 	; The category names are padded with "@".
 	; To find the next category, the system must
 	; find the first character at de that is not "@".
-.find_next_string_loop
-	inc de
+.find_end_loop
 	ld a, [de]
+	inc de
 	cp "@"
-	jr z, .find_next_string_loop
-	pop bc
+	jr nz, .find_end_loop
+.find_next_loop
+	ld a, [de]
+	inc de
+	cp "@"
+	jr z, .find_next_loop
+	dec de
+	ret
+
+EZChat_GetSelectedCategory:
+	push de
+	ld e, a
+	and $0f
+	ld d, a
+	ld a, e
+	swap a
+	and $0f
+	add d
+	pop de
+	ret
+
+EZChat_PlaceCategoryNames:
+	ld de, MobileEZChatCategoryNames
+	ld a, [wEZChatCategorySelection]
+	swap a
+	and $0f
+	jr z, .setup_start
+.start_loop
+	push af
+	call EZChat_FindNextCategoryName
+	pop af
+	dec a
+	jr nz, .start_loop
+.setup_start
+	hlcoord  1,  7
+	ld a, 10 / 2 ; Number of EZ Chat categories displayed
+.loop
+	push af
+	call PlaceString
+	call EZChat_FindNextCategoryName
+	ld bc, 10
+	add hl, bc
+	call PlaceString
+	call EZChat_FindNextCategoryName
+	ld bc, 30
+	add hl, bc
 	pop af
 	dec a
 	jr nz, .loop
-	hlcoord 1, 17
 	ld de, EZChatString_Stop_Mode_Cancel
 	call PlaceString
 	ret
@@ -1149,23 +1263,6 @@ EZChat_SortMenuBackground:
 
 EZChatString_Stop_Mode_Cancel:
 	db "LÖSCH　MODUS　 ZUR. @"
-
-EZChatCoord_Categories: ; Category Coordinates
-	dwcoord  1,  7 ; PKMN
-	dwcoord  7,  7 ; TYPES
-	dwcoord 13,  7 ; GREET
-	dwcoord  1,  9 ; HUMAN
-	dwcoord  7,  9 ; FIGHT
-	dwcoord 13,  9 ; VOICE
-	dwcoord  1, 11 ; TALK
-	dwcoord  7, 11 ; EMOTE
-	dwcoord 13, 11 ; STATE
-	dwcoord  1, 13 ; LIFE
-	dwcoord  7, 13 ; HOBBY
-	dwcoord 13, 13 ; ACT
-	dwcoord  1, 15 ; TIME
-	dwcoord  7, 15 ; END
-	dwcoord 13, 15 ; MISC.
 
 EZChatDraw_WordSubmenu: ; Opens/Draws Word Submenu
 	call EZChat_ClearBottom12Rows
@@ -1455,6 +1552,7 @@ EZChat_DetermineWordAndPageCounts:
 	and a
 	jr z, .is_pokemon_selection
 	; load from data array
+	call EZChat_GetSelectedCategory
 	dec a
 	sla a
 	ld hl, MobileEZChatData_WordAndPageCounts
@@ -1519,6 +1617,7 @@ EZChat_RenderWordChoices:
 	jr nz, .not_pkmn_submenu
 	ld bc, EZChatCoord_PkmnWordSubmenu
 .not_pkmn_submenu
+	call EZChat_GetSelectedCategory
 	ld d, a
 	and a
 	jr z, .at_page_0
@@ -1678,9 +1777,14 @@ EZChatMenu_WordSubmenuBottom: ; Seems to handle the bottom of the word menu.
 	dec c
 	jr nz, .asm_11c891
 .asm_11c895
-	ld hl, wEZChatLoadedItems
+	call EZChat_IsPKMNMenu
+	ld l, EZCHAT_WORDS_IN_MENU
+	jr nc, .after_determined_menu_size
+	ld l, EZCHAT_PKMN_WORDS_IN_MENU
+.after_determined_menu_size
 	ld a, [wEZChatPageOffset]
-	add $c ; EZCHAT_WORD_COUNT * 2 ?
+	add a, l
+	ld hl, wEZChatLoadedItems
 	jr c, .asm_11c8b7
 	cp [hl]
 	jr nc, .asm_11c8b7
@@ -1847,6 +1951,7 @@ EZChat_SetOneWord:
 	jr nz, .alphabetical
 ; categorical
 	ld a, [wEZChatCategorySelection]
+	call EZChat_GetSelectedCategory
 	ld d, a
 	and a
 	jr z, .pokemon
@@ -2329,7 +2434,7 @@ EZChatString_MessageDescription: ; Message usage strings
 EZChatString_MessageIntroDescription:
 	db   "Als Vorstellungs-";"じこしょうかい　は"
 	next "text in Ordnung?@";"この　あいさつで　いいですか？@"
-	
+
 EZChatString_MessageBattleStartDescription:
 	db   "Als Kampfantritts-";"たいせん　<GA>はじまるとき　は"
 	next "text in Ordnung?@";"この　あいさつで　いいですか？@"
@@ -2401,7 +2506,7 @@ EZChatDraw_SortByMenu: ; Draws/Opens Sort By Menu
 	ld de, EZChatString_SortByAlphabetical
 .asm_11cd3d
 	call PlaceString
-	hlcoord 4, 8
+	hlcoord 6, 8
 	ld de, EZChatString_SortByMenu
 	call PlaceString
 	call Function11cdaa
@@ -2490,17 +2595,17 @@ Function11cdaa:
 
 EZChatString_SortByCategory:
 ; Words will be displayed by category
-	db   "Wörter in grup-";"ことば¯しゅるいべつに"
-	next "pierter Anordnung@";"えらべます@"
-
+	db   "Wörter nach";"ことば¯しゅるいべつに"
+	next "Gruppen ordnen.@";"えらべます@"
+	
 EZChatString_SortByAlphabetical:
 ; Words will be displayed in alphabetical order
-	db   "Wörter in alphabe-";"ことば¯アイウエオ　の"
-	next "tischer Anordnung@";"じゅんばんで　ひょうじ　します@"
+	db   "Wörter nach";"ことば¯アイウエオ　の"
+	next "Alphabet ordnen.@";"じゅんばんで　ひょうじ　します@"
 
 EZChatString_SortByMenu:
-	db   "GRUPPEN-MODUS";"しゅるいべつ　モード"  ; Category mode
-	next "A-Z-MODUS@";"アイウエオ　　モード@" ; ABC mode
+	db   "GRUPPE";"しゅるいべつ　モード"  ; Category mode
+	next "A bis Z@";"アイウエオ　　モード@" ; ABC mode
 
 EZChatDraw_SortByCharacter: ; Sort by Character Menu
 	call EZChat_ClearBottom12Rows
@@ -2566,7 +2671,7 @@ EZChatMenu_SortByCharacter: ; Sort By Character Menu Controls
 	cp EZCHAT_SORTED_Q
 ;	jr z, .invalid ; Removed to be more in line with Gen 3
 	ret z
-	cp EZCHAT_SORTED_X
+	cp EZCHAT_SORTED_Z
 ;	jr z, .invalid ; Removed to be more in line with Gen 3
 	ret z
 ; otherwise
@@ -2987,14 +3092,15 @@ AnimateEZChatCursor: ; EZChat cursor drawing code, extends all the way down to r
 
 .one ; Category Menu
 	ld a, [wEZChatCategorySelection]
-	cp 15
+	and $0f
+	cp EZCHAT_CATEGORY_CANC
 	push af
 	jr c, .not_menu
 	ld a, SPRITE_ANIM_FRAMESET_EZCHAT_CURSOR_1
 	call ReinitSpriteAnimFrame
 	jr .got_sprite
 .not_menu
-	ld a, SPRITE_ANIM_FRAMESET_EZCHAT_CURSOR_1
+	ld a, SPRITE_ANIM_FRAMESET_EZCHAT_CURSOR_2
 	call ReinitSpriteAnimFrame
 .got_sprite
 	pop af
@@ -3190,21 +3296,16 @@ AnimateEZChatCursor: ; EZChat cursor drawing code, extends all the way down to r
 	dbpixel 13, 17, 5, 2 ; OK        - 06
 
 .Coords_One: ; Category Menu
-	dbpixel  1,  8, 5, 2 ; PKMN
-	dbpixel  7,  8, 5, 2 ; TYPES
-	dbpixel 13,  8, 5, 2 ; GREET
-	dbpixel  1, 10, 5, 2 ; HUMAN
-	dbpixel  7, 10, 5, 2 ; FIGHT
-	dbpixel 13, 10, 5, 2 ; VOICE
-	dbpixel  1, 12, 5, 2 ; TALK
-	dbpixel  7, 12, 5, 2 ; EMOTE
-	dbpixel 13, 12, 5, 2 ; STATE
-	dbpixel  1, 14, 5, 2 ; LIFE
-	dbpixel  7, 14, 5, 2 ; HOBBY
-	dbpixel 13, 14, 5, 2 ; ACT
-	dbpixel  1, 16, 5, 2 ; TIME
-	dbpixel  7, 16, 5, 2 ; END
-	dbpixel 13, 16, 5, 2 ; MISC.
+	dbpixel  0,  8, 8, 8 ; Category 1
+	dbpixel 10,  8, 8, 8 ; Category 2
+	dbpixel  0, 10, 8, 8 ; Category 3
+	dbpixel 10, 10, 8, 8 ; Category 4
+	dbpixel  0, 12, 8, 8 ; Category 5
+	dbpixel 10, 12, 8, 8 ; Category 6
+	dbpixel  0, 14, 8, 8 ; Category 7
+	dbpixel 10, 14, 8, 8 ; Category 8
+	dbpixel  0, 16, 8, 8 ; Category 9
+	dbpixel 10, 16, 8, 8 ; Category 10
 	dbpixel  1, 18, 5, 2 ; DEL
 	dbpixel  7, 18, 5, 2 ; MODE
 	dbpixel 13, 18, 5, 2 ; QUIT
@@ -3259,8 +3360,8 @@ AnimateEZChatCursor: ; EZChat cursor drawing code, extends all the way down to r
 	dbpixel 15, 12 ; NO
 
 .Coords_Five: ; Sort By Menu
-	dbpixel  4, 10 ; Group Mode
-	dbpixel  4, 12 ; ABC Mode
+	dbpixel  6, 10 ; Group Mode
+	dbpixel  6, 12 ; ABC Mode
 
 .Coords_Six
 	dbpixel  2, 10
@@ -3755,21 +3856,22 @@ INCBIN "gfx/pokedex/slowpoke_mobile.2bpp.lz"
 
 MobileEZChatCategoryNames:
 ; Fixed message categories
-	db "PKMN@@"     ; 00 ; Pokemon         ; "ポケモン@@" ; this could've also been rendered as <PK><MN> but it looks odd
-	db "TYPEN@"     ; 01 ; Typen        ; "タイプ@@@"
-	db "GRUSS@"     ; 02 ; Grußworte    ; "あいさつ@@"
-	db "LEUTE@"     ; 03 ; Leute        ; "ひと@@@@"
-	db "KAMPF@"     ; 04 ; Kampf        ; "バトル@@@"
-	db "RUFE@@"     ; 05 ; Ausrufe        ; "こえ@@@@"
-	db "KONV.@"     ; 06 ; Konversation    ; "かいわ@@@"
-	db "EMOT.@"     ; 07 ; Emotionen    ; "きもち@@@"
-	db "LAGE@@"     ; 08 ; Gefühlslage    ; "じょうたい@"
-	db "LEBEN@"     ; 09 ; Leben        ; "せいかつ@@"
-	db "HOBBY@"     ; 0a ; Hobbys        ; "しゅみ@@@"
-	db "TUN@@@"     ; 0b ; Tun            ; "こうどう@@"
-	db "ZEIT@@"     ; 0c ; Zeit            ; "じかん@@@"
-	db "KNÜPF@"     ; 0d ; Verknüpfungen; "むすび@@@"
-	db "ALLER@"     ; 0e ; Allerlei        ; "あれこれ@@"
+	db "POKéMON@" 	; 00 ; Pokemon 		; "ポケモン@@" ; this could've also been rendered as <PK><MN> but it looks odd
+	db "TYPEN@" 	; 01 ; Types		; "タイプ@@@"
+	db "EMPFANG@" 	; 02 ; Greetings	; "あいさつ@@"
+	db "PERSONEN@" 	; 03 ; People		; "ひと@@@@"
+	db "KAMPF@" 	; 04 ; Battle		; "バトル@@@"
+	db "AUSRUFE@" 	; 05 ; Voices		; "こえ@@@@"
+	db "STIL@" 	; 06 ; Speech		; "かいわ@@@"
+	db "GEFÜHLE@" 	; 07 ; Feelings		; "きもち@@@"
+	db "KONDITION@" 	; 08 ; Conditions	; "じょうたい@"
+	db "LIFESTYLE@" 	; 09 ; Lifestyle	; "せいかつ@@"
+	db "HOBBIES@" 	; 0a ; Hobbies		; "しゅみ@@@"
+	db "AKTIONEN@" 	; 0b ; Actions		; "こうどう@@"
+	db "ZEIT@" 	; 0c ; Time			; "じかん@@@"
+	db "VERKNÜPFG@" 	; 0d ; Endings		; "むすび@@@"
+	db "POSITIONEN@" 	; 0e ; Misc			; "あれこれ@@"
+	db " @@@@@"	    ; 0f ; EMPTY
 
 MobileEZChatCategoryPointers:
 ; entries correspond to EZCHAT_* constants
@@ -3795,778 +3897,778 @@ MACRO ezchat_word
 ENDM
 
 .Types:
-        ezchat_word "UNLICHT@", $4f2
+        ezchat_word "UNLICHT@", $506
         ezchat_word "GESTEIN@", $1cc
-        ezchat_word "PSYCHO@@", $3e2
+        ezchat_word "PSYCHO@@", $3e6
         ezchat_word "KAMPF@@@", $2bc
         ezchat_word "PFLANZE@", $3d6
         ezchat_word "GEIST@@@", $1ae
-        ezchat_word "EIS@@@@@", $10e
-        ezchat_word "BODEN@@@", $0a4
-        ezchat_word "TYP@@@@@", $4e6
-        ezchat_word "ELEKTRO@", $110
+        ezchat_word "EIS@@@@@", $106
+        ezchat_word "BODEN@@@", $0a2
+        ezchat_word "TYP@@@@@", $4f6
+        ezchat_word "ELEKTRO@", $108
         ezchat_word "GIFT@@@@", $1e2
-        ezchat_word "DRACHE@@", $0ee
-        ezchat_word "NORMAL@@", $390
-        ezchat_word "STAHL@@@", $484
-        ezchat_word "FLUG@@@@", $172
-        ezchat_word "FEUER@@@", $16a
-        ezchat_word "WASSER@@", $562
+        ezchat_word "DRACHEN@", $0e8
+        ezchat_word "NORMAL@@", $394
+        ezchat_word "STAHL@@@", $496
+        ezchat_word "FLIEGEN@", $16c
+        ezchat_word "FEUER@@@", $166
+        ezchat_word "WASSER@@", $564
         ezchat_word "KÄFER@@@", $2b6
 
 .Greetings:
-        ezchat_word "DANKE@@@", $0be
+        ezchat_word "DANKE@@@", $0ba
         ezchat_word "HAB DANK", $206
-        ezchat_word "UND LOS!", $4ee
-        ezchat_word "WEITER!@", $56e
-        ezchat_word "LEG LOS!", $302
+        ezchat_word "UND LOS!", $502
+        ezchat_word "WEITER!@", $572
+        ezchat_word "LEG LOS!", $2f8
         ezchat_word "YEAH@@@@", $5b2
-        ezchat_word "WIE ISTS", $58e
-        ezchat_word "HUHU@@@@", $266
+        ezchat_word "WIE@@@@@", $58e
+        ezchat_word "HUHU@@@@", $268
         ezchat_word "GLÜCKWN.", $1f0
-        ezchat_word "SORRY@@@", $46e
-        ezchat_word "SORRY!@@", $470
-        ezchat_word "HEY!@@@@", $23a
-        ezchat_word "HI!@@@@@", $240
-        ezchat_word "HALLO@@@", $216
-        ezchat_word "TSCHÜSS@", $4dc
-        ezchat_word "THX@@@@@", $4b8
-        ezchat_word "BIN DA@@", $092
-        ezchat_word "PARDON@@", $3c8
-        ezchat_word "UPS@@@@@", $4fc
-        ezchat_word "BIS BALD", $096
+        ezchat_word "SORRY@@@", $480
+        ezchat_word "SORRY!@@", $482
+        ezchat_word "HEY DA@@", $23a
+        ezchat_word "HI!@@@@@", $23e
+        ezchat_word "HALLO@@@", $218
+        ezchat_word "TSCHÜSS@", $4ec
+        ezchat_word "HURRA@@@", $26c
+        ezchat_word "BIN DA@@", $090
+        ezchat_word "PARDON@@", $3c6
+        ezchat_word "TAGCHEN@", $4b0
+        ezchat_word "BIS DANN", $094
         ezchat_word "YO!@@@@@", $5b6
-        ezchat_word "NA DANN…", $362
-        ezchat_word "SCHÄTZEN", $402
-        ezchat_word "WAS GEHT", $560
-        ezchat_word "TAG AUCH", $4a0
+        ezchat_word "NA DANN…", $35c
+        ezchat_word "SCHÄTZEN", $408
+        ezchat_word "WAS GEHT", $562
+        ezchat_word "JAHAA@@@", $29e
         ezchat_word "YEAHYEAH", $5b4
-        ezchat_word "TSCHAU@@", $4da
+        ezchat_word "TSCHAU@@", $4ea
         ezchat_word "HEY@@@@@", $238
         ezchat_word "GERUCH@@", $1c2
-        ezchat_word "HÖR ZU@@", $25a
-        ezchat_word "HUH HAH@", $264
+        ezchat_word "HÖR ZU@@", $25c
+        ezchat_word "HUH HAH@", $266
         ezchat_word "JUCHUU@@", $2ae
         ezchat_word "JEPP@@@@", $2a8
-        ezchat_word "ACH KOMM", $022
-        ezchat_word "VERLASS@", $50e
+        ezchat_word "ACH KOMM", $020
+        ezchat_word "VERLASS@", $51c
         ezchat_word "GRÜSSE@@", $202
 
 .People:
-        ezchat_word "GEGNER@@", $1a2
-        ezchat_word "ICH@@@@@", $26a
-        ezchat_word "DU@@@@@@", $0f2
-        ezchat_word "DEINE@@@", $0d0
-        ezchat_word "SOHN@@@@", $462
-        ezchat_word "DEINER@@", $0d2
-        ezchat_word "DU BIST@", $0f4
-        ezchat_word "DU HAST@", $0f6
-        ezchat_word "MAMA@@@@", $332
-        ezchat_word "OPA@@@@@", $3c2
-        ezchat_word "ONKEL@@@", $3be
-        ezchat_word "VATER@@@", $500
+        ezchat_word "FEIND@@@", $15c
+        ezchat_word "ICH@@@@@", $26e
+        ezchat_word "DU@@@@@@", $0ea
+        ezchat_word "DEINE@@@", $0ca
+        ezchat_word "DEIN@@@@", $0c8
+        ezchat_word "DEINER@@", $0cc
+        ezchat_word "DU BIST@", $0ec
+        ezchat_word "DU HAST@", $0ee
+        ezchat_word "MUTTER@@", $358
+        ezchat_word "OPA@@@@@", $3c0
+        ezchat_word "ONKEL@@@", $3bc
+        ezchat_word "VATER@@@", $510
         ezchat_word "JUNGE@@@", $2b0
-        ezchat_word "ERWACHS.", $136
-        ezchat_word "BRUDER@@", $0aa
-        ezchat_word "SCHWEST.", $430
-        ezchat_word "OMA@@@@@", $3bc
-        ezchat_word "TANTE@@@", $4ac
-        ezchat_word "MICH@@@@", $33e
-        ezchat_word "MÄDCHEN@", $32c
-        ezchat_word "BABE@@@@", $068
-        ezchat_word "FAMILIE@", $154
-        ezchat_word "IHR@@@@@", $280
-        ezchat_word "IHM@@@@@", $27c
-        ezchat_word "ER@@@@@@", $11e
-        ezchat_word "ORT@@@@@", $3c4
-        ezchat_word "TOCHTER@", $4be
-        ezchat_word "SEIN@@@@", $43e
-        ezchat_word "ER IST@@", $120
-        ezchat_word "SIND N.@", $45a
-        ezchat_word "MÄDEL@@@", $32e
+        ezchat_word "ERWACHS.", $130
+        ezchat_word "BRUDER@@", $0a8
+        ezchat_word "SCHWEST.", $43c
+        ezchat_word "OMA@@@@@", $3ba
+        ezchat_word "TANTE@@@", $4bc
+        ezchat_word "MICH@@@@", $334
+        ezchat_word "MÄDCHEN@", $322
+        ezchat_word "DICH@@@@", $0d6
+        ezchat_word "FAMILIE@", $150
+        ezchat_word "IHR@@@@@", $284
+        ezchat_word "IHM@@@@@", $280
+        ezchat_word "ER@@@@@@", $116
+        ezchat_word "ORT@@@@@", $3c2
+        ezchat_word "TOCHTER@", $4ce
+        ezchat_word "SEIN@@@@", $44a
+        ezchat_word "ER IST@@", $118
+        ezchat_word "SIND N.@", $468
+        ezchat_word "GÖRE@@@@", $1f2
         ezchat_word "GESCHWI.", $1c8
-        ezchat_word "KINDER@@", $2d2
-        ezchat_word "MIR@@@@@", $342
-        ezchat_word "ICH WAR@", $272
-        ezchat_word "ZU MIR@@", $5c2
-        ezchat_word "MEIN@@@@", $33a
-        ezchat_word "ICH BIN@", $26c
-        ezchat_word "ICH HABE", $26e
-        ezchat_word "WER@@@@@", $57c
-        ezchat_word "JEMAND@@", $2a4
-        ezchat_word "WER WAR@", $580
-        ezchat_word "FÜR WEN@", $196
+        ezchat_word "KINDER@@", $2ce
+        ezchat_word "MIR@@@@@", $338
+        ezchat_word "ICH WAR@", $276
+        ezchat_word "ZU MIR@@", $5c4
+        ezchat_word "MEIN@@@@", $32e
+        ezchat_word "ICH BIN@", $270
+        ezchat_word "ICH HABE", $272
+        ezchat_word "WER@@@@@", $580
+        ezchat_word "JEMAND@@", $2a6
+        ezchat_word "MEINE@@@", $330
+        ezchat_word "FÜR WEN@", $194
         ezchat_word "WESSEN@@", $58a
-        ezchat_word "WER IST@", $57e
-        ezchat_word "ES IST@@", $13c
-        ezchat_word "DAME@@@@", $0ba
-        ezchat_word "FREUND@@", $182
+        ezchat_word "WER IST@", $582
+        ezchat_word "DAS IST@", $0be
+        ezchat_word "DAME@@@@", $0b6
+        ezchat_word "FREUND@@", $17c
         ezchat_word "KAMERAD@", $2ba
-        ezchat_word "LEUTE@@@", $318
-        ezchat_word "KUMPEL@@", $2ea
-        ezchat_word "IHNEN@@@", $27e
-        ezchat_word "SIE WARE", $450
-        ezchat_word "FÜR SIE@", $192
-        ezchat_word "IHRE@@@@", $282
-        ezchat_word "SIE SIND", $44c
-        ezchat_word "SIE HAB.", $448
+        ezchat_word "PERSON@@", $3d4
+        ezchat_word "TYPE@@@@", $4f8
+        ezchat_word "IHNEN@@@", $282
+        ezchat_word "SIE WARE", $45c
+        ezchat_word "FÜR SIE@", $190
+        ezchat_word "EUCH@@@@", $13c
+        ezchat_word "SIE SIND", $458
+        ezchat_word "SIE HAB.", $454
         ezchat_word "WIR@@@@@", $598
-        ezchat_word "WAREN@@@", $556
-        ezchat_word "FÜR UNS@", $194
-        ezchat_word "UNSER@@@", $4f6
+        ezchat_word "WAREN@@@", $55a
+        ezchat_word "FÜR UNS@", $192
+        ezchat_word "UNSER@@@", $50a
         ezchat_word "WIR SIND", $59a
-        ezchat_word "RIVALE@@", $3f6
-        ezchat_word "SIE@@@@@", $446
-        ezchat_word "SIE WAR@", $44e
-        ezchat_word "FÜR ALLE", $190
-        ezchat_word "EURE@@@@", $142
-        ezchat_word "SIE IST@", $44a
-        ezchat_word "HATTE@@@", $21e
+        ezchat_word "RIVALE@@", $3fc
+        ezchat_word "SIE@@@@@", $452
+        ezchat_word "SIE WAR@", $45a
+        ezchat_word "FÜR ALLE", $18c
+        ezchat_word "EURE@@@@", $13e
+        ezchat_word "SIE IST@", $456
+        ezchat_word "HATTE@@@", $220
 
 .Battle:
-        ezchat_word "HARMONIE", $218
-        ezchat_word "LOS!@@@@", $324
-        ezchat_word "NR. 1@@@", $392
-        ezchat_word "WÄHLE@@@", $544
-        ezchat_word "SIEGE@@@", $454
+        ezchat_word "HARMONIE", $21a
+        ezchat_word "LOS!@@@@", $31a
+        ezchat_word "NR. 1@@@", $396
+        ezchat_word "WÄHLE@@@", $54a
+        ezchat_word "SIEGE@@@", $460
         ezchat_word "GEWINNEN", $1d8
         ezchat_word "GEWINNE@", $1d6
         ezchat_word "GEWONNEN", $1dc
-        ezchat_word "BEI SIEG", $076
-        ezchat_word "ICH SIEG", $270
+        ezchat_word "BEI SIEG", $074
+        ezchat_word "ICH SIEG", $274
         ezchat_word "K. SIEG@", $2b2
-        ezchat_word "SIEGEN@@", $456
-        ezchat_word "UNMÖGLCH", $4f4
-        ezchat_word "SEELE@@@", $434
+        ezchat_word "SIEGEN@@", $462
+        ezchat_word "UNMÖGLCH", $508
+        ezchat_word "SEELE@@@", $440
         ezchat_word "GEWÄHLT@", $1d4
-        ezchat_word "TRUMPFK.", $4d8
+        ezchat_word "TRUMPFK.", $4e8
         ezchat_word "NIMM DAS", $388
-        ezchat_word "KOMM!@@@", $2da
+        ezchat_word "KOMM!@@@", $2d4
         ezchat_word "ANGRIFF@", $046
-        ezchat_word "ERGEBEN@", $122
-        ezchat_word "MUTIG@@@", $35e
-        ezchat_word "TALENT.@", $4aa
-        ezchat_word "TAKTIK@@", $4a8
-        ezchat_word "SCHLAGEN", $416
-        ezchat_word "PARTIE@@", $3ca
-        ezchat_word "SIEG@@@@", $452
-        ezchat_word "OFFENSIV", $3a6
-        ezchat_word "SINN@@@@", $45c
+        ezchat_word "ERGEBEN@", $11a
+        ezchat_word "MUTIG@@@", $356
+        ezchat_word "TALENT@@", $4ba
+        ezchat_word "TAKTIK@@", $4b8
+        ezchat_word "SCHLAGEN", $41c
+        ezchat_word "PARTIE@@", $3c8
+        ezchat_word "SIEG@@@@", $45e
+        ezchat_word "OFFENSIV", $3a4
+        ezchat_word "SINN@@@@", $46a
         ezchat_word "GEGEN@@@", $1a0
-        ezchat_word "STREITEN", $492
-        ezchat_word "KRAFT@@@", $2e4
-        ezchat_word "HERAUSF.", $230
-        ezchat_word "STARKEN@", $486
-        ezchat_word "ZU STARK", $5c6
-        ezchat_word "HART@@@@", $21a
-        ezchat_word "ENORM@@@", $118
-        ezchat_word "SCHONEN@", $426
-        ezchat_word "FEIND@@@", $160
+        ezchat_word "STREITEN", $4a4
+        ezchat_word "KRAFT@@@", $2de
+        ezchat_word "HERAUSF.", $232
+        ezchat_word "STARKEN@", $498
+        ezchat_word "ZU STARK", $5c8
+        ezchat_word "SCHWER@@", $43a
+        ezchat_word "ENORM@@@", $110
+        ezchat_word "SCHONEN@", $430
+        ezchat_word "GEGNER@@", $1a2
         ezchat_word "GENIE@@@", $1bc
-        ezchat_word "LEGENDE@", $304
-        ezchat_word "TRAINER@", $4c4
-        ezchat_word "FLUCHT@@", $170
-        ezchat_word "LAUWARM@", $2fa
+        ezchat_word "LEGENDE@", $2fa
+        ezchat_word "TRAINER@", $4d4
+        ezchat_word "FLUCHT@@", $16e
+        ezchat_word "LAUWARM@", $2f0
         ezchat_word "ZIEL@@@@", $5bc
         ezchat_word "KÄMPFE@@", $2be
         ezchat_word "KÄMPFEN@", $2c0
-        ezchat_word "BELEBEN@", $07a
-        ezchat_word "PUNKTE@@", $3e4
-        ezchat_word "POKéMON@", $3de
-        ezchat_word "ERNSTH.@", $12a
-        ezchat_word "OH NEIN@", $3a8
-        ezchat_word "VERLUST@", $516
-        ezchat_word "BEI NDLG", $074
-        ezchat_word "VERLOREN", $514
-        ezchat_word "VERLIER.", $512
-        ezchat_word "WACHE@@@", $53e
-        ezchat_word "PARTNER@", $3cc
+        ezchat_word "BELEBEN@", $078
+        ezchat_word "PUNKTE@@", $3e8
+        ezchat_word "POKéMON@", $3e0
+        ezchat_word "ERNSTH.@", $124
+        ezchat_word "OH NEIN@", $3a6
+        ezchat_word "VERLUST@", $524
+        ezchat_word "BEI NDLG", $072
+        ezchat_word "VERLOREN", $522
+        ezchat_word "VERLIER.", $520
+        ezchat_word "WACHE@@@", $544
+        ezchat_word "PARTNER@", $3ca
         ezchat_word "ABLEHNEN", $018
-        ezchat_word "AKZEPT.@", $02c
-        ezchat_word "ZU GUT@@", $5c0
-        ezchat_word "ERHALTEN", $124
-        ezchat_word "LEICHT@@", $30c
-        ezchat_word "SCHWACH@", $42e
-        ezchat_word "KRAFTLOS", $2e6
-        ezchat_word "LAPPALIE", $2f0
-        ezchat_word "LEITER@@", $30e
-        ezchat_word "REGEL@@@", $3ea
-        ezchat_word "LEVEL@@@", $31a
-        ezchat_word "ATTACKE@", $056
+        ezchat_word "AKZEPT.@", $02a
+        ezchat_word "ZU GUT@@", $5c2
+        ezchat_word "ERHALTEN", $11c
+        ezchat_word "LEICHT@@", $302
+        ezchat_word "SCHWACH@", $438
+        ezchat_word "KRAFTLOS", $2e0
+        ezchat_word "LAPPALIE", $2e8
+        ezchat_word "LEITER@@", $304
+        ezchat_word "REGEL@@@", $3ee
+        ezchat_word "LEVEL@@@", $30e
+        ezchat_word "ATTACKE@", $054
 
 .Exclamations:
         ezchat_word "!@@@@@@@", $000
-        ezchat_word "!!@@@@@@", $002
+        ezchat_word "!!!@@@@@", $002
         ezchat_word "!?@@@@@@", $004
         ezchat_word "?@@@@@@@", $010
         ezchat_word "…@@@@@@@", $00a
         ezchat_word "…!@@@@@@", $00c
         ezchat_word "………@@@@@", $00e
         ezchat_word "-@@@@@@@", $006
-        ezchat_word "- - -@@@", $008
-        ezchat_word "OH OH@@@", $3aa
-        ezchat_word "WAAAH@@@", $53a
-        ezchat_word "AHAHAHA@", $026
-        ezchat_word "OH?@@@@@", $3b0
+        ezchat_word "---@@@@@", $008
+        ezchat_word "OH OH@@@", $3a8
+        ezchat_word "WAAAH@@@", $542
+        ezchat_word "AHAHAHA@", $024
+        ezchat_word "OH?@@@@@", $3ae
         ezchat_word "NÖ@@@@@@", $38a
-        ezchat_word "JA@@@@@@", $298
-        ezchat_word "ARGH@@@@", $054
+        ezchat_word "JA@@@@@@", $29a
+        ezchat_word "ARGH@@@@", $052
         ezchat_word "HMM@@@@@", $24e
-        ezchat_word "OOOH@@@@", $3c0
+        ezchat_word "OOOH@@@@", $3be
         ezchat_word "WOOOAR@@", $5a6
         ezchat_word "WOW@@@@@", $5a8
-        ezchat_word "KICHER@@", $2d0
-        ezchat_word "SCHOCK@@", $422
-        ezchat_word "SCHREIT@", $42a
-        ezchat_word "RICHTIG!", $3f4
+        ezchat_word "KICHER@@", $2cc
+        ezchat_word "SCHOCK@@", $42a
+        ezchat_word "SCHREIT@", $434
+        ezchat_word "RICHTIG!", $3fa
         ezchat_word "HÄH?@@@@", $210
-        ezchat_word "SCHREI@@", $428
-        ezchat_word "HÄHÄHÄ@@", $214
-        ezchat_word "OJE OJE@", $3b4
-        ezchat_word "OH YEAH@", $3ac
-        ezchat_word "HUPS@@@@", $268
-        ezchat_word "SCHOCKT@", $424
-        ezchat_word "IGITT@@@", $278
-        ezchat_word "GRAAAH@@", $1f4
+        ezchat_word "SCHREI@@", $432
+        ezchat_word "HÄHÄHÄ@@", $216
+        ezchat_word "OJE OJE@", $3b2
+        ezchat_word "OH, YEAH", $3aa
+        ezchat_word "HUPS@@@@", $26a
+        ezchat_word "SCHOCKT@", $42c
+        ezchat_word "IGITT@@@", $27c
+        ezchat_word "GRAAAH@@", $1f6
         ezchat_word "GWAHAHA@", $204
-        ezchat_word "IEK!@@@@", $276
-        ezchat_word "HEUL@@@@", $234
-        ezchat_word "TSE@@@@@", $4de
-        ezchat_word "ERRÖTEN@", $12c
-        ezchat_word "NEIN@@@@", $378
+        ezchat_word "IEK!@@@@", $27a
+        ezchat_word "SCHNÜFF@", $428
+        ezchat_word "TSE@@@@@", $4ee
+        ezchat_word "HÄHÄ@@@@", $212
+        ezchat_word "NEIN@@@@", $376
         ezchat_word "WIE?@@@@", $590
-        ezchat_word "JAJAJA@@", $29c
-        ezchat_word "HAHAHA@@", $212
-        ezchat_word "AIYEEH@@", $02a
+        ezchat_word "JAJAJA@@", $2a0
+        ezchat_word "HAHAHA@@", $214
+        ezchat_word "AIYEEH@@", $028
         ezchat_word "HIYAH@@@", $24a
-        ezchat_word "FÖFÖFÖ@@", $174
-        ezchat_word "BRÜLL@@@", $0ac
-        ezchat_word "LOL@@@@@", $322
-        ezchat_word "GRUNZ@@@", $1fc
+        ezchat_word "FÖFÖFÖ@@", $170
+        ezchat_word "BRÜLL@@@", $0aa
+        ezchat_word "LOL@@@@@", $316
+        ezchat_word "PRUST@@@", $3e4
         ezchat_word "HMPF@@@@", $250
-        ezchat_word "HEHEHE@@", $222
-        ezchat_word "HEHE@@@@", $220
-        ezchat_word "HOHOHO@@", $258
-        ezchat_word "UI UI@@@", $4ec
-        ezchat_word "OJEMINE@", $3b6
+        ezchat_word "HEHEHE@@", $224
+        ezchat_word "HEHE@@@@", $222
+        ezchat_word "HOHOHO@@", $25a
+        ezchat_word "UI UI@@@", $4fe
+        ezchat_word "OJEMINE@", $3b4
         ezchat_word "AARRGH@@", $014
-        ezchat_word "HIHI@@@@", $244
-        ezchat_word "HIHIHI@@", $246
-        ezchat_word "MMH@@@@@", $348
-        ezchat_word "OH-KAY!@", $3ae
-        ezchat_word "OKAY!@@@", $3ba
-        ezchat_word "LALALA@@", $2ee
-        ezchat_word "JAHA@@@@", $29a
-        ezchat_word "UFF!@@@@", $4ea
+        ezchat_word "HIHI@@@@", $242
+        ezchat_word "HIHIHI@@", $244
+        ezchat_word "MMMH@@@@", $340
+        ezchat_word "OH-KAY!@", $3ac
+        ezchat_word "OKAY!@@@", $3b8
+        ezchat_word "LALALA@@", $2e6
+        ezchat_word "JAHA@@@@", $29c
+        ezchat_word "UFF!@@@@", $4fc
         ezchat_word "JUCHEE@@", $2ac
-        ezchat_word "GRRR!@@@", $1f8
-        ezchat_word "WAHAHA!@", $540
+        ezchat_word "GRRR!@@@", $1fa
+        ezchat_word "WAHAHA!@", $546
 
 .Conversation:
-        ezchat_word "ZUHÖREN@", $5ce
-        ezchat_word "KAUM@@@@", $2ca
+        ezchat_word "ZUHÖREN@", $5d0
+        ezchat_word "KAUM@@@@", $2c8
         ezchat_word "GEMEIN@@", $1b6
-        ezchat_word "LÜGEN@@@", $326
+        ezchat_word "LÜGEN@@@", $31c
         ezchat_word "GELOGEN@", $1b4
-        ezchat_word "HEYO@@@@", $23e
-        ezchat_word "EMPFEHLE", $112
-        ezchat_word "BLÖDKOPF", $0a0
+        ezchat_word "AU@@@@@@", $056
+        ezchat_word "EMPFEHLE", $10a
+        ezchat_word "BLÖDKOPF", $09e
         ezchat_word "WIRKLICH", $59e
-        ezchat_word "VON@@@@@", $534
-        ezchat_word "FÜHLEN@@", $18c
+        ezchat_word "VON@@@@@", $53c
+        ezchat_word "FÜHLEN@@", $188
         ezchat_word "ABER@@@@", $016
-        ezchat_word "JEDOCH@@", $2a0
-        ezchat_word "FALL@@@@", $152
-        ezchat_word "DANEBEN@", $0bc
-        ezchat_word "SO WIE@@", $460
-        ezchat_word "TREFFER@", $4d0
-        ezchat_word "GENUG@@@", $1c0
-        ezchat_word "BALD@@@@", $06c
-        ezchat_word "VIEL@@@@", $52c
-        ezchat_word "BISSCHEN", $098
-        ezchat_word "TOLL@@@@", $4c0
-        ezchat_word "TOTAL@@@", $4c2
-        ezchat_word "VOLL@@@@", $530
-        ezchat_word "UND SO@@", $4f0
-        ezchat_word "NUR@@@@@", $396
-        ezchat_word "ETWA@@@@", $140
-        ezchat_word "MÖGLICH@", $34e
-        ezchat_word "WENN@@@@", $57a
-        ezchat_word "SEHR@@@@", $438
-        ezchat_word "WENIG@@@", $576
+        ezchat_word "JEDOCH@@", $2a2
+        ezchat_word "FALL@@@@", $14e
+        ezchat_word "DANEBEN@", $0b8
+        ezchat_word "SO WIE@@", $470
+        ezchat_word "TREFFER@", $4de
+        ezchat_word "REICHEN@", $3f0
+        ezchat_word "BALD@@@@", $06a
+        ezchat_word "VIEL@@@@", $538
+        ezchat_word "BISSCHEN", $096
+        ezchat_word "TOLL@@@@", $4d0
+        ezchat_word "TOTAL@@@", $4d2
+        ezchat_word "DIE@@@@@", $0d8
+        ezchat_word "UND SO@@", $504
+        ezchat_word "NUR@@@@@", $39a
+        ezchat_word "ETWA@@@@", $13a
+        ezchat_word "MÖGLICH@", $344
+        ezchat_word "WENN@@@@", $57e
+        ezchat_word "SEHR@@@@", $444
+        ezchat_word "WENIG@@@", $57a
         ezchat_word "WILD@@@@", $592
-        ezchat_word "DIES IST", $0e4
+        ezchat_word "NOCH MAL", $38e
         ezchat_word "ALSO@@@@", $034
-        ezchat_word "DENNOCH@", $0da
-        ezchat_word "MUSS ES@", $35c
+        ezchat_word "TROTZDEM", $4e6
+        ezchat_word "MUSS@@@@", $354
         ezchat_word "GEWISS@@", $1da
-        ezchat_word "ERST DU@", $132
-        ezchat_word "ZUNÄCHST", $5d0
+        ezchat_word "ERST DU@", $12a
+        ezchat_word "FÜR NUN@", $18e
         ezchat_word "HEY?@@@@", $23c
-        ezchat_word "SCHERZEN", $40e
-        ezchat_word "BEREIT@@", $082
-        ezchat_word "IRGNDWIE", $28e
+        ezchat_word "SCHERZEN", $414
+        ezchat_word "BEREIT@@", $080
+        ezchat_word "IRGNDWIE", $290
         ezchat_word "OBWOHL@@", $3a0
-        ezchat_word "PASSEND@", $3d0
-        ezchat_word "FEST@@@@", $166
-        ezchat_word "GLEICH@@", $1e8
-        ezchat_word "EHRLICH@", $0fc
-        ezchat_word "WAHRLICH", $54a
-        ezchat_word "SICHER@@", $444
-        ezchat_word "ABSOLUT@", $01e
-        ezchat_word "VÖLLIG@@", $532
-        ezchat_word "BIS@@@@@", $094
+        ezchat_word "PASSEND@", $3ce
+        ezchat_word "FEST@@@@", $162
+        ezchat_word "SO VIEL@", $46e
+        ezchat_word "EHRLICH@", $0f4
+        ezchat_word "WAHRLICH", $550
+        ezchat_word "ERNST@@@", $122
+        ezchat_word "ABSOLUT@", $01c
+        ezchat_word "NOCH@@@@", $38c
+        ezchat_word "BIS@@@@@", $092
         ezchat_word "ALS OB@@", $032
-        ezchat_word "LAUNE@@@", $2f6
-        ezchat_word "EHER@@@@", $0fa
-        ezchat_word "KEINESF.", $2ce
-        ezchat_word "EXTREM@@", $14a
-        ezchat_word "FAST@@@@", $156
-        ezchat_word "MODUS@@@", $34c
-        ezchat_word "MEHR@@@@", $338
-        ezchat_word "ZU SPÄT@", $5c4
-        ezchat_word "ENDLICH@", $116
-        ezchat_word "BELIEB.@", $07c
-        ezchat_word "STATT@@@", $48a
-        ezchat_word "BIZARR@@", $09e
+        ezchat_word "LAUNE@@@", $2ec
+        ezchat_word "EHER@@@@", $0f2
+        ezchat_word "NIEMALS!", $386
+        ezchat_word "EXTREM@@", $146
+        ezchat_word "FAST@@@@", $152
+        ezchat_word "DENKE@@@", $0d0
+        ezchat_word "MEHR@@@@", $32c
+        ezchat_word "ZU SPÄT@", $5c6
+        ezchat_word "ENDLICH@", $10e
+        ezchat_word "BELIEB.@", $07a
+        ezchat_word "STATT@@@", $49c
+        ezchat_word "BIZARR@@", $09c
 
 .Feelings:
-        ezchat_word "TREFFEN@", $4ce
-        ezchat_word "SPIELEN@", $47c
-        ezchat_word "LAUFEN@@", $2f4
-        ezchat_word "DUSELIG@", $0f8
+        ezchat_word "WEINEN@@", $56c
+        ezchat_word "SPIELEN@", $48c
+        ezchat_word "GEHT@@@@", $1ac
+        ezchat_word "DUSELIG@", $0f0
         ezchat_word "GLÜCKLCH", $1ee
         ezchat_word "GLÜCK@@@", $1ec
-        ezchat_word "BEGEIST.", $070
+        ezchat_word "BEGEIST.", $06e
         ezchat_word "WICHTIG@", $58c
-        ezchat_word "LUSTIG@@", $328
+        ezchat_word "LUSTIG@@", $31e
         ezchat_word "HABEN@@@", $20c
-        ezchat_word "HEIMKEHR", $226
-        ezchat_word "BETRÜBT@", $08e
-        ezchat_word "TRAURIG@", $4cc
-        ezchat_word "VERSUCHT", $524
-        ezchat_word "HÖRT@@@@", $260
-        ezchat_word "DENKEN@@", $0d6
-        ezchat_word "HÖREN@@@", $25c
+        ezchat_word "HEIMKEHR", $228
+        ezchat_word "BETRÜBT@", $08c
+        ezchat_word "TRAURIG@", $4dc
+        ezchat_word "VERSUCHT", $530
+        ezchat_word "HÖRT@@@@", $262
+        ezchat_word "FRÖHLICH", $17e
+        ezchat_word "HÖREN@@@", $25e
         ezchat_word "WILL@@@@", $594
-        ezchat_word "VERHÖRT@", $50c
-        ezchat_word "ABSCHEU@", $01c
+        ezchat_word "VERHÖRT@", $51a
+        ezchat_word "HASS@@@@", $21c
         ezchat_word "WÜTEND@@", $5b0
         ezchat_word "WUT@@@@@", $5ae
-        ezchat_word "EINSAM@@", $10c
-        ezchat_word "FRUST@@@", $18a
-        ezchat_word "FREUDE@@", $180
-        ezchat_word "BEKOMMT@", $078
-        ezchat_word "NIE@@@@@", $382
-        ezchat_word "VERDAMMT", $504
-        ezchat_word "ENTMUTGT", $11a
-        ezchat_word "VORLIEBE", $538
+        ezchat_word "EINSAM@@", $104
+        ezchat_word "FRUST@@@", $186
+        ezchat_word "FREUDE@@", $17a
+        ezchat_word "BEKOMMT@", $076
+        ezchat_word "NIE@@@@@", $380
+        ezchat_word "VERDAMMT", $512
+        ezchat_word "ENTMUTGT", $112
+        ezchat_word "VORLIEBE", $540
         ezchat_word "ABNEIGNG", $01a
         ezchat_word "ÖDE@@@@@", $3a2
-        ezchat_word "SORGEN@@", $46c
-        ezchat_word "VEREHREN", $506
-        ezchat_word "DESASTER", $0dc
+        ezchat_word "SORGEN@@", $47e
+        ezchat_word "VEREHREN", $514
+        ezchat_word "DESASTER", $0d4
         ezchat_word "AUSLEBEN", $062
-        ezchat_word "GENIESS@", $1be
-        ezchat_word "ESSEN@@@", $13e
-        ezchat_word "NUTZLOS@", $398
-        ezchat_word "FEHLEND@", $158
-        ezchat_word "SCHLECHT", $418
-        ezchat_word "SOLLTE@@", $464
-        ezchat_word "NERVÖS@@", $37a
-        ezchat_word "NETT@@@@", $37c
-        ezchat_word "TRINKEN@", $4d4
-        ezchat_word "STAUNEN@", $48c
-        ezchat_word "ANGST@@@", $048
-        ezchat_word "WABBELIG", $53c
-        ezchat_word "MÖCHTE@@", $34a
-        ezchat_word "FETZ@@@@", $168
-        ezchat_word "NÖÖÖ@@@@", $38e
-        ezchat_word "WARTEN@@", $55a
-        ezchat_word "ZUFRIEDN", $5ca
-        ezchat_word "SEHEN@@@", $436
-        ezchat_word "SELTEN@@", $442
-        ezchat_word "FEURIG@@", $16c
+        ezchat_word "GENIESST", $1be
+        ezchat_word "ESSEN@@@", $138
+        ezchat_word "MÜLL@@@@", $350
+        ezchat_word "FEHLEND@", $154
+        ezchat_word "NUN@@@@@", $398
+        ezchat_word "SOLLTE@@", $472
+        ezchat_word "NERVÖS@@", $378
+        ezchat_word "NETT@@@@", $37a
+        ezchat_word "TRINKEN@", $4e2
+        ezchat_word "STAUNEN@", $49e
+        ezchat_word "FURCHT@@", $196
+        ezchat_word "ZITTER@@", $5be
+        ezchat_word "MÖCHTE@@", $342
+        ezchat_word "FETZ@@@@", $164
+        ezchat_word "NÖÖÖ@@@@", $392
+        ezchat_word "WARTEN@@", $55c
+        ezchat_word "ZUFRIEDN", $5cc
+        ezchat_word "LACHEN@@", $2e2
+        ezchat_word "SELTEN@@", $450
+        ezchat_word "FEURIG@@", $168
         ezchat_word "NEGATIV@", $374
-        ezchat_word "FERTIG@@", $164
+        ezchat_word "FERTIG@@", $160
         ezchat_word "GEFAHR@@", $19c
-        ezchat_word "ERLEDIGT", $128
-        ezchat_word "BESIEGT@", $086
-        ezchat_word "SCHLUG@@", $41e
-        ezchat_word "SUPER@@@", $49a
-        ezchat_word "VERLIEBT", $510
-        ezchat_word "ROMANZE@", $3f8
-        ezchat_word "FRAGE@@@", $178
-        ezchat_word "VERSTEHE", $520
-        ezchat_word "VERSTEHT", $522
-        ezchat_word "SPANNUNG", $472
+        ezchat_word "ERLEDIGT", $120
+        ezchat_word "BESIEGT@", $084
+        ezchat_word "SCHLUG@@", $424
+        ezchat_word "SUPER@@@", $4ac
+        ezchat_word "VERLIEBT", $51e
+        ezchat_word "ROMANZE@", $3fe
+        ezchat_word "FRAGE@@@", $174
+        ezchat_word "VERSTEHE", $52c
+        ezchat_word "VERSTEHT", $52e
+        ezchat_word "SPANNUNG", $484
 
 .Conditions:
-        ezchat_word "HEISS@@@", $228
-        ezchat_word "EXISTENT", $148
+        ezchat_word "HEISS@@@", $22a
+        ezchat_word "EXISTENT", $144
         ezchat_word "GENEHMGT", $1ba
-        ezchat_word "HAT@@@@@", $21c
-        ezchat_word "EILT@@@@", $0fe
-        ezchat_word "FEIN@@@@", $15e
-        ezchat_word "WENIGER@", $578
-        ezchat_word "KRASS@@@", $2e8
-        ezchat_word "SCHWUNG@", $432
-        ezchat_word "GEHT@@@@", $1ac
-        ezchat_word "VERRÜCKT", $51a
-        ezchat_word "ZU TUN@@", $5c8
+        ezchat_word "HAT@@@@@", $21e
+        ezchat_word "EILIG@@@", $0f6
+        ezchat_word "FEIN@@@@", $15a
+        ezchat_word "WENIGER@", $57c
+        ezchat_word "MEGA@@@@", $32a
+        ezchat_word "SCHWUNG@", $43e
+        ezchat_word "GEHEN@@@", $1a6
+        ezchat_word "VERRÜCKT", $526
+        ezchat_word "ZU TUN@@", $5ca
         ezchat_word "ZUSAMMEN", $5d4
         ezchat_word "GEFÜLLT@", $19e
-        ezchat_word "ABWESEND", $020
-        ezchat_word "WESEN@@@", $588
-        ezchat_word "BRAUCHE@", $0a8
-        ezchat_word "LECKER@@", $300
+        ezchat_word "ABWESEND", $01e
+        ezchat_word "SEINE@@@", $44c
+        ezchat_word "BRAUCHE@", $0a4
+        ezchat_word "LECKER@@", $2f6
         ezchat_word "GEKONNT@", $1b0
-        ezchat_word "GROSS@@@", $1f6
-        ezchat_word "SPÄT@@@@", $474
-        ezchat_word "KNAPP@@@", $2d8
+        ezchat_word "GROSS@@@", $1f8
+        ezchat_word "SPÄT@@@@", $486
+        ezchat_word "NAHE BEI", $368
         ezchat_word "AMÜSANT@", $036
-        ezchat_word "HEITER@@", $22a
-        ezchat_word "COOL@@@@", $0b6
-        ezchat_word "SÜSS@@@@", $49c
-        ezchat_word "PERFEKT@", $3d4
-        ezchat_word "HÜBSCH@@", $262
+        ezchat_word "HEITER@@", $22c
+        ezchat_word "COOL@@@@", $0b2
+        ezchat_word "ANMUTIG@", $04a
+        ezchat_word "PERFEKT@", $3d2
+        ezchat_word "HÜBSCH@@", $264
         ezchat_word "GESUND@@", $1d0
         ezchat_word "GRUSELIG", $200
-        ezchat_word "BESTE@@@", $08c
+        ezchat_word "BESTE@@@", $08a
         ezchat_word "KALT@@@@", $2b8
-        ezchat_word "LEBENDIG", $2fe
-        ezchat_word "SCHCKSAL", $406
-        ezchat_word "VIELE@@@", $52e
-        ezchat_word "PACKEND@", $3c6
-        ezchat_word "FABELHFT", $14c
+        ezchat_word "LEBENDIG", $2f4
+        ezchat_word "SCHCKSAL", $40c
+        ezchat_word "VIELE@@@", $53a
+        ezchat_word "PACKEND@", $3c4
+        ezchat_word "FABELHFT", $148
         ezchat_word "ANDERES@", $03e
-        ezchat_word "OKAY@@@@", $3b8
-        ezchat_word "TEUER@@@", $4b6
-        ezchat_word "RICHTIG@", $3f2
-        ezchat_word "NIEMALS@", $386
-        ezchat_word "KLEIN@@@", $2d6
-        ezchat_word "VARIIERT", $4fe
-        ezchat_word "MÜDE@@@@", $358
+        ezchat_word "OKAY@@@@", $3b6
+        ezchat_word "TEUER@@@", $4c8
+        ezchat_word "RICHTIG@", $3f8
+        ezchat_word "NIEMALS@", $384
+        ezchat_word "KLEIN@@@", $2d2
+        ezchat_word "VARIIERT", $50e
+        ezchat_word "MÜDE@@@@", $34e
         ezchat_word "GESCHICK", $1c4
-        ezchat_word "NONSTOP@", $38c
-        ezchat_word "KEIN@@@@", $2cc
-        ezchat_word "NICHTS@@", $380
+        ezchat_word "NONSTOP@", $390
+        ezchat_word "KEIN@@@@", $2ca
+        ezchat_word "NICHTS@@", $37e
         ezchat_word "NATÜRLCH", $370
         ezchat_word "WIRD@@@@", $59c
-        ezchat_word "SCHNELL@", $420
-        ezchat_word "SCHEINEN", $40a
-        ezchat_word "NIEDRIG@", $384
-        ezchat_word "SCHLIMM@", $41c
-        ezchat_word "ALLEINE@", $02e
-        ezchat_word "FREI@@@@", $17a
-        ezchat_word "FEHLT@@@", $15c
-        ezchat_word "LAUSIG@@", $2f8
-        ezchat_word "FEHLER@@", $15a
-        ezchat_word "HÖFLICH@", $254
-        ezchat_word "NUN@@@@@", $394
+        ezchat_word "SCHNELL@", $426
+        ezchat_word "SCHEINEN", $410
+        ezchat_word "NIEDRIG@", $382
+        ezchat_word "SCHLIMM@", $422
+        ezchat_word "ALLEINE@", $02c
+        ezchat_word "SCHLÄFRG", $418
+        ezchat_word "FEHLT@@@", $158
+        ezchat_word "LAUSIG@@", $2ee
+        ezchat_word "FEHLER@@", $156
+        ezchat_word "HÖFLICH@", $256
+        ezchat_word "SCHLECHT", $41e
         ezchat_word "GESCHWÄ.", $1c6
-        ezchat_word "EINFACH@", $106
-        ezchat_word "SCHEINB.", $408
-        ezchat_word "MIES@@@@", $340
+        ezchat_word "EINFACH@", $0fe
+        ezchat_word "SCHEINB.", $40e
+        ezchat_word "MIES@@@@", $336
 
 .Life:
         ezchat_word "PFLICHT@", $3d8
-        ezchat_word "HEIM@@@@", $224
+        ezchat_word "HEIM@@@@", $226
         ezchat_word "GELD@@@@", $1b2
         ezchat_word "GESPART@", $1ca
-        ezchat_word "BAD@@@@@", $06a
-        ezchat_word "SCHULE@@", $42c
+        ezchat_word "BAD@@@@@", $068
+        ezchat_word "SCHULE@@", $436
         ezchat_word "GEDENKEN", $19a
         ezchat_word "GRUPPE@@", $1fe
         ezchat_word "HAB DICH", $208
-        ezchat_word "WECHSEL@", $564
+        ezchat_word "TAUSCH@@", $4c0
         ezchat_word "ARBEIT@@", $04c
-        ezchat_word "TRAINING", $4c8
-        ezchat_word "KLASSE@@", $2d4
-        ezchat_word "LEKTION@", $310
-        ezchat_word "ENTWICK.", $11c
-        ezchat_word "LEXIKON@", $31c
-        ezchat_word "LEBEN@@@", $2fc
-        ezchat_word "LEHRER@@", $308
-        ezchat_word "CENTER@@", $0b2
-        ezchat_word "TURM@@@@", $4e0
-        ezchat_word "VERBIND.", $502
-        ezchat_word "TEST@@@@", $4b4
-        ezchat_word "TV@@@@@@", $4e4
-        ezchat_word "TELEFON@", $4b2
-        ezchat_word "ITEM@@@@", $296
-        ezchat_word "TAUSCH@@", $4b0
-        ezchat_word "NAME@@@@", $36e
-        ezchat_word "DATEN@@@", $0ce
-        ezchat_word "POPULÄR@", $3e0
-        ezchat_word "PARTY@@@", $3ce
-        ezchat_word "LERNEN@@", $314
-        ezchat_word "MASCHINE", $336
-        ezchat_word "KARTE@@@", $2c6
-        ezchat_word "NACHR.@@", $366
-        ezchat_word "STYLIERT", $494
-        ezchat_word "TRAUM@@@", $4ca
-        ezchat_word "HORT@@@@", $25e
-        ezchat_word "RADIO@@@", $3e8
-        ezchat_word "WELT@@@@", $572
+        ezchat_word "TRAINING", $4d8
+        ezchat_word "LEKTION@", $306
+        ezchat_word "KLASSE@@", $2d0
+        ezchat_word "ENTWICK.", $114
+        ezchat_word "LEXIKON@", $310
+        ezchat_word "LEBEN@@@", $2f2
+        ezchat_word "LEHRER@@", $2fe
+        ezchat_word "CENTER@@", $0b0
+        ezchat_word "TURM@@@@", $4f0
+        ezchat_word "LINK@@@@", $312
+        ezchat_word "TEST@@@@", $4c6
+        ezchat_word "TV@@@@@@", $4f4
+        ezchat_word "TELEFON@", $4c2
+        ezchat_word "ITEM@@@@", $298
+        ezchat_word "WECHSEL@", $566
+        ezchat_word "NAME@@@@", $36c
+        ezchat_word "NACHR.@@", $360
+        ezchat_word "POPULÄR@", $3e2
+        ezchat_word "PARTY@@@", $3cc
+        ezchat_word "LERNEN@@", $30a
+        ezchat_word "MASCHINE", $328
+        ezchat_word "KARTE@@@", $2c4
+        ezchat_word "MITTEILG", $33c
+        ezchat_word "STYLIERT", $4a6
+        ezchat_word "TRAUM@@@", $4da
+        ezchat_word "HORT@@@@", $260
+        ezchat_word "RADIO@@@", $3ec
+        ezchat_word "WELT@@@@", $576
 
 .Hobbies:
-        ezchat_word "IDOL@@@@", $274
-        ezchat_word "ANIME@@@", $04a
-        ezchat_word "LIED@@@@", $31e
-        ezchat_word "FILM@@@@", $16e
-        ezchat_word "KONFEKT@", $2de
-        ezchat_word "CHAT@@@@", $0b4
-        ezchat_word "PUP.HAUS", $3e6
-        ezchat_word "SPIELE@@", $47a
-        ezchat_word "MUSIK@@@", $35a
-        ezchat_word "KARTEN@@", $2c8
-        ezchat_word "EINKAUF@", $108
-        ezchat_word "GOURMET@", $1f2
-        ezchat_word "SPIEL@@@", $478
-        ezchat_word "MAGAZIN@", $330
-        ezchat_word "BUMMEL@@", $0b0
-        ezchat_word "FAHRRAD@", $150
-        ezchat_word "HOBBYS@@", $252
-        ezchat_word "SPORT@@@", $482
-        ezchat_word "DIÄT@@@@", $0de
-        ezchat_word "SCHATZ@@", $400
-        ezchat_word "REISE@@@", $3ec
-        ezchat_word "TANZ@@@@", $4ae
+        ezchat_word "IDOL@@@@", $278
+        ezchat_word "ANIME@@@", $048
+        ezchat_word "SONG@@@@", $478
+        ezchat_word "FILM@@@@", $16a
+        ezchat_word "NASCHEN@", $36e
+        ezchat_word "PLAUDERN", $3dc
+        ezchat_word "PUP.HAUS", $3ea
+        ezchat_word "SPIELZG.", $492
+        ezchat_word "MUSIK@@@", $352
+        ezchat_word "KARTEN@@", $2c6
+        ezchat_word "EINKAUF@", $100
+        ezchat_word "GOURMET@", $1f4
+        ezchat_word "SPIEL@@@", $48a
+        ezchat_word "MAGAZIN@", $324
+        ezchat_word "BUMMEL@@", $0ae
+        ezchat_word "FAHRRAD@", $14c
+        ezchat_word "HOBBY@@@", $252
+        ezchat_word "SPORT@@@", $494
+        ezchat_word "NAHRUNG@", $36a
+        ezchat_word "SCHATZ@@", $406
+        ezchat_word "REISEN@@", $3f2
+        ezchat_word "TANZEN@@", $4be
         ezchat_word "ANGELN@@", $044
-        ezchat_word "DATE@@@@", $0cc
-        ezchat_word "ZUG@@@@@", $5cc
-        ezchat_word "PLÜSCHI@", $3dc
-        ezchat_word "PC@@@@@@", $3d2
-        ezchat_word "BLUMEN@@", $0a2
-        ezchat_word "HELD@@@@", $22c
-        ezchat_word "SCHLÄF.@", $412
-        ezchat_word "HELDIN@@", $22e
+        ezchat_word "DATE@@@@", $0c6
+        ezchat_word "ZUG@@@@@", $5ce
+        ezchat_word "PLÜSCHI@", $3de
+        ezchat_word "PC@@@@@@", $3d0
+        ezchat_word "BLUMEN@@", $0a0
+        ezchat_word "HELD@@@@", $22e
+        ezchat_word "DÖSEN@@@", $0e6
+        ezchat_word "HELDIN@@", $230
         ezchat_word "AUSFLUG@", $060
-        ezchat_word "BORD@@@@", $0a6
-        ezchat_word "BALL@@@@", $06e
-        ezchat_word "BUCH@@@@", $0ae
-        ezchat_word "MANGA@@@", $334
+        ezchat_word "BRETT@@@", $0a6
+        ezchat_word "BALL@@@@", $06c
+        ezchat_word "BÜCHER@@", $0ac
+        ezchat_word "MANGA@@@", $326
         ezchat_word "ZUSAGE@@", $5d2
-        ezchat_word "FERIEN@@", $162
+        ezchat_word "FERIEN@@", $15e
         ezchat_word "PLÄNE@@@", $3da
 
 .Actions:
-        ezchat_word "TRIFFT@@", $4d2
+        ezchat_word "TRIFFT@@", $4e0
         ezchat_word "AUFGEBEN", $05c
         ezchat_word "GEBEN@@@", $198
         ezchat_word "GIBT@@@@", $1e0
-        ezchat_word "SPIELTE@", $480
-        ezchat_word "SPIELT@@", $47e
-        ezchat_word "SAMMELN@", $3fc
-        ezchat_word "WANDERN@", $54c
-        ezchat_word "WANDERT@", $54e
+        ezchat_word "SPIELTE@", $490
+        ezchat_word "SPIELT@@", $48e
+        ezchat_word "SAMMELN@", $402
+        ezchat_word "WANDERN@", $552
+        ezchat_word "WANDERT@", $554
         ezchat_word "GING@@@@", $1e4
-        ezchat_word "GEHEN@@@", $1a6
-        ezchat_word "ERWACHEN", $134
-        ezchat_word "ERWACHT@", $138
-        ezchat_word "ÄRGERT@@", $052
-        ezchat_word "LEHREN@@", $306
-        ezchat_word "LEHRT@@@", $30a
-        ezchat_word "BITTE@@@", $09c
-        ezchat_word "LERNE@@@", $312
-        ezchat_word "WECHSELN", $566
-        ezchat_word "VERTRAUE", $526
+        ezchat_word "LOS@@@@@", $318
+        ezchat_word "ERWACHEN", $12e
+        ezchat_word "ERWACHT@", $132
+        ezchat_word "ÄRGERT@@", $050
+        ezchat_word "LEHREN@@", $2fc
+        ezchat_word "LEHRT@@@", $300
+        ezchat_word "BITTE@@@", $09a
+        ezchat_word "LERNE@@@", $308
+        ezchat_word "WECHSELN", $568
+        ezchat_word "VERTRAUE", $532
         ezchat_word "GEHÖR@@@", $1a8
-        ezchat_word "TRAINIER", $4c6
-        ezchat_word "WÄHLEN@@", $546
-        ezchat_word "KOMMEN@@", $2dc
-        ezchat_word "SUCHE@@@", $496
-        ezchat_word "GRUND@@@", $1fa
-        ezchat_word "DIESE@@@", $0e6
+        ezchat_word "TRAINIER", $4d6
+        ezchat_word "WÄHLEN@@", $54c
+        ezchat_word "KOMMEN@@", $2d6
+        ezchat_word "SUCHE@@@", $4a8
+        ezchat_word "GRUND@@@", $1fc
+        ezchat_word "DIESE@@@", $0de
         ezchat_word "WISSEN@@", $5a0
-        ezchat_word "WEISS@@@", $56a
-        ezchat_word "WEIGERN@", $568
-        ezchat_word "LAGERT@@", $2ec
+        ezchat_word "WEISS@@@", $56e
+        ezchat_word "WEIGERN@", $56a
+        ezchat_word "LAGERT@@", $2e4
         ezchat_word "ANGEBEN@", $042
-        ezchat_word "IGNORANT", $27a
-        ezchat_word "DENKT@@@", $0d8
+        ezchat_word "IGNORANT", $27e
+        ezchat_word "DENKT@@@", $0d2
         ezchat_word "GLAUBE@@", $1e6
         ezchat_word "GLEITEN@", $1ea
-        ezchat_word "ISST@@@@", $290
-        ezchat_word "BENUTZEN", $07e
-        ezchat_word "BENUTZT@", $080
-        ezchat_word "VERWEND.", $528
-        ezchat_word "KÖNN. N.", $2e0
-        ezchat_word "FÄHIG@@@", $14e
-        ezchat_word "VERSCHW.", $51c
-        ezchat_word "ERSCHEIN", $130
-        ezchat_word "WERFEN@@", $586
-        ezchat_word "SORGE@@@", $46a
-        ezchat_word "SCHLIEF@", $41a
-        ezchat_word "SCHLAF@@", $410
-        ezchat_word "FREILAS.", $17c
-        ezchat_word "TRINKT@@", $4d6
-        ezchat_word "RENNT@@@", $3f0
-        ezchat_word "RENNEN@@", $3ee
-        ezchat_word "ARBEITET", $050
+        ezchat_word "ISST@@@@", $292
+        ezchat_word "BENUTZEN", $07c
+        ezchat_word "BENUTZT@", $07e
+        ezchat_word "VERWEND.", $534
+        ezchat_word "KÖNN. N.", $2d8
+        ezchat_word "FÄHIG@@@", $14a
+        ezchat_word "VERSCHW.", $528
+        ezchat_word "ERSCHEIN", $128
+        ezchat_word "WERFEN@@", $588
+        ezchat_word "SORGE@@@", $47c
+        ezchat_word "SCHLIEF@", $420
+        ezchat_word "SCHLAF@@", $416
+        ezchat_word "FREILAS.", $176
+        ezchat_word "TRINKT@@", $4e4
+        ezchat_word "RENNT@@@", $3f6
+        ezchat_word "RENNEN@@", $3f4
+        ezchat_word "SEHEN@@@", $442
         ezchat_word "ARBEITEN", $04e
-        ezchat_word "VERSENK.", $51e
-        ezchat_word "SCHLAG@@", $414
-        ezchat_word "LOBEN@@@", $320
+        ezchat_word "VERSENK.", $52a
+        ezchat_word "SCHLAG@@", $41a
+        ezchat_word "LOBEN@@@", $314
         ezchat_word "ZEIGEN@@", $5b8
-        ezchat_word "SCHAUT@@", $404
-        ezchat_word "SIEHT@@@", $458
-        ezchat_word "SUCHEN@@", $498
-        ezchat_word "BESITZEN", $088
-        ezchat_word "NEHMEN@@", $376
-        ezchat_word "ERLAUBEN", $126
-        ezchat_word "VERGESS.", $508
-        ezchat_word "VERGISST", $50a
-        ezchat_word "ERSCHEI.", $12e
-        ezchat_word "BESIEGEN", $084
+        ezchat_word "SCHAUT@@", $40a
+        ezchat_word "SIEHT@@@", $464
+        ezchat_word "SUCHEN@@", $4aa
+        ezchat_word "BESITZEN", $086
+        ezchat_word "ERTRAGEN", $12c
+        ezchat_word "ERLAUBEN", $11e
+        ezchat_word "VERGESS.", $516
+        ezchat_word "VERGISST", $518
+        ezchat_word "ERSCHEI.", $126
+        ezchat_word "BESIEGEN", $082
         ezchat_word "K.UNFÄHG", $2b4
 
 .Time:
-        ezchat_word "HERBST@@", $232
-        ezchat_word "FRÜH@@@@", $184
-        ezchat_word "MORGEN@@", $356
-        ezchat_word "TAG@@@@@", $49e
-        ezchat_word "IRGENDW.", $28a
-        ezchat_word "IMMER@@@", $284
-        ezchat_word "MOMENTAN", $350
-        ezchat_word "EWIG@@@@", $146
-        ezchat_word "TAGE@@@@", $4a2
-        ezchat_word "ENDE@@@@", $114
-        ezchat_word "DIENSTAG", $0e0
+        ezchat_word "HERBST@@", $234
+        ezchat_word "FRÜH@@@@", $180
+        ezchat_word "MORGEN@@", $34c
+        ezchat_word "TAG@@@@@", $4ae
+        ezchat_word "IRGENDW.", $28c
+        ezchat_word "IMMER@@@", $286
+        ezchat_word "MOMENTAN", $346
+        ezchat_word "EWIG@@@@", $142
+        ezchat_word "TAGE@@@@", $4b2
+        ezchat_word "ENDE@@@@", $10c
+        ezchat_word "DIENSTAG", $0da
         ezchat_word "GESTERN@", $1ce
         ezchat_word "HEUTE@@@", $236
-        ezchat_word "FREITAG@", $17e
-        ezchat_word "MONTAG@@", $354
-        ezchat_word "SPÄTER@@", $476
-        ezchat_word "FRÜHER@@", $186
+        ezchat_word "FREITAG@", $178
+        ezchat_word "MONTAG@@", $34a
+        ezchat_word "SPÄTER@@", $488
+        ezchat_word "FRÜHER@@", $182
         ezchat_word "ANDERER@", $03c
         ezchat_word "ZEIT@@@@", $5ba
-        ezchat_word "DEKADE@@", $0d4
-        ezchat_word "MITTWOCH", $346
-        ezchat_word "START@@@", $488
-        ezchat_word "MONAT@@@", $352
-        ezchat_word "STOPP@@@", $490
+        ezchat_word "DEKADE@@", $0ce
+        ezchat_word "MITTWOCH", $33e
+        ezchat_word "START@@@", $49a
+        ezchat_word "MONAT@@@", $348
+        ezchat_word "STOPP@@@", $4a2
         ezchat_word "JETZT@@@", $2aa
-        ezchat_word "LETZTER@", $316
-        ezchat_word "NÄCHSTES", $368
-        ezchat_word "SAMSTAG@", $3fe
-        ezchat_word "SOMMER@@", $466
-        ezchat_word "SONNTAG@", $468
+        ezchat_word "LETZTER@", $30c
+        ezchat_word "NÄCHSTES", $362
+        ezchat_word "SAMSTAG@", $404
+        ezchat_word "SOMMER@@", $476
+        ezchat_word "SONNTAG@", $47a
         ezchat_word "ANFANG@@", $040
-        ezchat_word "FRÜHLING", $188
-        ezchat_word "TAGSÜBER", $4a6
+        ezchat_word "FRÜHLING", $184
+        ezchat_word "TAGSÜBER", $4b6
         ezchat_word "WINTER@@", $596
-        ezchat_word "TÄGLICH@", $4a4
-        ezchat_word "DONNERS.", $0ec
-        ezchat_word "BETTZEIT", $090
-        ezchat_word "NACHT@@@", $36a
+        ezchat_word "TÄGLICH@", $4b4
+        ezchat_word "DONNERS.", $0e4
+        ezchat_word "BETTZEIT", $08e
+        ezchat_word "NACHT@@@", $364
         ezchat_word "WOCHE@@@", $5a4
 
 .Farewells:
-        ezchat_word "WERDEN@@", $584
+        ezchat_word "WERDEN@@", $586
         ezchat_word "AYE@@@@@", $066
         ezchat_word "?!@@@@@@", $012
         ezchat_word "HM?@@@@@", $24c
-        ezchat_word "MEINSTE?", $33c
-        ezchat_word "ODER?@@@", $3a4
-        ezchat_word "SEI@@@@@", $43a
+        ezchat_word "MEINSTE?", $332
+        ezchat_word "ES IST@@", $136
+        ezchat_word "SEI@@@@@", $446
         ezchat_word "GIB MIR@", $1de
-        ezchat_word "KÖNNTE@@", $2e2
-        ezchat_word "VERMUTL.", $518
+        ezchat_word "KÖNNTE@@", $2dc
+        ezchat_word "TENDENZ@", $4c4
         ezchat_word "WÜRDE@@@", $5aa
-        ezchat_word "IST@@@@@", $292
-        ezchat_word "STIMMTS?", $48e
-        ezchat_word "LASS UNS", $2f2
+        ezchat_word "IST@@@@@", $294
+        ezchat_word "STIMMTS?", $4a0
+        ezchat_word "LASS UNS", $2ea
         ezchat_word "ANDERE@@", $03a
-        ezchat_word "BIST@@@@", $09a
-        ezchat_word "WAR@@@@@", $552
+        ezchat_word "BIST@@@@", $098
+        ezchat_word "WAR@@@@@", $556
         ezchat_word "WURDEN@@", $5ac
-        ezchat_word "JENE@@@@", $2a6
-        ezchat_word "IST KEIN", $294
-        ezchat_word "WERDE N.", $582
+        ezchat_word "SIND@@@@", $466
+        ezchat_word "IST KEIN", $296
+        ezchat_word "WERDE N.", $584
         ezchat_word "KANN N.@", $2c2
-        ezchat_word "KANNST@@", $2c4
-        ezchat_word "NICHT@@@", $37e
-        ezchat_word "MACHE@@@", $32a
-        ezchat_word "TUT@@@@@", $4e2
-        ezchat_word "WEM@@@@@", $574
-        ezchat_word "WELCHE@@", $570
-        ezchat_word "WAR N.@@", $554
-        ezchat_word "WAREN N.", $558
+        ezchat_word "KÖNNEN@@", $2da
+        ezchat_word "NICHT@@@", $37c
+        ezchat_word "MACHE@@@", $320
+        ezchat_word "TUT@@@@@", $4f2
+        ezchat_word "WEM@@@@@", $578
+        ezchat_word "WELCHE@@", $574
+        ezchat_word "WAR N.@@", $558
+        ezchat_word "SOLLTEN@", $474
         ezchat_word "HABE@@@@", $20a
         ezchat_word "HABEN N.", $20e
-        ezchat_word "EIN@@@@@", $100
-        ezchat_word "EINE@@@@", $102
-        ezchat_word "N. NUR@@", $360
-        ezchat_word "DA@@@@@@", $0b8
-        ezchat_word "O.K.?@@@", $39a
-        ezchat_word "SO@@@@@@", $45e
-        ezchat_word "EVTL.@@@", $144
-        ezchat_word "ÜBER@@@@", $4e8
-        ezchat_word "DRÜBER@@", $0f0
-        ezchat_word "ES@@@@@@", $13a
-        ezchat_word "FÜR@@@@@", $18e
+        ezchat_word "EIN@@@@@", $0f8
+        ezchat_word "EINE@@@@", $0fa
+        ezchat_word "N. NUR@@", $35a
+        ezchat_word "DA@@@@@@", $0b4
+        ezchat_word "O.K.?@@@", $39c
+        ezchat_word "SO@@@@@@", $46c
+        ezchat_word "EVTL.@@@", $140
+        ezchat_word "UMHER@@@", $500
+        ezchat_word "ÜBER@@@@", $4fa
+        ezchat_word "ES@@@@@@", $134
+        ezchat_word "FÜR@@@@@", $18a
         ezchat_word "AN@@@@@@", $038
         ezchat_word "AUS@@@@@", $05e
         ezchat_word "GENAUSO@", $1b8
-        ezchat_word "ZU@@@@@@", $5be
-        ezchat_word "MIT@@@@@", $344
-        ezchat_word "BESSER@@", $08a
-        ezchat_word "JEMALS@@", $2a2
-        ezchat_word "SEIT@@@@", $440
-        ezchat_word "EINEN@@@", $104
+        ezchat_word "ZU@@@@@@", $5c0
+        ezchat_word "MIT@@@@@", $33a
+        ezchat_word "BESSER@@", $088
+        ezchat_word "JEMALS@@", $2a4
+        ezchat_word "SEIT@@@@", $44e
+        ezchat_word "EINEN@@@", $0fc
         ezchat_word "GEHÖRT@@", $1aa
-        ezchat_word "BEI@@@@@", $072
-        ezchat_word "IN@@@@@@", $286
+        ezchat_word "BEI@@@@@", $070
+        ezchat_word "IN@@@@@@", $288
         ezchat_word "AUF@@@@@", $05a
         ezchat_word "AUCH@@@@", $058
-        ezchat_word "ÄHNLICH@", $028
+        ezchat_word "ÄHNLICH@", $026
         ezchat_word "GETAN@@@", $1d2
-        ezchat_word "OHNE@@@@", $3b2
-        ezchat_word "NACH@@@@", $364
-        ezchat_word "VORHER@@", $536
-        ezchat_word "WÄHREND@", $548
+        ezchat_word "OHNE@@@@", $3b0
+        ezchat_word "NACH@@@@", $35e
+        ezchat_word "VORHER@@", $53e
+        ezchat_word "WÄHREND@", $54e
         ezchat_word "ALS@@@@@", $030
-        ezchat_word "EINMAL@@", $10a
-        ezchat_word "IRGENDWO", $28c
+        ezchat_word "EINMAL@@", $102
+        ezchat_word "IRGENDWO", $28e
 
 .ThisAndThat:
-        ezchat_word "HÖHEN@@@", $256
-        ezchat_word "TIEFEN@@", $4bc
-        ezchat_word "ÄH@@@@@@", $024
-        ezchat_word "HINTEN@@", $248
-        ezchat_word "SACHEN@@", $3fa
-        ezchat_word "DING@@@@", $0ea
-        ezchat_word "UNTERHLB", $4fa
-        ezchat_word "OBERHALB", $39e
-        ezchat_word "HIER@@@@", $242
-        ezchat_word "INNEN@@@", $288
+        ezchat_word "HÖHEN@@@", $258
+        ezchat_word "TIEFEN@@", $4cc
+        ezchat_word "ÄH@@@@@@", $022
+        ezchat_word "HINTEN@@", $246
+        ezchat_word "SACHEN@@", $400
+        ezchat_word "DING@@@@", $0e2
+        ezchat_word "UNTERHLB", $50c
+        ezchat_word "HOCH@@@@", $254
+        ezchat_word "HIER@@@@", $240
+        ezchat_word "INNEN@@@", $28a
         ezchat_word "AUSSEN@@", $064
         ezchat_word "NEBEN@@@", $372
-        ezchat_word "DIESER@@", $0e8
-        ezchat_word "DIES@@@@", $0e2
-        ezchat_word "JEDE@@@@", $29e
-        ezchat_word "SCHEINT@", $40c
-        ezchat_word "UNTEN@@@", $4f8
-        ezchat_word "DAS@@@@@", $0c0
-        ezchat_word "DAS IST@", $0c4
-        ezchat_word "DAS HIER", $0c2
-        ezchat_word "DAS ISTS", $0c6
-        ezchat_word "DAS SIND", $0c8
-        ezchat_word "DAS WAR@", $0ca
-        ezchat_word "OBEN@@@@", $39c
-        ezchat_word "WAHL@@@@", $542
-        ezchat_word "WEIT@@@@", $56c
-        ezchat_word "FORT@@@@", $176
-        ezchat_word "NAHE@@@@", $36c
+        ezchat_word "DIESER@@", $0e0
+        ezchat_word "DIES@@@@", $0dc
+        ezchat_word "ALLES@@@", $02e
+        ezchat_word "SCHEINT@", $412
+        ezchat_word "HINUNTER", $248
+        ezchat_word "DAS@@@@@", $0bc
+        ezchat_word "SCHON@@@", $42e
+        ezchat_word "GENUG@@@", $1c0
+        ezchat_word "DAS ISTS", $0c0
+        ezchat_word "DAS SIND", $0c2
+        ezchat_word "DAS WAR@", $0c4
+        ezchat_word "OBEN@@@@", $39e
+        ezchat_word "WAHL@@@@", $548
+        ezchat_word "WEIT@@@@", $570
+        ezchat_word "FORT@@@@", $172
+        ezchat_word "NAHE@@@@", $366
         ezchat_word "WO@@@@@@", $5a2
-        ezchat_word "WANN@@@@", $550
-        ezchat_word "WAS@@@@@", $55e
-        ezchat_word "TIEF@@@@", $4ba
-        ezchat_word "SEICHT@@", $43c
-        ezchat_word "WARUM@@@", $55c
-        ezchat_word "VERWIRRT", $52a
+        ezchat_word "GLEICH@@", $1e8
+        ezchat_word "WAS@@@@@", $560
+        ezchat_word "TIEF@@@@", $4ca
+        ezchat_word "SEICHT@@", $448
+        ezchat_word "WARUM@@@", $55e
+        ezchat_word "VERWIRRT", $536
         ezchat_word "GEGNÜBER", $1a4
 
 MobileEZChatData_WordAndPageCounts:
@@ -4607,28 +4709,28 @@ MACRO macro_11f23c
 ENDM
 DEF x = $d014
 	macro_11f23c  42 ; A
-	macro_11f23c  37 ; B
-	macro_11f23c   3; C
-	macro_11f23c  33 ; D
-	macro_11f23c  41 ; E
-	macro_11f23c  38 ; F
+	macro_11f23c  36 ; B
+	macro_11f23c   2 ; C
+	macro_11f23c  31 ; D
+	macro_11f23c  43 ; E
+	macro_11f23c  40 ; F
 	macro_11f23c  55 ; G
-	macro_11f23c  50 ; H
-	macro_11f23c  23 ; I
-	macro_11f23c  13 ; J
-	macro_11f23c  29 ; K
+	macro_11f23c  52 ; H
+	macro_11f23c  22 ; I
+	macro_11f23c  12 ; J
+	macro_11f23c  24 ; K
 	macro_11f23c  31 ; L
-	macro_11f23c  27 ; M
-	macro_11f23c  29 ; N
-	macro_11f23c  22 ; O
-	macro_11f23c  17 ; P
+	macro_11f23c  29 ; M
+	macro_11f23c  33 ; N
+	macro_11f23c  20 ; O
+	macro_11f23c  20 ; P
 	macro_11f23c   0 ; Q
-	macro_11f23c   9 ; R
-	macro_11f23c  82 ; S
-	macro_11f23c  37 ; T
-	macro_11f23c  11 ; U
-	macro_11f23c  30 ; V
-	macro_11f23c  60 ; W
+	macro_11f23c  10 ; R
+	macro_11f23c  87 ; S
+	macro_11f23c  38 ; T
+	macro_11f23c  10 ; U
+	macro_11f23c  26 ; V
+	macro_11f23c  56 ; W
 	macro_11f23c   0 ; X
 	macro_11f23c   3 ; Y
 	macro_11f23c  15 ; Z

@@ -578,6 +578,8 @@ _OPT_MaryText1::
 	text_ram wStringBuffer1
 	text_end
 
+	text_end ; unused
+
 _OPT_SweetAdorablyText::
 	text_start
 	line "Wie bezaubernd."
@@ -1123,11 +1125,13 @@ _BuenaRadioMidnightText8::
 	done
 
 _BuenaRadioMidnightText9::
-	text "Ich muss weg!"
+	text_start
+	line "Ich muss weg!"
 	done
 
 _BuenaRadioMidnightText10::
-	text "…"
+	text_start
+	line "…"
 	done
 
 _BuenaOffTheAirText::

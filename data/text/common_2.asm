@@ -398,9 +398,7 @@ _CantUseTeleportText::
 	text "Das kann hier"
 	line "nicht eingesetzt"
 	cont "werden."
-
-	para ""
-	done
+	prompt
 
 _AlreadyUsingStrengthText::
 	text "Ein #MON setzt"

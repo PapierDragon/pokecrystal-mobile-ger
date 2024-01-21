@@ -897,7 +897,7 @@ Text_PleaseComeAgain:
 	prompt
 
 Text_PleaseComeInDuplicate: ; unreferenced
-	text "Komm doch herein."
+	text "Komm bitte herein."
 	done
 
 Text_TemporaryStagingInLinkRoom: ; unreferenced
@@ -920,7 +920,7 @@ Text_IncompatibleRooms:
 	prompt
 
 Text_PleaseComeIn:
-	text "Komm bitte herein."
+	text "Komm doch herein."
 	done
 
 Text_PleaseEnter: ; unreferenced

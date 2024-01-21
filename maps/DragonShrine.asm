@@ -265,19 +265,6 @@ DragonShrineElder3Script:
 
 DragonShrineQuestion1_MenuHeader:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 8, 4, SCREEN_WIDTH - 1, TEXTBOX_Y - 1
-	dw .MenuData
-	db 1 ; default option
-
-.MenuData:
-	db STATICMENU_CURSOR | STATICMENU_DISABLE_B ; flags
-	db 3 ; items
-	db "Pal@"
-	db "Underling@"
-	db "Friend@"
-
-DragonShrineQuestion2_MenuHeader:
-	db MENU_BACKUP_TILES ; flags
 	menu_coords 9, 4, SCREEN_WIDTH - 1, TEXTBOX_Y - 1
 	dw .MenuData
 	db 1 ; default option
@@ -285,24 +272,11 @@ DragonShrineQuestion2_MenuHeader:
 .MenuData:
 	db STATICMENU_CURSOR | STATICMENU_DISABLE_B ; flags
 	db 3 ; items
-	db "Strategy@"
-	db "Raising@"
-	db "Cheating@"
+	db "Kumpel@"
+	db "Untertan@"
+	db "Kamerad@"
 
-DragonShrineQuestion3_MenuHeader:
-	db MENU_BACKUP_TILES ; flags
-	menu_coords 5, 4, SCREEN_WIDTH - 1, TEXTBOX_Y - 1
-	dw .MenuData
-	db 1 ; default option
-
-.MenuData:
-	db STATICMENU_CURSOR | STATICMENU_DISABLE_B ; flags
-	db 3 ; items
-	db "Weak person@"
-	db "Tough person@"
-	db "Anybody@"
-
-DragonShrineQuestion4_MenuHeader:
+DragonShrineQuestion2_MenuHeader:
 	db MENU_BACKUP_TILES ; flags
 	menu_coords 8, 4, SCREEN_WIDTH - 1, TEXTBOX_Y - 1
 	dw .MenuData
@@ -311,22 +285,48 @@ DragonShrineQuestion4_MenuHeader:
 .MenuData:
 	db STATICMENU_CURSOR | STATICMENU_DISABLE_B ; flags
 	db 3 ; items
-	db "Love@"
-	db "Violence@"
-	db "Knowledge@"
+	db "Strategie@"
+	db "Training@"
+	db "Mogeln@"
 
-DragonShrineQuestion5_MenuHeader:
+DragonShrineQuestion3_MenuHeader:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 12, 4, SCREEN_WIDTH - 1, TEXTBOX_Y - 1
+	menu_coords 6, 4, SCREEN_WIDTH - 1, TEXTBOX_Y - 1
 	dw .MenuData
 	db 1 ; default option
 
 .MenuData:
 	db STATICMENU_CURSOR | STATICMENU_DISABLE_B ; flags
 	db 3 ; items
-	db "Tough@"
-	db "Both@"
-	db "Weak@"
+	db "Schwächling@"
+	db "Muskelprotz@"
+	db "Jeder@"
+
+DragonShrineQuestion4_MenuHeader:
+	db MENU_BACKUP_TILES ; flags
+	menu_coords 11, 4, SCREEN_WIDTH - 1, TEXTBOX_Y - 1
+	dw .MenuData
+	db 1 ; default option
+
+.MenuData:
+	db STATICMENU_CURSOR | STATICMENU_DISABLE_B ; flags
+	db 3 ; items
+	db "Liebe@"
+	db "Gewalt@"
+	db "Wissen@"
+
+DragonShrineQuestion5_MenuHeader:
+	db MENU_BACKUP_TILES ; flags
+	menu_coords 10, 4, SCREEN_WIDTH - 1, TEXTBOX_Y - 1
+	dw .MenuData
+	db 1 ; default option
+
+.MenuData:
+	db STATICMENU_CURSOR | STATICMENU_DISABLE_B ; flags
+	db 3 ; items
+	db "Stark@"
+	db "Beides@"
+	db "Schwach@"
 
 DragonShrinePlayerWalkInMovement:
 	slow_step UP

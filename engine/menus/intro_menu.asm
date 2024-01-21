@@ -567,7 +567,7 @@ Continue_LoadMenuHeader:
 .MenuData_NoDex:
 	db 0 ; flags
 	db 4 ; items
-	db "SPIELER <PLAYER>@"
+	db "SPIELER@"
 	db "ORDEN@"
 	db " @"
 	db "SPIELZEIT@"
