@@ -337,7 +337,7 @@ asm_4a19d:
 	jp Function4a195
 
 String_4a1ef:
-	db   "Mobile-Center";"モバイルセンター¯えらぶ"
+	db   "Mobiles Center";"モバイルセンター¯えらぶ"
 	next "Log-in-Passwort";"ログインパスワード¯いれる"
 	next "Zurück@";"もどる@"
 

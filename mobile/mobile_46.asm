@@ -5652,7 +5652,7 @@ String_11a661:
 	next "aufbau…@"
 
 String_11a679:
-	db   "MOBILE ADAPTER"
+	db   "MOBILER ADAPTER"
 	next "bereit?@"
 
 String_11a692:
@@ -5717,10 +5717,10 @@ String_11a7ac:
 
 String_11a7c1:
 	db   "Keine neuen"
-	next "DATEN.@"
+	next "NACHRICHTEN.@"
 
 String_11a7d7:
-	db   "Neue DATEN"
+	db   "NACHRICHTEN"
 	next "empfangen?@"
 
 String_11a7f4:
@@ -5997,19 +5997,21 @@ Text_SaveFileWillBeSent:
 
 Text_SentSaveFileReadingNews:
 	text "SPIELSTAND fertig."
-	line "Lade DATEN…"
+	line "Lade NACHRICHTEN…"
 	done
 
 Text_ReadingNews:
-	text "Lade DATEN…"
+	text "Lade NACHRICHTEN…"
 	done
 
 Text_ReceivedNews:
-	text "DATEN übertragen!"
+	text "NACHRICHTEN"
+	line "empfangen!"
 	done
 
 Text_QuitReadingNews:
-	text "DATEN nicht laden?"
+	text "NACHRICHTEN"
+	line "nicht laden?"
 	done
 
 Text_CanceledSendingSaveFile: ; unreferenced

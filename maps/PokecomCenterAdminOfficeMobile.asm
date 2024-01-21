@@ -48,7 +48,7 @@ PokecomCenterAdminOfficeMobileComputer1:
 
 .Computer1MenuHeader:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 0, 0, 15, 8
+	menu_coords 0, 0, 16, 8
 	dw .MenuData
 	db 1 ; default option
 
@@ -56,7 +56,7 @@ PokecomCenterAdminOfficeMobileComputer1:
 	db STATICMENU_CURSOR ; flags
 	db 3 ; items
 	db "#KOM-CLUB@" ; # COM CLUB
-	db "MOBILE-CENTER@" ; MOBILE CENTER
+	db "MOBILES CENTER@" ; MOBILE CENTER
 	db "ZURÜCK@" ; QUIT
 
 PokecomCenterAdminOfficeMobileComputer2:
@@ -105,16 +105,17 @@ PokecomCenterAdminOfficeMobileComputer3:
 	jumptext PokecomCenterAdminOfficeMobileComputer3Text
 
 PokecomCenterAdminOfficeMobileScientist1Text:
-	text "#KOM-CENTER und"
-	line "MOBILE-CENTER"
-	para "wurden errichtet,"
-	line "um das Tauschen"
-	para "und Kämpfen mit"
-	line "weit entfernten"
-	para "Freunden und sogar"
-	line "wildfremden"
-	para "Trainern zu"
-	line "ermöglichen."
+	text "Das #KOM-CENTER"
+	line "und das MOBILE"
+	para "CENTER wurden"
+	line "errichtet, um das"
+	para "Tauschen und"
+	line "Kämpfen mit"
+	para "weit entfernten"
+	line "Freunden und sogar"
+	para "wildfremden"
+	line "Trainern zu"
+	cont "ermöglichen."
 	done
 
 PokecomCenterAdminOfficeMobileScientist2Text:
@@ -145,8 +146,8 @@ PokecomCenterAdminOfficeMobileScientist3Text:
 PokecomCenterAdminOfficeMobileComputer1Text:
 	text "Eine Notiz über"
 	line "die Einsatzzwecke"
-	para "des MOBILE"
-	line "ADAPTER…"
+	para "des MOBILEN"
+	line "ADAPTERs…"
 	done
 
 PokecomCenterAdminOfficeMobileComputer1Text_PokeComClub:
@@ -154,7 +155,7 @@ PokecomCenterAdminOfficeMobileComputer1Text_PokeComClub:
 	line "#MON-CENTER im"
 	para "Obergeschoss den"
 	line "#KOM-CLUB."
-	para "Mit einem MOBILE"
+	para "Mit einem MOBILEN"
 	line "ADAPTER kannst du"
 	para "dort mit weit"
 	line "entfernten"
@@ -163,22 +164,22 @@ PokecomCenterAdminOfficeMobileComputer1Text_PokeComClub:
 
 	para "Um sich verbinden"
 	line "zu können, benö-"
-	para "tigen dein Freund"
-	line "und du die gleiche"
-	para "Art von MOBILE"
-	line "ADAPTER."
+	cont "tigen dein Freund"
+	para "und du die gleiche"
+	line "Art eines MOBILEN"
+	cont "ADAPTERs."
 	done
 
 PokecomCenterAdminOfficeMobileComputer1Text_MobileCenter:
 	text "TAUSCHECKE und"
 	line "#MON-NACHRICH-"
-	para "TEN werden über"
-	line "eine Verbindung"
-	para "zum MOBILE-CENTER"
-	line "bereitgestellt."
+	cont "TEN werden über"
+	para "eine Verbindung"
+	line "zum MOBILEN CENTER"
+	cont "bereitgestellt."
 	para "Hierfür musst du"
 	line "dich zunächst beim"
-	para "MOBILE-CENTER"
+	para "MOBILEN CENTER"
 	line "registrieren."
 	done
 
@@ -188,11 +189,12 @@ PokecomCenterAdminOfficeMobileComputer2Text:
 	done
 
 PokecomCenterAdminOfficeMobileComputer2Text_UsePhone:
-	text "Verbinde Handy"
-	line "und MOBILE ADAPTER"
-	para "sicher miteinander"
-	line "und achte auf"
-	cont "guten Netzempfang."
+	text "Verbinde das Handy"
+	line "und den MOBILEN"
+	para "ADAPTER sicher"
+	line "miteinander und"
+	para "achte auf guten"
+	line "Netzempfang."
 
 	para "Berühre während"
 	line "der Übertragung"

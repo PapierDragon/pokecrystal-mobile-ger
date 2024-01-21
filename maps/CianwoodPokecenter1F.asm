@@ -120,10 +120,10 @@ CianwoodPokecenter1FPreMobileText: ; unreferenced
 CianwoodPokecenter1FMobileText: ; unreferenced
 	text "In letzter Zeit"
 	line "kämpfe ich oft"
-	cont "mittels MOBILE"
-	cont "ADAPTER gegen"
-	cont "meinen Freund aus"
-	cont "VIOLA."
+	cont "mittels des"
+	cont "MOBILEN ADAPTERs"
+	cont "gegen meinen"
+	cont "Freund aus VIOLA."
 	
 	para "Er führt mit 7 zu"
 	line "5 gegen mich. Ich"

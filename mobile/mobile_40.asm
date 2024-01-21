@@ -4540,8 +4540,8 @@ String_101f13:
 	db "@"
 
 String_101f14:
-	db   "Verbinde per"
-	next "MOBILE ADAPTER…"
+	db   "Verbindung wird"
+	next "hergestellt…"
 	db   "@"
 
 String_101f32:
@@ -4550,7 +4550,7 @@ String_101f32:
 	db   "@"
 
 String_101f4f:
-	db   "Ist dein MOBILE"
+	db   "Ist der MOBILE"
 	next "ADAPTER bereit?"
 	db   "@"
 
@@ -7313,12 +7313,12 @@ String_103557: db " KARTENTAUSCH@"			; "めいしこうかん@"
 String_10355f: db " Anrufer bestimmt@"	; "でんわを　かけるひとが　きめられる@"
 String_103571: db "Rufnr.-Eingabe-Art@"	; "でんわばんごうの　にゅうりょくのしかた@" ; Entering a phone number
 String_103585: db "Ersetzt alte KARTE@"	; "あたらしいめいしが　あれば　こうかん@" ; Replace if there is a new card
-String_103598: db "<LF>:AUF @"				; "とばして　みる@"; Skip to see
+String_103598: db "<LF>:AUS @"				; "とばして　みる@"; Skip to see
 String_1035a0: db "<LF>:AN  @"				; "じっくり　みる@" ; Watch carefully
 String_1035a8: db "<LF>:KARTE @"				; "めいしからえらぶ@" ; Choose from cards
 String_1035b1: db "<LF>:TASTEN@"				; "すうじで　いれる@"
 String_1035ba: db "<LF>:AN   @"				; "する@"
-String_1035bd: db "<LF>:AUF  @"					; "しない@"
+String_1035bd: db "<LF>:AUS  @"					; "しない@"
 String_1035c1: db " O.K.@"					; "けってい@"
 
 Function1035c6:

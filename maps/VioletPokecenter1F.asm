@@ -189,16 +189,15 @@ VioletPokecenterGameboyKidPreMobileText:
 VioletPokecenterGameboyKidMobileText:
 	text "Ich habe gerade"
 	line "über größere"
-	cont "Distanz mit einem"
-	cont "Freund aus"
-	cont "ANEMONIA CITY"
-	cont "gekämpft."
+	para "Distanz mit einem"
+	line "Freund aus"
+	para "ANEMONIA CITY"
+	line "gekämpft."
 	
-	para "Mit dem MOBILE"
+	para "Mit dem MOBILEN"
 	line "ADAPTER kannst du"
-	cont "dich mit weit"
-	cont "entfernten"
-	cont "Freunden"
+	para "dich mit weit ent-"
+	line "fernten Freunden"
 	cont "verbinden."
 	done
 
