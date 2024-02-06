@@ -18,7 +18,7 @@ CeruleanTradeSpeechHouseGrampsScript:
 CeruleanTradeSpeechHouseRhydonScript:
 	opentext
 	writetext CeruleanTradeSpeechHouseRhydonText
-	cry "KANGAMA@@@"
+	cry KANGASKHAN
 	waitbutton
 	closetext
 	end
