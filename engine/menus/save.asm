@@ -422,12 +422,12 @@ InitDefaultEZChatMsgs:
 	dw $0223, $0501 ; `WELCOME` `!!`
 ; begin battle
 	dw $0629, $0503 ; `READY` `?`
-	dw $0809, $0401 ; `GOING` `GO!`
+	dw $0702, $0401 ; `GOING` `GO!`
 ; win battle
 	dw $053d, $0500 ; `YAY` `!`
 	dw $0407, $0501 ; `WON` `!!`
 ; lose battle
-	dw $0532, $0505 ; `URGH` `...!`
+	dw $0432, $0505 ; `URGH` `...!`
 	dw $040c, $0504 ; `NO MATCH` `...`
 
 EraseBattleTowerStatus: ; Call_005_4d09 in crystal jp

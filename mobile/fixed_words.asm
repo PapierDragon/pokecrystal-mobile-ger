@@ -4098,7 +4098,7 @@ ENDM
 
 .Exclamations:
         ezchat_word "!@@@@@@@", $000
-        ezchat_word "!!!@@@@@", $002
+        ezchat_word "!!@@@@@@", $002
         ezchat_word "!?@@@@@@", $004
         ezchat_word "?@@@@@@@", $010
         ezchat_word "…@@@@@@@", $00a
