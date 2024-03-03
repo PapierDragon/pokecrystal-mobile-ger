@@ -6325,11 +6325,11 @@ Function11ad95:
 	ld hl, MenuHeader_11ae38
 	call LoadMenuHeader
 	call MenuBox
-	hlcoord 10, 12 ;12, 12
+	hlcoord 9, 12 ;12, 12
 	ld de, String_11ae40
 	call PlaceString
-	hlcoord 8, 10, wAttrmap ;10, 10, wAttrmap
-	lb bc, 8, 10 ;8
+	hlcoord 7, 10, wAttrmap ;10, 10, wAttrmap
+	lb bc, 8, 12 ;8
 	call Function11afd6
 	farcall ReloadMapPart
 	call MobileIncJumptableIndex
@@ -6415,14 +6415,14 @@ Function11adc4:
 
 MenuHeader_11ae38:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords  8, 10, 17, SCREEN_HEIGHT - 1
+	menu_coords  7, 10, 18, SCREEN_HEIGHT - 1
 	dw NULL
 	db 0 ; default option
 
 String_11ae40:
 	db   "EGAL"
-	next "♂MÄNNL." ; male
-	next "♀WEIBL." ; female
+	next "♂MÄNNLICH" ; male
+	next "♀WEIBLICH" ; female
 	db   "@"
 
 Function11ae4e:
@@ -6627,9 +6627,9 @@ asm_11afbd:
 	ret
 
 Unknown_11afcc:
-	dwcoord 9, 12 ;11, 12
-	dwcoord 9, 14 ;11, 14
-	dwcoord 9, 16 ;11, 16
+	dwcoord 8, 12 ;11, 12
+	dwcoord 8, 14 ;11, 14
+	dwcoord 8, 16 ;11, 16
 
 Unknown_11afd2:
 	dwcoord 14,  8
