@@ -88,7 +88,7 @@ String_Currency_Cents: ; Note that this is unoptimized, as the string "Is this O
 	next "In Ordnung?@";"かかります　よろしい　ですか？@"
 
 String_Currency_Rappen:
-	db   " Rappen";"えん"
+	db   " Rp.";"えん"
 	next "In Ordnung?@";"かかります　よろしい　ですか？@"	
 	
 	
