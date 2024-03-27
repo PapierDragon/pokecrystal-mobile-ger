@@ -1333,11 +1333,11 @@ Function100846:
 	ret
 
 String_10088e:
-	db   "Zeitlimit:" 	; "モバイルたいせん　できる"
+	db   "ZEITLIMIT:" 	; "モバイルたいせん　できる"
 	next "@"	 	; "じかん@"
 
 String_10089f:
-	db " unbegrenzt@" 		; "　むせいげん@"
+	db "UNBEGRENTZ@" 		; "　むせいげん@"
 
 MobileBattleGetRemainingTime:
 ; Calculates the difference between 10 minutes and sMobileBattleTimer
@@ -1436,7 +1436,7 @@ Function100902:
 .string_10095a
 	db "Die Zeit ist um!@"		;"たいせん　しゅうりょう@"
 .string_100966
-	db "Noch   Minuten!@"	;"のこり　　　ふん！@"
+	db "Min. Restzeit!@"	;"のこり10　ふん！@"
 
 Function100970:
 	hlcoord 0, 0
