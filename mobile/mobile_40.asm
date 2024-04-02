@@ -1337,7 +1337,7 @@ String_10088e:
 	next "@"	 	; "じかん@"
 
 String_10089f:
-	db "UNBEGRENTZ@" 		; "　むせいげん@"
+	db "UNBEGRENTZ.@" 		; "　むせいげん@"
 
 MobileBattleGetRemainingTime:
 ; Calculates the difference between 10 minutes and sMobileBattleTimer
@@ -1436,7 +1436,7 @@ Function100902:
 .string_10095a
 	db "Die Zeit ist um!@"		;"たいせん　しゅうりょう@"
 .string_100966
-	db "Min. Restzeit!@"	;"のこり10　ふん！@"
+	db "min. Restzeit!@"	;"のこり10　ふん！@"
 
 Function100970:
 	hlcoord 0, 0
