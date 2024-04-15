@@ -1011,7 +1011,7 @@ ZipCodePressed:
 	call PlaceString
 	call TellNowTellLaterMenu
 	jp c, ReturnToMobileProfileMenu
-	hlcoord 6, 12 ; Clearing the potential "Tell Later" text.
+	hlcoord 5, 12 ; Clearing the potential "Tell Later" text.
 	lb bc, 1, 18 - ZIPCODE_LENGTH ; Determines the size of the clearing box
 	call ClearBox
 
