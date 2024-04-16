@@ -127,9 +127,8 @@ String_0x4a026:
 	db   "@"
 
 String_0x4a042:
-	db   "Verbindungs-"
-	next "einstellungen"
-	next "ändern."
+	db   "Einstellungen zum"
+	next "Verbinden ändern."
 	db   "@"
 
 String_0x4a062:

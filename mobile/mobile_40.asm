@@ -1337,7 +1337,7 @@ String_10088e:
 	next "@"	 	; "じかん@"
 
 String_10089f:
-	db "UNBEGRENTZ@" 		; "　むせいげん@"
+	db "UNBEGRENZT.@" 		; "　むせいげん@"
 
 MobileBattleGetRemainingTime:
 ; Calculates the difference between 10 minutes and sMobileBattleTimer
