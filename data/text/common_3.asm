@@ -86,13 +86,13 @@ _LinkAskTradeForText::
 	done
 
 _MobileBattleMustPickThreeMonText::
-	text "Um einen Mobil"
+	text "Um einen Mobil-"
 	line "Kampf auszuführen,"
 
 	para "musst du drei"
 	line "#MON auswählen."
 
-	para "In Odnung?"
+	para "In Ordnung?"
 	done
 
 _MobileBattleMoreInfoText::
@@ -154,15 +154,15 @@ _WantAQuickMobileBattleText::
 
 _WantToRushThroughAMobileBattleText::
 	text "Du hast nur noch"
-	line "1 min für heute!"
+	line "1 min. für heute!"
 
 	para "Wie wäre es mit"
 	line "einem Blitzkampf?"
 	done
 
 _PleaseTryAgainTomorrowText::
-	text "Weniger, als 1"
-	line "min für heute!"
+	text "Weniger als 1"
+	line "min. für heute!"
 
 	para "Kommme morgen"
 	line "wieder."
@@ -175,8 +175,8 @@ _TryAgainUsingSameSettingsText::
 	done
 
 _MobileBattleLessThanOneMinuteLeftText::
-	text "Weniger, als 1"
-	line "min für heute!"
+	text "Weniger als 1"
+	line "min. für heute!"
 	done
 
 _MobileBattleNoTimeLeftForLinkingText::

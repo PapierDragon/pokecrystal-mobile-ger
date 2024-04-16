@@ -1436,7 +1436,7 @@ Function100902:
 .string_10095a
 	db "Die Zeit ist um!@"		;"たいせん　しゅうりょう@"
 .string_100966
-	db "Min. Restzeit!@"	;"のこり10　ふん！@"
+	db "min. Restzeit!@"	;"のこり10　ふん！@"
 
 Function100970:
 	hlcoord 0, 0
