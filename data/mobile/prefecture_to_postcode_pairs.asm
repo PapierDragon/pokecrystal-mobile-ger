@@ -24,56 +24,57 @@ PrefectureZipcodeFormat:
 	db 0      ; Tyrol
 	db 0      ; Vorarlberg
 	db 0      ; Vienna
-	db 0     ; Aargau
-	db 0     ; Appenzell Innerrhoden
-	db 0     ; Appenzell Ausserrhoden
-	db 0     ; Berne
-	db 0     ; Basel-Landschaft
-	db 0     ; Basel-Stadt
-	db 0     ; Fribourg
-	db 0     ; Genève
-	db 0     ; Glarus
-	db 0     ; Graubünden
-	db 0     ; Jura
-	db 0     ; Luzer
-	db 0     ; Neuchâtel
-	db 0     ; Nidwalden
-	db 0     ; Obwalden
-	db 0     ; Sankt Gallen
-	db 0     ; Schaffhausen
-	db 0     ; Solothurn
-	db 0     ; Schwyz
-	db 0     ; Thurgau
-	db 0     ; Ticino
-	db 0     ; Uri
-	db 0     ; Vaud
-	db 0     ; Valais
-	db 0     ; Zug
-	db 0     ; Zürich
-	db 0     ; Balzers
-	db 0     ; Eschen
-	db 0     ; Gamprin
-	db 0     ; Mauren
-	db 0     ; Planken
-	db 0     ; Ruggell
-	db 0     ; Schaan
-	db 0     ; Schellenberg
-	db 0     ; Triesen
-	db 0     ; Triesenberg
-	db 0     ; Vaduz
-	db 0    ; Capellen
-	db 0    ; Clervaux
-	db 0    ; Diekirch
-	db 0    ; Echternach
-	db 0    ; Esch-sur-Alzette
-	db 0    ; Grevenmacher
-	db 0    ; Luxembourg
-	db 0    ; Mersch
-	db 0    ; Redange
-	db 0    ; Remich
-	db 0    ; Vianden
-	db 0    ; Wiltz
+	db 1     ; Aargau
+	db 1     ; Appenzell Innerrhoden
+	db 1     ; Appenzell Ausserrhoden
+	db 1     ; Berne
+	db 1     ; Basel-Landschaft
+	db 1     ; Basel-Stadt
+	db 1     ; Fribourg
+	db 1     ; Genève
+	db 1     ; Glarus
+	db 1     ; Graubünden
+	db 1     ; Jura
+	db 1     ; Luzer
+	db 1     ; Neuchâtel
+	db 1     ; Nidwalden
+	db 1     ; Obwalden
+	db 1     ; Sankt Gallen
+	db 1     ; Schaffhausen
+	db 1     ; Solothurn
+	db 1     ; Schwyz
+	db 1     ; Thurgau
+	db 1     ; Ticino
+	db 1     ; Uri
+	db 1     ; Vaud
+	db 1     ; Valais
+	db 1     ; Zug
+	db 1     ; Zürich
+	db 1     ; Balzers
+	db 1     ; Eschen
+	db 1     ; Gamprin
+	db 1     ; Mauren
+	db 1     ; Planken
+	db 1     ; Ruggell
+	db 1     ; Schaan
+	db 1     ; Schellenberg
+	db 1     ; Triesen
+	db 1     ; Triesenberg
+	db 1     ; Vaduz
+	db 1    ; Capellen
+	db 1    ; Clervaux
+	db 1    ; Diekirch
+	db 1    ; Echternach
+	db 1    ; Esch-sur-Alzette
+	db 1    ; Grevenmacher
+	db 1    ; Luxembourg
+	db 1    ; Mersch
+	db 1    ; Redange
+	db 1    ; Remich
+	db 1    ; Vianden
+	db 1    ; Wiltz
 
 ZipcodeFormatLengths:
-	db 4 ;  0:   0-9   0-9   0-9   0-9   0-9 
+	db 5 ;  0:   0-9   0-9   0-9   0-9   0-9 
+	db 4 ;  0:   0-9   0-9   0-9   0-9
 	
