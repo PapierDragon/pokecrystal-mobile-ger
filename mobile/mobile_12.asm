@@ -1203,8 +1203,8 @@ endr
 	pop af
 	call ExitMenu
 	call DisplayZipCodeRightAlign
-	hlcoord 16, 11 ; Location of a clear box to clear any excess characters if 'Tell Now' is selected, but cannot overlap the position of the zip code itself, because otherwise it will clear that too.
-	ld a, 6 - ZIPCODE_LENGTH ; Determines the size of the clearing box
+	hlcoord 17, 11 ; Location of a clear box to clear any excess characters if 'Tell Now' is selected, but cannot overlap the position of the zip code itself, because otherwise it will clear that too.
+	ld a, 5 - ZIPCODE_LENGTH ; Determines the size of the clearing box
 	add b ; We increase the clearbox width, in case the zipcode has been shifted to the right.
 	ld c, a
 	ld b, 1
