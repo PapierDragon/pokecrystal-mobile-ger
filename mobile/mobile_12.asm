@@ -227,8 +227,8 @@ Mobile12_ClearBlankUserParameters:
 	ld a, [wd479]
 	bit 0, a
 	jr nz, .asm_481f8
-	lb bc, 1, 9
-	hlcoord 9, 11 ; Zip code location
+	lb bc, 1, 10
+	hlcoord 8, 11 ; Zip code location
 	call ClearBox
 	jr .asm_48201
 .asm_481f1
@@ -610,7 +610,7 @@ MenuHeader_0x48509:
 
 MenuHeader_ZipCodeEditBox:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 15 - ZIPCODE_LENGTH, 10, SCREEN_WIDTH - 1, TEXTBOX_Y - 0 ; For clearing the Zip Code box
+	menu_coords 16 - ZIPCODE_LENGTH, 10, SCREEN_WIDTH - 1, TEXTBOX_Y - 0 ; For clearing the Zip Code box
 
 	;Bounding of left side ; bounding of top ; bounding of right side ; bounding of bottom
 
@@ -1009,7 +1009,7 @@ ZipCodePressed:
 	call TellNowTellLaterMenu
 	jp c, ReturnToMobileProfileMenu
 	hlcoord 6, 12 ; Clearing the potential "Tell Later" text.
-	lb bc, 1, 17 - ZIPCODE_LENGTH ; Determines the size of the clearing box
+	lb bc, 1, 18 - ZIPCODE_LENGTH ; Determines the size of the clearing box
 	call ClearBox
 
 	ld hl, MenuHeader_ZipCodeEditBox
@@ -1020,11 +1020,11 @@ ZipCodePressed:
 	ld a, TRUE
 	ldh [hInMenu], a
 
-	hlcoord 15 - ZIPCODE_LENGTH, 10
+	hlcoord 16 - ZIPCODE_LENGTH, 10
 	ld b, $1 ; Zip Code Menu starting point
-	ld c, ZIPCODE_LENGTH + 3; Zip Code Menu width
+	ld c, ZIPCODE_LENGTH + 2; Zip Code Menu width
 	call DisplayBlankGoldenBox
-	hlcoord 16 - ZIPCODE_LENGTH, 11 ; Zip Code Position
+	hlcoord 17 - ZIPCODE_LENGTH, 11 ; Zip Code Position
 	call DisplayZipCode
 	call WaitBGMap
 	; Backup of the zip code, in case the player cancels.
@@ -1114,7 +1114,7 @@ asm_48972:
 	ld e, d
 	ld d, $0
 	ld b, $71; Y. Supposed to be $70 with GFX_underscore.
-	ld c, (16 - ZIPCODE_LENGTH + 1) * 8; X.
+	ld c, (17 - ZIPCODE_LENGTH + 1) * 8; X.
 	;farcall Mobile22_MoveAndBlinkCursor
 	pop de
 	pop af
@@ -1133,7 +1133,7 @@ asm_48972:
 	ld [wd002], a
 
 .regular_blinking
-	hlcoord 16 - ZIPCODE_LENGTH, 11 ; Zip code location
+	hlcoord 17 - ZIPCODE_LENGTH, 11 ; Zip code location
 	ld b, $0
 	ld c, d
 	add hl, bc
@@ -1204,7 +1204,7 @@ endr
 	call ExitMenu
 	call DisplayZipCodeRightAlign
 	hlcoord 17, 11 ; Location of a clear box to clear any excess characters if 'Tell Now' is selected, but cannot overlap the position of the zip code itself, because otherwise it will clear that too.
-	ld a, 5 - ZIPCODE_LENGTH ; Determines the size of the clearing box
+	ld a, 7 - ZIPCODE_LENGTH ; Determines the size of the clearing box
 	add b ; We increase the clearbox width, in case the zipcode has been shifted to the right.
 	ld c, a
 	ld b, 1
@@ -1217,7 +1217,7 @@ endr
 DisplayZipCodeRightAlign:
 	push de
 	; We first clear the area.
-	hlcoord 16 - ZIPCODE_LENGTH, 11 ; Zip Code Position in MOBILE menu
+	hlcoord 17 - ZIPCODE_LENGTH, 11 ; Zip Code Position in MOBILE menu
 	ld a, ZIPCODE_LENGTH
 	ld c, a
 	ld b, 0
@@ -1226,7 +1226,7 @@ DisplayZipCodeRightAlign:
 	ld b, e
 
 	; Aligning to the right, based on wZipcodeFormatLength.
-	hlcoord 16 - ZIPCODE_LENGTH, 11 ; Zip Code Position in MOBILE menu
+	hlcoord 17 - ZIPCODE_LENGTH, 11 ; Zip Code Position in MOBILE menu
 	ld a, [wZipcodeFormatLength]
     ld b, a
     ld a, ZIPCODE_LENGTH
@@ -1369,7 +1369,7 @@ InputZipcodeCharacters: ; Function48ab5. Zip code menu controls.
 	jr nz, .press_right
 
 	; If we reach this line, it means the player didn't press any button this frame.
-	hlcoord 16 - ZIPCODE_LENGTH, 11 ; Zip Code Location
+	hlcoord 17 - ZIPCODE_LENGTH, 11 ; Zip Code Location
 	call DisplayZipCode
 	ld a, [wd002]
 	bit 7, a
@@ -1391,9 +1391,9 @@ InputZipcodeCharacters: ; Function48ab5. Zip code menu controls.
 .no_underflow
 	push de
 	push af
-	hlcoord 12 - ZIPCODE_LENGTH + 3, 10
+	hlcoord 16 - ZIPCODE_LENGTH, 10
 	ld b, $1 ; Zip Code Menu starting point
-	ld c, ZIPCODE_LENGTH + 3; Zip Code Menu width
+	ld c, ZIPCODE_LENGTH + 2; Zip Code Menu width
 	call DisplayBlankGoldenBox
 	pop af
 	pop de
@@ -1413,9 +1413,9 @@ InputZipcodeCharacters: ; Function48ab5. Zip code menu controls.
 
 .press_right
 	push de
-	hlcoord 15 - ZIPCODE_LENGTH, 10
+	hlcoord 16 - ZIPCODE_LENGTH, 10
 	ld b, $1 ; Zip Code Menu starting point
-	ld c, ZIPCODE_LENGTH + 3; Zip Code Menu width
+	ld c, ZIPCODE_LENGTH + 2; Zip Code Menu width
 	call DisplayBlankGoldenBox
 	pop de
 	ld a, [wZipcodeFormatLength]
@@ -1442,9 +1442,9 @@ InputZipcodeCharacters: ; Function48ab5. Zip code menu controls.
 
 .press_left
 	push de
-	hlcoord 15 - ZIPCODE_LENGTH, 10
+	hlcoord 16 - ZIPCODE_LENGTH, 10
 	ld b, $1 ; Zip Code Menu starting point
-	ld c, ZIPCODE_LENGTH + 3; Zip Code Menu width
+	ld c, ZIPCODE_LENGTH + 2; Zip Code Menu width
 	call DisplayBlankGoldenBox
 	pop de
 	pop af
@@ -1516,7 +1516,7 @@ Zipcode_GetCharPoolLengthForGivenCharSlot:
 
 DisplayZipCodeAfterChange:
 	push af
-	hlcoord 16 - ZIPCODE_LENGTH, 11 ; Zip code location
+	hlcoord 17 - ZIPCODE_LENGTH, 11 ; Zip code location
 	call DisplayZipCode
 	ld a, $1
 	and a

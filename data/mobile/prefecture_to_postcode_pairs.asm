@@ -15,15 +15,15 @@ PrefectureZipcodeFormat:
 	db 0    ; Sachsen
 	db 0    ; Sachsen-Anhalt
 	db 0    ; Thüringen
-	db 0      ; Burgenland
-	db 0      ; Carinthia
-	db 0      ; Lower Austria
-	db 0      ; Upper Austria
-	db 0      ; Salzburg
-	db 0      ; Styria
-	db 0      ; Tyrol
-	db 0      ; Vorarlberg
-	db 0      ; Vienna
+	db 1      ; Burgenland
+	db 1      ; Carinthia
+	db 1      ; Lower Austria
+	db 1      ; Upper Austria
+	db 1      ; Salzburg
+	db 1      ; Styria
+	db 1      ; Tyrol
+	db 1      ; Vorarlberg
+	db 1      ; Vienna
 	db 1     ; Aargau
 	db 1     ; Appenzell Innerrhoden
 	db 1     ; Appenzell Ausserrhoden
