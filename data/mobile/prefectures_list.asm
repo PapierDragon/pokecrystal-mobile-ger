@@ -1,55 +1,55 @@
 Prefectures: ; Some names shortened to fit, check for official initials later. In this list, strings must be right-aligned.
-	db "DE-BB@"      ; Brandenburg
-	db "DE-BE@"      ; Berlin
-	db "DE-BW@"      ; Baden-Württemberg
-	db "DE-BY@"      ; Bayern
-	db "DE-HB@"      ; Bremen
-	db "DE-HE@"      ; Hessen
-	db "DE-HH@"      ; Hamburg
-	db "DE-MV@"      ; Mecklenburg-Vorpommern
-	db "DE-NI@"      ; Niedersachsen
-	db "DE-NW@"      ; Nordrhein-Westfalen
-	db "DE-RP@"      ; Rheinland-Pfalz
-	db "DE-SH@"      ; Schleswig-Holstein
-	db "DE-SL@"      ; Saarland
-	db "DE-SN@"      ; Sachsen
-	db "DE-ST@"      ; Sachsen-Anhalt
-	db "DE-TH@"      ; Thüringen
-	db "AT-1@"      ; Burgenland
-	db "AT-2@"      ; Carinthia
-	db "AT-3@"      ; Lower Austria
-	db "AT-4@"      ; Upper Austria
-	db "AT-5@"      ; Salzburg
-	db "AT-6@"      ; Styria
-	db "AT-7@"      ; Tyrol
-	db "AT-8@"      ; Vorarlberg
-	db "AT-9@"      ; Vienna
-	db "CH-AG@"      ; Aargau
-	db "CH-AI@"      ; Appenzell Innerrhoden
-	db "CH-AR@"      ; Appenzell Ausserrhoden
-	db "CH-BE@"      ; Berne
-	db "CH-BL@"      ; Basel-Landschaft
-	db "CH-BS@"      ; Basel-Stadt
-	db "CH-FR@"      ; Fribourg
-	db "CH-GE@"      ; Genève
-	db "CH-GL@"      ; Glarus
-	db "CH-GR@"      ; Graubünden
-	db "CH-JU@"      ; Jura
-	db "CH-LU@"      ; Luzer
-	db "CH-NE@"      ; Neuchâtel
-	db "CH-NW@"      ; Nidwalden
-	db "CH-OW@"      ; Obwalden
-	db "CH-SG@"      ; Sankt Gallen
-	db "CH-SH@"      ; Schaffhausen
-	db "CH-SO@"      ; Solothurn
-	db "CH-SZ@"      ; Schwyz
-	db "CH-TG@"      ; Thurgau
-	db "CH-TI@"      ; Ticino
-	db "CH-UR@"      ; Uri
-	db "CH-VD@"      ; Vaud
-	db "CH-VS@"      ; Valais
-	db "CH-ZG@"      ; Zug
-	db "CH-ZH@"      ; Zürich
+	db "DE-BW@"
+	db "DE-BY@"
+	db "DE-BE@"
+	db "DE-BB@"
+	db "DE-HB@"
+	db "DE-HH@"
+	db "DE-HE@"
+	db "DE-MV@"
+	db "DE-NI@"
+	db "DE-NW@"
+	db "DE-RP@"
+	db "DE-SL@"
+	db "DE-SN@"
+	db "DE-ST@"
+	db "DE-SH@"
+	db "DE-TH@"
+	db "AT-1 @"
+	db "AT-2 @"
+	db "AT-3 @"
+	db "AT-4 @"
+	db "AT-5 @"
+	db "AT-6 @"
+	db "AT-7 @"
+	db "AT-8 @"
+	db "AT-9 @"
+	db "CH-ZH@"
+	db "CH-BE@"
+	db "CH-LU@"
+	db "CH-UR@"
+	db "CH-SZ@"
+	db "CH-OW@"
+	db "CH-NW@"
+	db "CH-GL@"
+	db "CH-ZG@"
+	db "CH-FR@"
+	db "CH-SO@"
+	db "CH-BS@"
+	db "CH-BL@"
+	db "CH-SH@"
+	db "CH-AR@"
+	db "CH-AI@"
+	db "CH-SG@"
+	db "CH-GR@"
+	db "CH-AG@"
+	db "CH-TG@"
+	db "CH-TI@"
+	db "CH-VD@"
+	db "CH-VS@"
+	db "CH-NE@"
+	db "CH-GE@"
+	db "CH-JU@"
 	db "LI-01@"      ; Balzers
 	db "LI-02@"      ; Eschen
 	db "LI-03@"      ; Gamprin
