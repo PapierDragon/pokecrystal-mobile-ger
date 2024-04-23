@@ -519,8 +519,7 @@ _MobilePlayersMonTrade2Text::
 _MobileTakeGoodCareOfText::
 	text "Kümmere dich um"
 	line "@"
-	text "sagt @"
-	text_ram wOTTrademonSenderName
+	text_ram wOTTrademonSpeciesName
 	text "."
 	done
 
