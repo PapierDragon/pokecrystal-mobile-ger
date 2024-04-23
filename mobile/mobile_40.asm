@@ -1049,9 +1049,9 @@ Function100697:
 	ret
 
 String1006c2:
-	db "m  @"			; "ふん　@" Minute
+	db "min. @"			; "ふん　@" Minute
 String1006c6:
-	db "s  @"			; "びょう@" Second
+	db " sek.@"			; "びょう@" Second
 String1006ca:
 	db "über 1 Std.@" 		; "１じかんいじょう@" More than 1 hour
 
