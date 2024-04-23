@@ -796,8 +796,8 @@ GoldenrodPokecomCenterOddEggBriefingText:
 	done
 
 GoldenrodPokecomCenterPleaseWaitAMomentText:
-	text "Einen Moment,"
-	line "bitte…"
+	text "Bitte warte"
+	line "einen Moment…"
 	done
 
 GoldenrodPokecomCenterHereIsYourOddEggText:

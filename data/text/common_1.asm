@@ -423,6 +423,8 @@ _BidsFarewellToMonText::
 	text_ram wOTTrademonSpeciesName
 	text_end
 
+	text_end ; unused
+
 _MonNameBidsFarewellText::
 	text "sagt @"
 	text_ram wOTTrademonSenderName
@@ -432,8 +434,7 @@ _MonNameBidsFarewellText::
 _TakeGoodCareOfMonText::
 	text "Kümmere dich um"
 	line "@"
-	text "sagt @"
-	text_ram wOTTrademonSenderName
+	text_ram wOTTrademonSpeciesName
 	text "."
 	done
 
@@ -445,13 +446,14 @@ _ForYourMonSendsText::
 	text_ram wPlayerTrademonSpeciesName
 	text_end
 
+	text_end ; unused
+
 _OTSendsText::
 	text "überträgt @"
 	text_ram wOTTrademonSenderName
 	text_start
 	line "@"
-	text "sagt @"
-	text_ram wOTTrademonSenderName
+	text_ram wOTTrademonSpeciesName
 	text "."
 	done
 
@@ -487,8 +489,7 @@ _MobileForPartnersMonText::
 	text_ram wOTTrademonSenderName
 	text "s"
 	line "@"
-	text "sagt @"
-	text_ram wOTTrademonSenderName
+	text_ram wOTTrademonSpeciesName
 	text "."
 	done
 
@@ -503,8 +504,7 @@ _MobilePlayersMonTradeText::
 _MobileTakeGoodCareOfMonText::
 	text "Kümmere dich um"
 	line "@"
-	text "sagt @"
-	text_ram wOTTrademonSenderName
+	text_ram wOTTrademonSpeciesName
 	text "."
 	done
 

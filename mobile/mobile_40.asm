@@ -338,10 +338,8 @@ String10024d:
 	db   "@"
 
 String10025e:
-	db   "Die gewählten"
-	next "Räume"
-	next "unterscheiden"
-	next "sich."
+	db   "Gewählte Räume"
+	next "sind verschieden!"
 	db   "@"
 	
 Function100276:
@@ -6006,14 +6004,14 @@ Jumptable_1029cb:
 
 Function1029cf:
 	call LoadStandardMenuHeader
-	hlcoord 10, 7
+	hlcoord 7, 7
 	ld b, 3
-	ld c, 8
+	ld c, 10
 	ld d, h
 	ld e, l
 	farcall _LinkTextbox
 	ld de, String_102a26
-	hlcoord 12, 8
+	hlcoord 9, 8
 	call PlaceString
 	ld hl, wcd4b
 	set 1, [hl]
@@ -6689,8 +6687,8 @@ Function102f50:
 	ret
 
 .PleaseWait:
-	db   "Bitte warten…"        ; "しょうしょう　おまち　ください@"
-	next "moment...@"
+	db   "Bitte warte"        ; "しょうしょう　おまち　ください@"
+	next "einen Moment…@"
 
 Function102f6d:
 	call Function102dc3
@@ -6700,7 +6698,7 @@ Function102f6d:
 	ret
 
 .Finished:
-	
+	db "Tausch abbrechen…@"	; "しゅうりょう　します@"
 
 Function102f85:
 	ld a, [wd003]
