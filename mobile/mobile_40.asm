@@ -1049,7 +1049,7 @@ Function100697:
 	ret
 
 String1006c2:
-	db "min. @"			; "ふん　@" Minute
+	db " min. @"			; "ふん　@" Minute
 String1006c6:
 	db " sek.@"			; "びょう@" Second
 String1006ca:
