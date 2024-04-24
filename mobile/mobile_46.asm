@@ -5241,7 +5241,7 @@ Function11a302:
 	ld de, wcd68
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
 	call PrintNum
-	hlcoord 13, 4;14, 4
+	hlcoord 12, 4;14, 4
 	ld de, wcd67
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
 	call PrintNum
@@ -5689,7 +5689,7 @@ String_11a71e:
 
 String_11a72a:
 	db   "Dauer:";"つないだ　じかん"
-	next "    min.    sek.@"
+	next "   min.    sek.@"
 
 String_11a743:
 	db   "Neue Daten";"もっていない　データが"
