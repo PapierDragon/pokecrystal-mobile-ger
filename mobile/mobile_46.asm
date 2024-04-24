@@ -5688,7 +5688,7 @@ String_11a71e:
 	next "beendet.@"
 
 String_11a72a:
-	db   "Dauer:";"つないだ　じかん"
+	db   "ANRUFDAUER";"つないだ　じかん"
 	next "   min.    sek.@"
 
 String_11a743:

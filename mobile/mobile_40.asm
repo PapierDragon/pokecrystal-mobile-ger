@@ -4595,7 +4595,7 @@ String_102000:
 	db   "@"
 
 String_10200c:
-	db   "Verbunden für"
+	db   "ANRUFDAUER"
 	db   "@"
 
 String_102014:
