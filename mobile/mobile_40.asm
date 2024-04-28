@@ -4581,8 +4581,7 @@ String_101fd2:
 	db   "@"
 
 String_101fe1:
-	db   "Mit Freund"
-	next "verbunden!"
+	db   "Anruf aufgebaut!"
 	db   "@"
 
 String_101fef:
