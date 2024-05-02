@@ -4581,7 +4581,8 @@ String_101fd2:
 	db   "@"
 
 String_101fe1:
-	db   "Anruf aufgebaut!"
+	db   "Anruf"
+	next "aufgebaut!"
 	db   "@"
 
 String_101fef:
