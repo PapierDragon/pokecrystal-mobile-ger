@@ -809,7 +809,7 @@ Text_BattleReceptionistMobile:
 	done
 
 Text_TradeReceptionistMobile:
-	text "Kämpfen wir via"
+	text "Tauschen wir via"
 	line "GAME LINK-Kabel"
 
 	para "oder via Handy"
