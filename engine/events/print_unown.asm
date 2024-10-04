@@ -206,7 +206,7 @@ AlphRuinsStampString:
 	db "ALPH-RUINEN MARKE@"
 
 UnownDexDoWhatString:
-	db "Do what?@"
+	db "Auswählen.@"
 
 UnownDexMenuString:
 	db   UNOWNSTAMP_BOLD_A, " DRUCKEN"
