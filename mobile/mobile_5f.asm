@@ -542,7 +542,7 @@ MenuData_ChallengeRegisterExplanationCancel:
 	db 5
 	db "Herausforderung@"
 	db "Ehrenliste@" ; check leaders?
-	db "Letzter Raum@"
+	db "Vorherg. Raum@"
 	db "Erklärung@"
 	db "Abbrechen@"
 
