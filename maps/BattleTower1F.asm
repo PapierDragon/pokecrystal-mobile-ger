@@ -738,7 +738,7 @@ Text_SaveAndEndTheSession:
 Text_SaveBeforeReentry:
     text "Das Spiel wird"
     line "geSICHERT, ehe du"
-	
+
     para "in den vorigen"
     line "RAUM zurückkehrst."
     done
