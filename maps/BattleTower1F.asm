@@ -736,12 +736,12 @@ Text_SaveAndEndTheSession:
 	done
 
 Text_SaveBeforeReentry:
-	text "Deine Daten werden"
-	line "geSICHERT, ehe du"
-
-	para "in den vorigen"
-	line "RAUM zurückkehrst."
-	done
+    text "Das Spiel wird"
+    line "geSICHERT, ehe du"
+	
+    para "in den vorigen"
+    line "RAUM zurückkehrst."
+    done
 
 Text_CancelYourBattleRoomChallenge:
 	text "Die KAMPFRAUM-"
