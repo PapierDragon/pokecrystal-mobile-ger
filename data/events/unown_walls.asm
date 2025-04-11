@@ -39,7 +39,7 @@ MenuHeaders_UnownWalls:
 	menu_coords 4, 4, 15, 9
 ; UNOWNWORDS_WATER
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 4, 4, 15, 9
+	menu_coords 3, 4, 16, 9
 ; UNOWNWORDS_HO_OH
 	db MENU_BACKUP_TILES ; flags
 	menu_coords 4, 4, 15, 9
