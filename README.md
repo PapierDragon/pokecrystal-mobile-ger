@@ -18,18 +18,21 @@ Other languages are being worked on, but are not complete and still require a lo
 ## Screenshots
 
 ![image](https://github.com/gb-mobile/pokecrystal-mobile-ger/assets/110418063/ba663136-d7fa-423e-974d-7cf0f05362fd)
-![image](https://github.com/gb-mobile/pokecrystal-mobile-ger/assets/110418063/b4ceadf8-592b-41ca-8cf9-ce4f397d01ab)
+![image](https://github.com/user-attachments/assets/edf87737-f165-4e07-aaad-a3a30d2ce6e7)
 ![image](https://github.com/gb-mobile/pokecrystal-mobile-ger/assets/110418063/062796fd-380d-4a21-8f3f-93a4fd220772)
 ![image](https://github.com/gb-mobile/pokecrystal-mobile-ger/assets/110418063/07190487-05ff-4bf7-b68e-cd41161c97ca)
 ![image](https://github.com/gb-mobile/pokecrystal-mobile-ger/assets/110418063/d3ff672c-54b5-4b28-8cc1-e327d2bd0744)
 ![image](https://github.com/gb-mobile/pokecrystal-mobile-ger/assets/110418063/9df60976-2b40-41f1-bc26-a7cde97adaba)
 ![image](https://github.com/gb-mobile/pokecrystal-mobile-ger/assets/110418063/72732978-9cf7-471d-8314-d7c5cb634f82)
 ![image](https://github.com/gb-mobile/pokecrystal-mobile-ger/assets/110418063/fd5fd3a3-5a7e-41a8-b3bc-c50c5c947b1d)
-![image](https://github.com/gb-mobile/pokecrystal-mobile-ger/assets/110418063/e28e5656-ea85-452d-872d-d1d2b6b8a360)
+![image](https://github.com/user-attachments/assets/b8ef1898-99aa-46ad-969a-3fa2b5f74bf2)
 ![image](https://github.com/gb-mobile/pokecrystal-mobile-ger/assets/110418063/dc35bc4e-8086-4c8d-a79d-b3d2c1e41108)
 ![image](https://github.com/gb-mobile/pokecrystal-mobile-ger/assets/110418063/88ae5a4b-a52f-432a-8142-ef03920594c5)
+![image](https://github.com/user-attachments/assets/cb30197f-0e9c-4149-9ae0-e2802e265099)
 ![image](https://github.com/gb-mobile/pokecrystal-mobile-ger/assets/110418063/d8c279cf-1c1e-45b4-a823-39b15d0aceb2)
 ![image](https://github.com/gb-mobile/pokecrystal-mobile-ger/assets/110418063/739c6d36-51bf-43ef-8677-2ce1f7fd49c6)
+![image](https://github.com/user-attachments/assets/b1e10d0b-e8ef-4571-8514-ec11bf081941)
+
 
 ## Using Mobile Adapter Features
 
