@@ -1764,15 +1764,15 @@ InitNameCardLayout:
 	ld hl, MysteryGiftJP_GFX
 	ld de, vTiles2 tile $00
 	ld a, BANK(MysteryGiftJP_GFX)
-	ld bc, $40 tiles
+	ld bc, $58 tiles
 	call FarCopyBytes
-	ld hl, MysteryGiftJP_GFX + $40 tiles
+	ld hl, MysteryGiftJP_GFX + $58 tiles
 	ld de, vTiles0 tile $00
 	ld a, BANK(MysteryGiftJP_GFX)
 	ld bc, 8 tiles
 	call FarCopyBytes
 	hlcoord 0, 0
-	ld a, $3f
+	ld a, $4e
 	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
 	call ByteFill
 	hlcoord 3, 7 ; White background behind text
@@ -1788,15 +1788,15 @@ InitNameCardLayout:
 	ld [hli], a
 	inc a
 	ld [hl], a
-	hlcoord 4, 2
+	hlcoord 2, 2
 	ld a, $13 ; Top of CARD TRADE
-	call .Load12Row
-	hlcoord 4, 3
-	ld a, $1f ; Middle of CARD TRADE ($1e)
-	call .Load12Row
-	hlcoord 4, 4
-	ld a, $2b ; Bottom of CARD TRADE ($2a)
-	call .Load12Row
+	call .Load17Row
+	hlcoord 2, 3
+	ld a, $24 ; Middle of CARD TRADE ($1e)
+	call .Load17Row
+	hlcoord 2, 4
+	ld a, $35 ; Bottom of CARD TRADE ($2a)
+	call .Load17Row
 	hlcoord 1, 2
 	ld [hl], $4  ; Top of vertical line, left edge
 	hlcoord 1, 3
@@ -1823,25 +1823,25 @@ InitNameCardLayout:
 	hlcoord 1, 16
 	ld [hl], $6
 	hlcoord 2, 6
-	ld a, $38
+	ld a, $50
 	call .Load16Row 	; Text Box, top edge
 	hlcoord 2, 15
-	ld a, $3d
+	ld a, $55
 	call .Load16Row  	; Text Box, bottom edge
 	hlcoord 2, 6
-	ld a, $3a
+	ld a, $52
 	call .Load9Column 	; Text Box, left edge
 	hlcoord 17, 6
-	ld a, $3b
+	ld a, $53
 	call .Load9Column 	; Text Box, right edge
 	hlcoord 2, 6
-	ld [hl], $37 		; Text Box, upper-left
+	ld [hl], $4f 		; Text Box, upper-left
 	hlcoord 17, 6
-	ld [hl], $39 		; Text Box, upper-right
+	ld [hl], $51 		; Text Box, upper-right
 	hlcoord 2, 15
-	ld [hl], $3c 		; Text Box, bottom-left
+	ld [hl], $54 		; Text Box, bottom-left
 	hlcoord 17, 15
-	ld [hl], $3e 		; Text Box, bottom-right
+	ld [hl], $56 		; Text Box, bottom-right
 	ld de, wShadowOAMSprite00
 	ld hl, .NameCardOAMData
 	ld bc, 16 * SPRITEOAMSTRUCT_LENGTH
@@ -1860,8 +1860,8 @@ InitNameCardLayout:
 	ld b, 14
 	jr .row_loop
 
-.Load12Row:
-	ld b, 12
+.Load17Row:
+	ld b, 17
 
 .row_loop
 	ld [hli], a
