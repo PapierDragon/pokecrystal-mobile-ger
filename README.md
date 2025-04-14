@@ -34,7 +34,7 @@ https://github.com/gb-mobile/pokecrystal-mobile-ita
 ![image](https://github.com/gb-mobile/pokecrystal-mobile-ger/assets/110418063/72732978-9cf7-471d-8314-d7c5cb634f82)
 ![image](https://github.com/user-attachments/assets/a1dd0173-27a5-4d25-a507-6f6c6247c514)
 ![image](https://github.com/user-attachments/assets/b8ef1898-99aa-46ad-969a-3fa2b5f74bf2)
-![image](https://github.com/gb-mobile/pokecrystal-mobile-ger/assets/110418063/dc35bc4e-8086-4c8d-a79d-b3d2c1e41108)
+![image](https://github.com/user-attachments/assets/42e76aac-e734-498b-8df7-05ad110b8a30)
 ![image](https://github.com/gb-mobile/pokecrystal-mobile-ger/assets/110418063/88ae5a4b-a52f-432a-8142-ef03920594c5)
 ![image](https://github.com/user-attachments/assets/cb30197f-0e9c-4149-9ae0-e2802e265099)
 ![image](https://github.com/gb-mobile/pokecrystal-mobile-ger/assets/110418063/d8c279cf-1c1e-45b4-a823-39b15d0aceb2)
