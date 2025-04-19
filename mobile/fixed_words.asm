@@ -1244,7 +1244,7 @@ EZChatMenu_CategoryMenu: ; Category Menu Controls
 
 .finish_dpad
 	ld [hl], a
-	ret
+	jp DelayFrame
 
 EZChat_FindNextCategoryName:
 	; The category names are padded with "@".
