@@ -670,6 +670,15 @@ DisplayInitializedMobileProfileLayout: ; Clears the 4 top lines, displays the "M
 	ld b, $8
 	ld c, $12
 	call DisplayBlankGoldenBox
+	hlcoord 11, 7 ; Placement of Age Colon Text
+	ld de, Colon
+	call PlaceString
+	hlcoord 11, 9 ; Placement of Address Colon Text
+	ld de, Colon
+	call PlaceString
+	hlcoord 11, 11 ; Placement of Zip Code Colon Text
+	ld de, Colon
+	call PlaceString	
 	ret
 
 SetCursorParameters_MobileProfile:
