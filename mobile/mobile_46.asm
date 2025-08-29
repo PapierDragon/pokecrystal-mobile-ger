@@ -6072,9 +6072,8 @@ Text_WhatLevelDoYouWantToChallenge:
 	done
 
 Text_CheckBattleRoomListByMaxLevel:
-	text "KAMPFRAUM-Liste"
-	line "nach max. Level"
-	cont "überprüfen?"
+	text "KAMPFRÄUME nach"
+	line "max. Level prüfen?"
 	done
 
 Text_EnterWhichBattleRoom: ; unreferenced
